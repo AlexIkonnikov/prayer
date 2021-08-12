@@ -8,25 +8,13 @@
  * @format
  */
 
- import React from 'react';
- import {
-   SafeAreaView,
-   ScrollView,
-   StatusBar,
-   StyleSheet,
-   Text,
-   useColorScheme,
-   View,
- } from 'react-native';
+import React from 'react';
+import { MainStack } from './src/navigation/MainStack';
 
- const App = () => {
-   const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
+  return (
+    <MainStack />
+  );
+};
 
-   return (
-     <SafeAreaView>
-
-     </SafeAreaView>
-   );
- };
-
- export default App;
+export default App;
