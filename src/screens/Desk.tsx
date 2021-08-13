@@ -7,7 +7,6 @@ import { RootStackParamList } from "../navigation/MainStack";
 import { View } from "react-native";
 import { Input } from "../ui/Input";
 import { Container } from "../ui/Container";
-import { GroupIcons } from "../ui/icons/GroupIcons";
 import { PrayerItem } from "../components/PrayerItem";
 import { Button } from "../ui/Button";
 
@@ -20,17 +19,17 @@ interface DeskProps {
 }
 
 export const Desk: FC<DeskProps> = ({ navigation, route }) => {
+    const onPressItem = () => {
+        navigation.navigate('Detail');
+    };
+
+    const renderIcon = () => <Setting/>
+
     return (
-        <View>
-            <Header name={route.params?.name ?? ''} Icon={Setting} >
-            </Header>
+        <View style={{marginTop: 15}}>
             <Container>
                 <Input placeholder="Add a prayer..." />
-                <PrayerItem/>
-                <PrayerItem/>
-                <PrayerItem/>
-                <PrayerItem/>
-                <PrayerItem/>
+                <PrayerItem onPress={onPressItem}/>
                 <Button title="Show Answered Prayers" onPress={() => {}}/>
             </Container>
         </View>

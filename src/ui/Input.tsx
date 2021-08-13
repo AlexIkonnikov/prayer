@@ -1,13 +1,14 @@
 import React, { FC } from "react";
 import { TextInputProps } from "react-native"
 import styled from "styled-components/native";
+import { colors } from "../styles/colors";
 import { Plus } from "./icons/Plus";
 import { ViewRow } from "./Row";
 
 export const Input: FC<TextInputProps> = ({ ...outerProps }) => {
     return (
         <Wrapper>
-            <Plus width={22} height={22} />
+            <Plus width={22} color={colors.blue} />
             <StyledInput {...outerProps}></StyledInput>
         </Wrapper>
     )

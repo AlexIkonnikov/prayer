@@ -1,11 +1,15 @@
 import React, { FC } from "react";
 import { ButtonProps } from "react-native"
 import styled from "styled-components/native";
+import { colors } from "../styles/colors";
+import { AppText } from "./AppText";
 
 export const Button: FC<ButtonProps> = ({ title, onPress }) => {
     return (
         <StyledButton onPress={onPress}>
-            <StyledText>{title}</StyledText>
+            <TextWrapper>
+                <AppText fs={12} color={colors.white} upp bold>{title}</AppText>
+            </TextWrapper>
         </StyledButton>
     )
 };
@@ -21,9 +25,6 @@ const StyledButton = styled.TouchableOpacity`
     margin-right: auto;
 `;
 
-const StyledText = styled.Text`
-    text-align: center;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    font-weight: bold;
+const TextWrapper = styled.View`
+    align-items: center;
 `;

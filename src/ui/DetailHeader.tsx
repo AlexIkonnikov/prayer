@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components/native";
+import { colors } from "../styles/colors";
 import { BackArrow } from "./icons/BackArrow";
 import { Hands } from "./icons/Hands";
 import { Row } from "./Row";
@@ -9,7 +10,7 @@ export const DetailHeader: FC = () => {
         <Wrapper>
             <Row css="justify-content: space-between; margin-bottom: 15px;">
                 <BackArrow />
-                <Hands />
+                <Hands color={colors.white} />
             </Row>
             <StyledText>Prayer item two which is for my family to love God whole heartedly.</StyledText>
         </Wrapper>

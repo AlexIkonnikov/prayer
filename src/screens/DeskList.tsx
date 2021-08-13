@@ -7,6 +7,7 @@ import { Header } from '../ui/Header';
 import { Plus } from '../ui/icons/Plus';
 import { RootStackParamList } from "../navigation/MainStack";
 import { FlatList } from "react-native-gesture-handler";
+import { colors } from "../styles/colors";
 
 type DeskListNavigationProps = StackNavigationProp<RootStackParamList>
 
@@ -21,9 +22,11 @@ export const DeskList: FC<DeskListProps> = ({ navigation }) => {
         navigation.navigate('Desk', { name });
     };
 
+    const renderIcon = () => <Plus color={colors.blue}/>
+
     return (
         <View>
-            <Header name="My Desk" Icon={Plus} />
+            <Header name="My Desk" icon={renderIcon} />
             <Container>
                 <FlatList
                     data={data}

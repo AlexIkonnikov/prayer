@@ -1,21 +1,23 @@
 import React, { FC } from "react";
-import { CSSProp } from "styled-components";
 import styled from "styled-components/native";
+import { colors } from "../styles/colors";
 
 interface AppTextProps {
-    css?: CSSProp
+    fs?: number
+    color?: string
+    bold?: boolean
+    upp?: boolean
 }
 
-export const AppText: FC<AppTextProps> = ({children, css}) => {
+export const AppText: FC<AppTextProps> = ({children, ...outerProps}) => {
     return (
-        <StyledText css={css}>{children}</StyledText>
+        <StyledText {...outerProps}>{children}</StyledText>
     )
 }
 
 const StyledText = styled.Text<AppTextProps>`
-    font-size: 13px;
-    line-height: 15px;
-    text-transform: uppercase;
-    color: #72A8BC;
-    ${props => props.css ?? ''}
+    font-size: ${props => props.fs ? props.fs + "px" : '17px'};
+    text-transform: ${props => props.upp ? 'uppercase' : 'none'};
+    color: ${props => props.color ?? colors.ligthBlack};
+    font-weight: ${props => props.bold ? 'bold' : 'normal'};
 `;

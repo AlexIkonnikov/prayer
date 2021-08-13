@@ -19,7 +19,6 @@ const Wrapper = styled.View`
 
 const BigStyledText = styled.Text`
     font-size: 32px;
-    line-height: 37px;
     color: #BFB393;
     margin-top: 26px;
 `;

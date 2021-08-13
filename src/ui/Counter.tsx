@@ -1,5 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components/native";
+import { colors } from "../styles/colors";
+import { AppText } from "./AppText";
 
 interface CounterProps {
     numeric: number
@@ -8,7 +10,7 @@ interface CounterProps {
 export const Counter: FC<CounterProps> = ({numeric}) => {
     return (
         <Circle>
-            <StyledText>{numeric}</StyledText>
+            <AppText fs={9} color={colors.white}>{numeric}</AppText>
         </Circle>
     )
 };
@@ -22,8 +24,4 @@ const Circle = styled.View`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-`;
-const StyledText = styled.Text`
-    color: #FFFFFF;
-    font-size: 9px;
 `;

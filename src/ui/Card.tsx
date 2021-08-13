@@ -1,6 +1,8 @@
 import React, { FC, } from "react";
 import { TouchableOpacity } from "react-native";
 import styled from 'styled-components/native';
+import { colors } from "../styles/colors";
+import { AppText } from "./AppText";
 
 interface CardProps {
     name: string
@@ -11,7 +13,7 @@ export const Card: FC<CardProps> = ({ name, onPress }) => {
     return (
         <TouchableOpacity onPress={onPress}>
             <StyledView>
-                <StyledText>{name}</StyledText>
+                <AppText bold >{name}</AppText>
             </StyledView>
         </TouchableOpacity>
     )
@@ -22,10 +24,4 @@ const StyledView = styled.View`
     border: 1px solid #E5E5E5;
     border-radius: 4px;
     margin-bottom: 10px;
-`;
-
-export const StyledText = styled.Text`
-    font-size: 17px;
-    color: #514D47;
-    font-weight: bold;
 `;
