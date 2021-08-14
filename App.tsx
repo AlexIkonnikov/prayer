@@ -9,11 +9,11 @@
  */
 
 import React from 'react';
-import { MainStack } from './src/navigation/MainStack';
+import { StackRoute } from './src/routes/StackRoute';
 
 const App = () => {
   return (
-    <MainStack />
+    <StackRoute />
   );
 };
 

@@ -5,7 +5,7 @@ import { Card } from '../ui/Card';
 import { Container } from '../ui/Container';
 import { Header } from '../ui/Header';
 import { Plus } from '../ui/icons/Plus';
-import { RootStackParamList } from "../navigation/MainStack";
+import { RootStackParamList } from "../routes/StackRoute";
 import { FlatList } from "react-native-gesture-handler";
 import { colors } from "../styles/colors";
 
