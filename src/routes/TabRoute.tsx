@@ -11,13 +11,8 @@ export type TabStackParam = {
 
 const Tab = createMaterialTopTabNavigator<TabStackParam>();
 
-type TabNavProps = MaterialTopTabNavigationProp<TabStackParam>
 type TabRoute = RouteProp<TabStackParam>
 
-interface TabsProps {
-    navigation?: TabNavProps,
-    route?: TabRoute
-}
 
 export const TabRoute: FC = () => {
     return (

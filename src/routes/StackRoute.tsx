@@ -14,7 +14,7 @@ export type RootStackParamList = {
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-const myTheme = {
+export const myTheme = {
     ...DefaultTheme,
     colors: {
         ...DefaultTheme.colors,

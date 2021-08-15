@@ -9,12 +9,13 @@
  */
 
 import React from 'react';
+import { AuthRoute } from './src/routes/AuthRoute';
 import { StackRoute } from './src/routes/StackRoute';
+import { useAppSelector } from './src/store/hooks';
 
 const App = () => {
-  return (
-    <StackRoute />
-  );
+  const token = useAppSelector((state) => state.user.token);
+  return token ? <StackRoute/> : <AuthRoute/>;
 };
 
 export default App;
