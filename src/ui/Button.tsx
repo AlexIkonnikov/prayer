@@ -4,9 +4,9 @@ import styled from "styled-components/native";
 import { colors } from "../styles/colors";
 import { AppText } from "./AppText";
 
-export const Button: FC<ButtonProps> = ({ title, onPress }) => {
+export const Button: FC<ButtonProps> = ({ title, onPress, disabled }) => {
     return (
-        <StyledButton onPress={onPress}>
+        <StyledButton onPress={onPress} disabled={disabled}>
             <TextWrapper>
                 <AppText fs={12} color={colors.white} upp bold>{title}</AppText>
             </TextWrapper>
@@ -15,7 +15,7 @@ export const Button: FC<ButtonProps> = ({ title, onPress }) => {
 };
 
 const StyledButton = styled.TouchableOpacity`
-    background-color: #BFB393;
+    background-color: ${colors.gray};
     font-size: 12px;
     padding: 8px 0;
     width: 209px;
@@ -23,6 +23,7 @@ const StyledButton = styled.TouchableOpacity`
     border-radius: 15px;
     margin-left: auto;
     margin-right: auto;
+    opacity: ${props => props.disabled ? '0.6' : '1'};
 `;
 
 const TextWrapper = styled.View`

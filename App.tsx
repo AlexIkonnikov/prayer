@@ -14,7 +14,7 @@ import { StackRoute } from './src/routes/StackRoute';
 import { useAppSelector } from './src/store/hooks';
 
 const App = () => {
-  const token = useAppSelector((state) => state.user.token);
+  const token = useAppSelector((state) => state.user.user.token);
   return token ? <StackRoute/> : <AuthRoute/>;
 };
 

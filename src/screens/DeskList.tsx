@@ -8,6 +8,9 @@ import { Plus } from '../ui/icons/Plus';
 import { RootStackParamList } from "../routes/StackRoute";
 import { FlatList } from "react-native-gesture-handler";
 import { colors } from "../styles/colors";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { useEffect } from "react";
+import { actions } from "../store/ducks/column";
 
 type DeskListNavigationProps = StackNavigationProp<RootStackParamList>
 
@@ -17,7 +20,13 @@ interface DeskListProps {
 
 export const DeskList: FC<DeskListProps> = ({ navigation }) => {
 
-    const data = [{ name: 'To Do' }, { name: 'In Progress' }, { name: 'Completed' }];
+    const dispatch = useAppDispatch();
+    const columns = useAppSelector((state) => state.column);
+
+    useEffect(() => {
+        dispatch(actions.addColumnsRequest());
+    },[])
+
     const next = (name: string) => {
         navigation.navigate('Desk', { name });
     };
@@ -29,11 +38,11 @@ export const DeskList: FC<DeskListProps> = ({ navigation }) => {
             <Header name="My Desk" icon={renderIcon} />
             <Container>
                 <FlatList
-                    data={data}
+                    data={columns}
                     renderItem={({ item }) => {
-                        return <Card name={item.name} onPress={() => { next(item.name) }} />
+                        return <Card name={item.title} onPress={() => { next(item.title) }} />
                     }}
-                    keyExtractor={item => item.name}
+                    keyExtractor={item => item.id}
                 />
             </Container>
         </View>

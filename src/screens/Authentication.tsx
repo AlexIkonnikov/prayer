@@ -1,33 +1,50 @@
-import React, { FC, useState } from "react";
-import { View, TextInput } from "react-native";
+import { FormApi } from "final-form";
+import React, { FC } from "react";
+import { Field, Form, FormProps } from "react-final-form";
+import { View, TextInput, ActivityIndicator } from "react-native";
 import { actions } from "../store/ducks/user";
-import { useAppDispatch } from "../store/hooks";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { colors } from "../styles/colors";
 import { Button } from "../ui/Button";
 import { Container } from "../ui/Container";
 
 export const Authentication: FC = () => {
 
-    const initialState = {email: '', password: ''};
     const dispatch = useAppDispatch();
+    const fetchingStatus = useAppSelector((state) => state.user.fetchingStatus);
 
-    const [state, setState] = useState(initialState);
-
-    const onChangeInput = (text: string, name: string) => {
-        setState({...state, [name]: text});
+    const onSubmitForm = (values: FormProps, form: FormApi<FormProps>) => {
+        dispatch(actions.signInRequest({ email: values.email, password: values.password }))
+        form.reset();
     }
 
-    const onSubmitForm = () => {
-        
-        setState({...initialState})
+    if (fetchingStatus === 'start') {
+        return <ActivityIndicator size="large" color={colors.blue} />
     }
-
     return (
-        <View>
-            <Container>
-                <TextInput placeholder="E-mail" onChangeText={(text) => {onChangeInput(text, 'email')}} value={state.email} />
-                <TextInput placeholder="password" secureTextEntry={true} onChangeText={(text) => {onChangeInput(text, 'password')}} value={state.password} />
-            </Container>
-            <Button title="Sign in" onPress={onSubmitForm} />
-        </View>
+        <Container>
+            <Form onSubmit={onSubmitForm} render={
+                ({ handleSubmit, values }) => {
+                    return (
+                        <View>
+                            <Field name="email" render={
+                                ({ input }) => {
+                                    return (
+                                        <TextInput placeholder="Write your email" value={input.value} onChangeText={input.onChange} />
+                                    )
+                                }
+                            } />
+                            <Field name="password" render={
+                                ({ input }) => {
+                                    return <TextInput placeholder="Write your password" secureTextEntry value={input.value} onChangeText={input.onChange} />
+                                }
+                            } />
+                            <Button title="sign in" onPress={handleSubmit} disabled={!values.password || !values.email} />
+                        </View>
+                    )
+                }
+            } />
+        </Container>
     );
+
 }

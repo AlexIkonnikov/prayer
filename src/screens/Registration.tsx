@@ -1,29 +1,52 @@
+import { FormApi } from "final-form";
 import React, { FC } from "react";
-import { useState } from "react";
-import { TextInput, View} from "react-native";
+import { Field, Form, FormProps } from "react-final-form";
+import { ActivityIndicator, TextInput, View } from "react-native";
+import { actions } from "../store/ducks/user";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { colors } from "../styles/colors";
 import { Button } from "../ui/Button";
 import { Container } from "../ui/Container";
 
 export const Registration: FC = () => {
-    const initialState = {name: '', email: '', password: ''};
-    const [state, setState] = useState({...initialState});
 
-    const onChangeState = (text: string, name: string ): void => {
-        setState({...state, [name]: text});
-    };
+    const dispatch = useAppDispatch();
+    const fetchingStatus = useAppSelector((state) => state.user.fetchingStatus)
 
-    const onSendData = () => {
-        setState({...initialState});
+    const onSubmitForm = ({ name, email, password }: FormProps, form: FormApi<FormProps>) => {
+        dispatch(actions.signUpRequest({ email, name, password }));
+        form.reset();
     }
 
+    if (fetchingStatus === 'start') {
+        return <ActivityIndicator size="large" color={colors.blue}/>
+    } 
     return (
-        <View>
         <Container>
-            <TextInput placeholder="Name" onChangeText={(text) => onChangeState(text, 'name')} value={state.name} />
-            <TextInput placeholder="E-mail" onChangeText={(text) => onChangeState(text, 'email')} value={state.email} />
-            <TextInput placeholder="Password" secureTextEntry={true} onChangeText={(text) => onChangeState(text, 'password')} value={state.password} />
+            <Form onSubmit={onSubmitForm} render={
+                ({ handleSubmit, values }) => {
+                    return (
+                        <View>
+                            <Field name="name" render={
+                                ({ input }) => {
+                                    return <TextInput placeholder="Write your name" onChangeText={input.onChange} value={input.value} />
+                                }
+                            } />
+                            <Field name="email" render={
+                                ({ input }) => {
+                                    return <TextInput placeholder="Write your email" onChangeText={input.onChange} value={input.value} />
+                                }
+                            } />
+                            <Field name="password" render={
+                                ({ input }) => {
+                                    return <TextInput placeholder="Write your password" onChangeText={input.onChange} value={input.value} />
+                                }
+                            } />
+                            <Button title="sign up" onPress={handleSubmit} disabled={!values.name || !values.email || !values.password} />
+                        </View>
+                    )
+                }
+            } />
         </Container>
-        <Button title="Sign up" onPress={onSendData} />
-    </View>
     );
 };
