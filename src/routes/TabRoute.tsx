@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import { RouteProp } from "@react-navigation/native";
-import { createMaterialTopTabNavigator, MaterialTopTabNavigationProp } from '@react-navigation/material-top-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { MyPrayers } from "../screens/MyPrayers";
 import { Subscribed } from "../screens/Subscribed";
 
 export type TabStackParam = {
-    'My prayers': undefined | { name: string },
+    'My prayers': { name: string, id: number },
     Subscribed: undefined
 }
 
@@ -13,11 +13,14 @@ const Tab = createMaterialTopTabNavigator<TabStackParam>();
 
 type TabRoute = RouteProp<TabStackParam>
 
+interface TabRouteProps {
+    id: number
+}
 
-export const TabRoute: FC = () => {
+export const TabRoute: FC<TabRouteProps> = ({id}) => {
     return (
-        <Tab.Navigator>
-            <Tab.Screen name="My prayers" component={MyPrayers} />
+        <Tab.Navigator initialRouteName="My prayers">
+            <Tab.Screen name="My prayers" component={MyPrayers} initialParams={{id}} />
             <Tab.Screen name="Subscribed" component={Subscribed} />
         </Tab.Navigator>
     )

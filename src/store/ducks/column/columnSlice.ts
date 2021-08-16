@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IColumn } from './types';
+import { IColumn, AddColumnPayload } from './types';
 
 const initialState: Array<IColumn> = [];
 
@@ -12,6 +12,12 @@ const columnSlice = createSlice({
         },
         addColumnsSuccses(state, {payload}: PayloadAction<Array<IColumn>>) {
             return state = [...payload];
+        },
+        addColumnRequest(state, {payload}: PayloadAction<AddColumnPayload>) {
+
+        },
+        addColumnSuccses(state, {payload}:  PayloadAction<IColumn>){
+            state.push(payload);
         }
     }
 });

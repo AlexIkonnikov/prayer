@@ -8,7 +8,7 @@ import { Desk } from "../screens/Desk";
 
 export type RootStackParamList = {
     DeskList: undefined
-    Desk: { name: string } | undefined
+    Desk: { name: string, id: number }
     Detail: undefined
 };
 

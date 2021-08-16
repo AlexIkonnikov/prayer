@@ -4,3 +4,8 @@ export interface IColumn {
     description: null
     userId: number
 }
+
+export interface AddColumnPayload{
+    title: string
+    description: null
+}

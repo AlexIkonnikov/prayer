@@ -2,7 +2,7 @@ import { FormApi } from "final-form";
 import React, { FC } from "react";
 import { Field, Form, FormProps } from "react-final-form";
 import { View, TextInput, ActivityIndicator } from "react-native";
-import { actions } from "../store/ducks/user";
+import { actions, selectors } from "../store/ducks";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { colors } from "../styles/colors";
 import { Button } from "../ui/Button";
@@ -11,10 +11,10 @@ import { Container } from "../ui/Container";
 export const Authentication: FC = () => {
 
     const dispatch = useAppDispatch();
-    const fetchingStatus = useAppSelector((state) => state.user.fetchingStatus);
+    const fetchingStatus = useAppSelector(selectors.user.selectFetchingStatus);
 
     const onSubmitForm = (values: FormProps, form: FormApi<FormProps>) => {
-        dispatch(actions.signInRequest({ email: values.email, password: values.password }))
+        dispatch(actions.user.signInRequest({ email: values.email, password: values.password }))
         form.reset();
     }
 

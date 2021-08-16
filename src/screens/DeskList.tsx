@@ -10,7 +10,7 @@ import { FlatList } from "react-native-gesture-handler";
 import { colors } from "../styles/colors";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useEffect } from "react";
-import { actions } from "../store/ducks/column";
+import { actions, selectors } from "../store/ducks";
 
 type DeskListNavigationProps = StackNavigationProp<RootStackParamList>
 
@@ -21,17 +21,25 @@ interface DeskListProps {
 export const DeskList: FC<DeskListProps> = ({ navigation }) => {
 
     const dispatch = useAppDispatch();
-    const columns = useAppSelector((state) => state.column);
+    const columns = useAppSelector(selectors.column.selectColumnSlice);
 
     useEffect(() => {
-        dispatch(actions.addColumnsRequest());
-    },[])
+        dispatch(actions.column.addColumnsRequest());
+    }, []);
 
-    const next = (name: string) => {
-        navigation.navigate('Desk', { name });
+    useEffect(() => {
+        dispatch(actions.prayer.getAllPrayersRequest());
+    }, []);
+
+    const next = (name: string, id: number) => {
+        navigation.navigate('Desk', { name, id });
     };
 
-    const renderIcon = () => <Plus color={colors.blue}/>
+    const addColumn = () => {
+        dispatch(actions.column.addColumnRequest({ title: 'ALEX_TEST', description: null }));
+    }
+
+    const renderIcon = () => <Plus color={colors.blue} onPressHandler={addColumn} />
 
     return (
         <View>
@@ -40,7 +48,7 @@ export const DeskList: FC<DeskListProps> = ({ navigation }) => {
                 <FlatList
                     data={columns}
                     renderItem={({ item }) => {
-                        return <Card name={item.title} onPress={() => { next(item.title) }} />
+                        return <Card name={item.title} onPress={() => { next(item.title, item.id) }} />
                     }}
                     keyExtractor={item => item.id}
                 />
