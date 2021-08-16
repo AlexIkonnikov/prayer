@@ -6,7 +6,8 @@ interface AppTextProps {
     fs?: number
     color?: string
     bold?: boolean
-    upp?: boolean
+    upp?: boolean,
+    lineThrough?:boolean
 }
 
 export const AppText: FC<AppTextProps> = ({children, ...outerProps}) => {
@@ -16,8 +17,9 @@ export const AppText: FC<AppTextProps> = ({children, ...outerProps}) => {
 }
 
 const StyledText = styled.Text<AppTextProps>`
-    font-size: ${props => props.fs ? props.fs + "px" : '17px'};
+    font-size: ${props => props.fs ? props.fs + 'px' : '17px'};
     text-transform: ${props => props.upp ? 'uppercase' : 'none'};
     color: ${props => props.color ?? colors.ligthBlack};
     font-weight: ${props => props.bold ? 'bold' : 'normal'};
+    text-decoration: ${props => props.lineThrough ? 'line-through' : 'none'};
 `;

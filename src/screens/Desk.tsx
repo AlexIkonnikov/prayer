@@ -3,7 +3,7 @@ import { TabRoute } from "../routes/TabRoute";
 import { Header } from "../ui/Header";
 import { TabStackParam } from "../routes/TabRoute";
 import { RouteProp } from '@react-navigation/native';
-import { Setting } from "../ui/icons/Setting";
+import { TextForm } from "../components/TextForm";
 
 type DeskRouteProp = RouteProp<TabStackParam, "My prayers">;
 
@@ -13,11 +13,12 @@ interface DeskProps {
 
 export const Desk: FC<DeskProps> = ({route}) => {
 
-    const renderIcon = () => <Setting/>
     return (
-        <>
-            <Header name={route.params.name}  icon={renderIcon}/>
+        <React.Fragment>
+            <Header>
+                <TextForm inputText={route.params.name} readOnly/>
+            </Header>
             <TabRoute id={route.params.id}/>
-        </>
+        </React.Fragment>
     )
 }

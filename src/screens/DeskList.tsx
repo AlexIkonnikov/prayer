@@ -4,13 +4,12 @@ import { View } from "react-native";
 import { Card } from '../ui/Card';
 import { Container } from '../ui/Container';
 import { Header } from '../ui/Header';
-import { Plus } from '../ui/icons/Plus';
 import { RootStackParamList } from "../routes/StackRoute";
 import { FlatList } from "react-native-gesture-handler";
-import { colors } from "../styles/colors";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useEffect } from "react";
 import { actions, selectors } from "../store/ducks";
+import { TextForm } from "../components/TextForm";
 
 type DeskListNavigationProps = StackNavigationProp<RootStackParamList>
 
@@ -35,15 +34,15 @@ export const DeskList: FC<DeskListProps> = ({ navigation }) => {
         navigation.navigate('Desk', { name, id });
     };
 
-    const addColumn = () => {
-        dispatch(actions.column.addColumnRequest({ title: 'ALEX_TEST', description: null }));
-    }
-
-    const renderIcon = () => <Plus color={colors.blue} onPressHandler={addColumn} />
+    const addColumn = (title: string) => {
+        dispatch(actions.column.addColumnRequest({ title, description: null }));
+    };
 
     return (
         <View>
-            <Header name="My Desk" icon={renderIcon} />
+            <Header>
+                <TextForm inputText="My Desk" submit={addColumn} />
+            </Header>
             <Container>
                 <FlatList
                     data={columns}
@@ -54,5 +53,5 @@ export const DeskList: FC<DeskListProps> = ({ navigation }) => {
                 />
             </Container>
         </View>
-    )
+    );
 }

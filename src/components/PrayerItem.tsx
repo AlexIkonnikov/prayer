@@ -1,6 +1,8 @@
 import React, { FC, useState } from "react";
 import { TouchableOpacity } from "react-native";
+import { actions } from "../store/ducks";
 import { IPrayer } from "../store/ducks/prayer";
+import { useAppDispatch } from "../store/hooks";
 import { AppText } from "../ui/AppText";
 import { CheckBox } from "../ui/Checkbox";
 import { Hands } from "../ui/icons/Hands";
@@ -11,19 +13,25 @@ interface PrayerItemProps extends IPrayer {
     onPress: () => void,
 }
 
-export const PrayerItem: FC<PrayerItemProps> = ({onPress, title, checked}) => {
+export const PrayerItem: FC<PrayerItemProps> = ({onPress, title, checked, id, description, commentsIds}) => {
 
-    const [itemState, setItemState] = useState(checked);
+    const [itemCheckedState, setItemState] = useState(checked);
+    const dispatch = useAppDispatch();
+
+    const onChangeState = () => {
+        dispatch(actions.prayer.updatePrayerRequest({id, title, description, checked: !itemCheckedState}))
+    }
+    console.log(commentsIds);
 
     return (
         <TouchableOpacity onPress={onPress}>
             <Row css="justify-content: space-between; padding: 18px 0; border-bottom-color:#E5E5E5; border-bottom-width: 1px; border-style: solid;">
                 <Row>
-                    <CheckBox checked={itemState} onChange={() => { setItemState(!itemState) }} />
-                    <AppText>{title}</AppText>
+                    <CheckBox checked={itemCheckedState} onChange={onChangeState} />
+                    {itemCheckedState === true ? <AppText lineThrough>{title}</AppText> : <AppText>{title}</AppText>}
                 </Row>
                 <Row>
-                    <User userCount={12}/>
+                    {commentsIds ? ( commentsIds.length > 0 && <User userCount={commentsIds.length}/> ) : null} 
                     <Hands prayerCount={15}/>
                 </Row>
             </Row>

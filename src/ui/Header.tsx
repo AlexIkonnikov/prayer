@@ -1,24 +1,19 @@
 import React, { FC } from "react";
 import styled from "styled-components/native";
 import { Container } from "./Container"
-import { AppText } from "./AppText";
  
 interface HeaderProps {
-    name: string
+    name?: string
     icon?: () => JSX.Element
 }
 
-export const Header: FC<HeaderProps> = ({ children, name, icon }) => {
+export const Header: FC<HeaderProps> = ({ name, icon, children }) => {
     return (
         <HeaderContainer>
             <Container>
                 <Row>
-                    <TextWrapper>
-                        <AppText bold>{name}</AppText>
-                    </TextWrapper>
-                    { icon && icon()}
+                    {children}
                 </Row>
-                {children}
             </Container>
         </HeaderContainer>
     )
@@ -36,9 +31,5 @@ const Row = styled.View`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-`;
-
-const TextWrapper = styled.View`
-    flex-grow: 1;
     align-items: center;
 `;
