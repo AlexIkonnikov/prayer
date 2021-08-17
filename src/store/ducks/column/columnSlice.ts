@@ -18,6 +18,20 @@ const columnSlice = createSlice({
         },
         addColumnSuccses(state, {payload}:  PayloadAction<IColumn>){
             state.push(payload);
+        },
+        updateColumnRequest(state, {payload}: PayloadAction<IColumn>) {
+
+        },
+        updateColumnSuccses(state, {payload}: PayloadAction<IColumn>) {
+            const index = state.findIndex((col) => col.id === payload.id);
+            if (index !== -1) state.splice(index, 1, payload);
+        },
+        deletColumnRequest(state, {payload}:PayloadAction<number>) {
+            
+        },
+        deleteColumnSuccses(state, {payload}:PayloadAction<number>) {
+            const index = state.findIndex((col) => col.id === payload);
+            if (index !== -1) state.splice(index, 1);
         }
     }
 });

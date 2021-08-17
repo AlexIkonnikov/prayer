@@ -6,6 +6,7 @@ import { actions } from './userSlice';
 
 function* signUpRequestHandler({payload}: PayloadAction<SignUpPayload>) {
     const {data} = yield call(signUp, {...payload});
+    console.log(data);
     const {email, name, password, token} = data;
     yield put(actions.signUpSuccsecResponse({email, name, password, token}));
 }
