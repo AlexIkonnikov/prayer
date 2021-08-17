@@ -1,8 +1,8 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { Authentication } from "../screens/Authentication";
-import { Registration } from "../screens/Registration";
+import { Authentication } from "../screens/Authentication.screen";
+import { Registration } from "../screens/Registration.screen";
 import { myTheme } from './StackRoute';
 
 type AuthNavigationProps = {

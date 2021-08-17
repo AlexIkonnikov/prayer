@@ -50,7 +50,7 @@ export const ColumnList: FC<DeskListProps> = ({ navigation }) => {
                         return <Card name={item.title} onPress={() => { next(item.title, item.id) }} />
                     }}
                     keyExtractor={item => item.id + ""}
-                />
+                /> 
             </Container>
         </View>
     );

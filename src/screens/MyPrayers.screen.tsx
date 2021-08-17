@@ -12,7 +12,7 @@ import { selectors } from "../store/ducks";
 import { useState } from "react";
 
 type DeskNavigationProps = StackNavigationProp<RootStackParamList>
-type DeskScreenRouteProp = RouteProp<RootStackParamList, "Desk">;
+type DeskScreenRouteProp = RouteProp<RootStackParamList, "Column">;
 
 interface DeskProps {
     navigation: DeskNavigationProps,

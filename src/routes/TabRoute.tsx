@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { RouteProp } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { MyPrayers } from "../screens/MyPrayers";
-import { Subscribed } from "../screens/Subscribed";
+import { MyPrayers } from "../screens/MyPrayers.screen";
+import { Subscribed } from "../screens/Subscribed.screen";
 
 export type TabStackParam = {
     'My prayers': { name: string, id: number },

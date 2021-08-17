@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
-import { ColumnList } from "../screens/ColumnList";;
-import { Detail } from "../screens/Detail";
+import { ColumnList } from "../screens/ColumnList.screen";;
+import { Detail } from "../screens/Detail.screen";
 import { colors } from "../styles/colors";
-import { Column } from "../screens/Column";
+import { Column } from "../screens/Column.screen";
 
 export type RootStackParamList = {
     ColumnList: undefined
