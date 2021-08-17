@@ -22,7 +22,6 @@ function* deleteColumnRequestHandler({payload}: PayloadAction<number>) {
 
 function* updateColumnRequestHandler({payload}: PayloadAction<IColumn>) {
     const {data} = yield call(updateColumn, payload);
-    console.log(data);
     yield put(actions.updateColumnSuccses(data));
 }
 

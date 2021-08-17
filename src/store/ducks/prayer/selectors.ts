@@ -1,15 +1,15 @@
 import { createSelector, Selector } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
-import { IPrayer } from './types';
+import { IPrayer, IPrayerSlice } from './types';
 
-const selectPrayerSlice = (state: RootState): Array<IPrayer> => {
+const selectPrayerSlice = (state: RootState): IPrayerSlice => {
     return state.prayer;
 };
 
 const selectPrayersById = (id: number) => {
     return createSelector(
         selectPrayerSlice,
-        (prayers: Array<IPrayer>) => prayers.filter((prayer) => prayer.columnId === id)
+        (slice: IPrayerSlice) => slice.prayers.filter((prayer) => prayer.columnId === id)
     )
 };
 

@@ -5,14 +5,18 @@ import { SignInPayload, SignUpPayload } from './types';
 import { actions } from './userSlice';
 
 function* signUpRequestHandler({payload}: PayloadAction<SignUpPayload>) {
-    const {data} = yield call(signUp, {...payload});
-    console.log(data);
+    const {data, ...responseInfo} = yield call(signUp, {...payload});
     const {email, name, password, token} = data;
     yield put(actions.signUpSuccsecResponse({email, name, password, token}));
 }
 
 function* signInRequestHandler({payload}: PayloadAction<SignInPayload>) {
-    const {data} = yield call(signIn, {...payload});
+    const {data, ...responseInfo} = yield call(signIn, {...payload});
+    if (responseInfo.status !== 200 && data.message) {
+        yield put(actions.requestFailed(data.message));
+        return;
+    }
+    console.log(responseInfo)
     const {name, email, token} = data;
     yield put(actions.signInSuccsecRequest({name, email, token}));
 

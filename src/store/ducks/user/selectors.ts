@@ -1,14 +1,14 @@
 import { createSelector, Selector } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
-import { IUser, UserSliceInitialState } from './types';
+import { IUser, IUserSlice } from './types';
 
-const selectUserSlice = (state:RootState): UserSliceInitialState => {
+const selectUserSlice = (state:RootState): IUserSlice => {
     return (state.user);
 };
 
 const selectUser = createSelector(
     selectUserSlice,
-    (user: UserSliceInitialState) => user.user
+    (user: IUserSlice) => user.user
 );
 
 const selectUserToken = createSelector(
@@ -18,7 +18,12 @@ const selectUserToken = createSelector(
 
 const selectFetchingStatus = createSelector(
     selectUserSlice,
-    (user: UserSliceInitialState) => user.fetchingStatus
+    (user: IUserSlice) => user.fetchingStatus
 );
 
-export const selectors = {selectUser, selectUserToken, selectFetchingStatus};
+const selectErrors=createSelector(
+    selectUserSlice,
+    (user: IUserSlice) => user.errors
+)
+
+export const selectors = {selectUser, selectUserToken, selectFetchingStatus, selectErrors};

@@ -1,12 +1,12 @@
 import { FormApi } from "final-form";
 import React, { FC } from "react";
 import { Field, Form, FormProps } from "react-final-form";
-import { ActivityIndicator, TextInput, View } from "react-native";
+import { TextInput, View } from "react-native";
 import { actions, selectors } from "../store/ducks";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { colors } from "../styles/colors";
 import { Button } from "../ui/Button";
 import { Container } from "../ui/Container";
+import { Loader } from "../ui/Loader";
 
 export const Registration: FC = () => {
 
@@ -19,7 +19,7 @@ export const Registration: FC = () => {
     }
 
     if (fetchingStatus === 'start') {
-        return <ActivityIndicator size="large" color={colors.blue}/>
+        return <Loader />
     } 
     return (
         <Container>

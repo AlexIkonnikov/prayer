@@ -1,5 +1,5 @@
 import Api from '../../../services/Api';
-import { UpdatePrayerPayload } from './types';
+import { AddPrayerPayload, UpdatePrayerPayload } from './types';
 
 
 export const getPrayers = () => {
@@ -8,4 +8,8 @@ export const getPrayers = () => {
 
 export const updatePrayerById = ({id, title, description, checked}: UpdatePrayerPayload) => {
     return Api.put(`prayers/${id}`, {title, description, checked});
+}
+
+export const addPrayer = ({columnId, title, description, checked}: AddPrayerPayload) => {
+    return Api.post(`columns/${columnId}/prayers`, {columnId, title, description, checked});
 }

@@ -7,9 +7,11 @@ import { Input } from "../ui/Input";
 import { Container } from "../ui/Container";
 import { PrayerItem } from "../components/PrayerItem";
 import { Button } from "../ui/Button";
-import { useAppSelector } from "../store/hooks";
-import { selectors } from "../store/ducks";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { actions, selectors } from "../store/ducks";
 import { useState } from "react";
+import { FormProps } from "react-final-form";
+import { FormApi } from "final-form";
 
 type DeskNavigationProps = StackNavigationProp<RootStackParamList>
 type DeskScreenRouteProp = RouteProp<RootStackParamList, "Column">;
@@ -20,15 +22,27 @@ interface DeskProps {
 }
 
 export const MyPrayers: FC<DeskProps> = ({ navigation, route }) => {
+    const dispatch = useAppDispatch()
     const [visibleAnsweredPrayers, setVisibleAnsweredPrayers] = useState(false);
 
     const onChangeState = () => {
         setVisibleAnsweredPrayers(!visibleAnsweredPrayers);
-    }
+    };
 
     const onPressItem = () => {
         navigation.navigate('Detail');
     };
+
+    const createPrayer = (values: FormProps, form: FormApi<FormProps>) => {
+        dispatch(actions.prayer.addPrayerToColumnRequest({
+            columnId: route.params.id,
+            title: values.title,
+            description: '',
+            checked: false
+        }));
+        form.reset();
+    };
+
     const columnId = route.params.id;
     const prayersItem = useAppSelector(selectors.prayer.selectPrayersById(columnId));
     const checkedItem = prayersItem.filter((prayer) => prayer.checked);
@@ -37,12 +51,10 @@ export const MyPrayers: FC<DeskProps> = ({ navigation, route }) => {
     return (
         <ScrollView style={{ marginTop: 15 }}>
             <Container>
-                <Input placeholder="Add a prayer..." />
-                {unCheckedItem.map((item) => <PrayerItem onPress={onPressItem} {...item} />)}
-
+                <Input submit={createPrayer}/>
+                {unCheckedItem.map((item) => <PrayerItem key={item.id} onPress={onPressItem} {...item} />)}
                 {checkedItem.length > 0 && <Button title="Show Answered Prayers" onPress={onChangeState} />}
-
-                {!visibleAnsweredPrayers && checkedItem.map((item) => <PrayerItem onPress={onPressItem} {...item} />)}
+                {!visibleAnsweredPrayers && checkedItem.map((item) => <PrayerItem key={item.id} onPress={onPressItem} {...item} />)}
             </Container>
         </ScrollView>
     )

@@ -1,5 +1,5 @@
 import React, { FC, Dispatch, SetStateAction } from "react";
-import { actions } from "../../store/ducks";
+import { actions, selectors } from "../../store/ducks";
 import { IColumn } from "../../store/ducks/column";
 import { useAppDispatch } from "../../store/hooks";
 import { Card } from "../../ui/Card";
@@ -14,6 +14,7 @@ interface ColumnItemProps {
 
 const ColumnItem: FC<ColumnItemProps> = ({ column, editColumnId, setEditColumnId, onPress }) => {
     const dispatch = useAppDispatch();
+
     const onPressHandler = () => {
         onPress(column.title, column.id);
     };
@@ -37,9 +38,7 @@ const ColumnItem: FC<ColumnItemProps> = ({ column, editColumnId, setEditColumnId
     if (editColumnId === column.id) {
         return <EditableColumn column={column} updateResource={updateColumn} deleteResource={deleteColumn} cancel={offEditMode}/>
     }
-    return (
-        <Card name={column.title} onPress={onPressHandler} onLongPress={activeEditMode} />
-    );
+    return <Card name={column.title} onPress={onPressHandler} onLongPress={activeEditMode} /> ;
 };
 
 export default ColumnItem;

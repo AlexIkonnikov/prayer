@@ -1,20 +1,26 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { getPrayers, updatePrayerById } from './api';
+import { addPrayer, getPrayers, updatePrayerById } from './api';
 import { actions } from './prayersSlice';
-import { UpdatePrayerPayload } from './types';
+import { AddPrayerPayload, UpdatePrayerPayload } from './types';
 
-function* getAllPrayersHandler() {
+function* getAllPrayersRequestHandler() {
     const {data} = yield call(getPrayers);
     yield put(actions.getAllPrayersSuccsesResponse(data));
 }
 
-function* updatePrayerHandler({payload}: PayloadAction<UpdatePrayerPayload>) {
+function* updatePrayerRequestHandler({payload}: PayloadAction<UpdatePrayerPayload>) {
     const {data} = yield call(updatePrayerById, {...payload});
     yield put(actions.updatePrayerSuccsesResponse(data));
 }
 
+function* addPrayerRequestHandler({payload}: PayloadAction<AddPrayerPayload>) {
+    const {data} = yield call(addPrayer, payload);
+    yield put(actions.addPrayerToColumnSuccses(data));
+}
+
 export function* prayerWatcher() {
-    yield takeEvery(actions.getAllPrayersRequest.type, getAllPrayersHandler);
-    yield takeEvery(actions.updatePrayerRequest.type, updatePrayerHandler);
+    yield takeEvery(actions.getAllPrayersRequest.type, getAllPrayersRequestHandler);
+    yield takeEvery(actions.updatePrayerRequest.type, updatePrayerRequestHandler);
+    yield takeEvery(actions.addPrayerToColumnRequest.type, addPrayerRequestHandler);
 }

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserSliceInitialState, IUser, SignUpPayload, SignInPayload } from "./types";
+import { IUserSlice, IUser, SignUpPayload, SignInPayload } from "./types";
 
-const initialState: UserSliceInitialState = {
+const initialState: IUserSlice = {
     user: {
         name: '',
         email: '',
@@ -9,6 +9,7 @@ const initialState: UserSliceInitialState = {
         token: '',
     },
     fetchingStatus: 'stop',
+    errors: []
 }
 
 const userSlice = createSlice({
@@ -19,13 +20,22 @@ const userSlice = createSlice({
             state.fetchingStatus = 'start';
         },
         signUpSuccsecResponse(state, { payload }: PayloadAction<IUser>) {
-            return { user: {...payload}, fetchingStatus: 'stop' };
+            state.user = {...payload};
+            state.fetchingStatus = 'stop';
         },
         signInRequest(state, { payload }: PayloadAction<SignInPayload>) {
             state.fetchingStatus = 'start';
         },
         signInSuccsecRequest(state, { payload }: PayloadAction<IUser>) {
-            return { user: {...payload}, fetchingStatus: 'stop' };
+            state.user = {...payload};
+            state.fetchingStatus = 'stop';
+        },
+        requestFailed(state, {payload}: PayloadAction<string>) {
+            state.fetchingStatus = 'stop';
+            state.errors.push(payload);
+        },
+        cleanErrors(state) {
+            state.errors = [];
         },
         logOut() {
             return initialState;

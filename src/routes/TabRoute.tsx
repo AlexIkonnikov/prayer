@@ -19,7 +19,7 @@ interface TabRouteProps {
 
 export const TabRoute: FC<TabRouteProps> = ({id}) => {
     return (
-        <Tab.Navigator initialRouteName="My prayers">
+        <Tab.Navigator initialRouteName="My prayers" screenOptions={{swipeEnabled: false}}>
             <Tab.Screen name="My prayers" component={MyPrayers} initialParams={{id}} />
             <Tab.Screen name="Subscribed" component={Subscribed} />
         </Tab.Navigator>

@@ -11,7 +11,8 @@ export interface SignInPayload {
     password?: string
 }
 
-export interface UserSliceInitialState {
+export interface IUserSlice {
     user: IUser,
     fetchingStatus: 'start' | 'stop'
+    errors: Array<string>
 }
