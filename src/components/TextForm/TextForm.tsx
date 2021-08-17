@@ -2,18 +2,17 @@ import { FormApi } from "final-form";
 import React, { FC } from "react";
 import { Field, Form, FormProps } from "react-final-form";
 import { NativeSyntheticEvent, TextInputEndEditingEventData } from "react-native";
-import { colors } from "../styles/colors";
-import { Center } from "../ui/Center";
-import { Plus } from "../ui/icons/Plus";
-import { StyledInput } from "../ui/StyledInput";
+import { colors } from "../../styles/colors";
+import { Center } from "../../ui/Center";
+import { Plus } from "../../ui/icons/Plus";
+import { StyledInput } from "../../ui/StyledInput";
 
 interface TextFormProps {
-    submit?: (text: string) => void
+    submit: (text: string) => void
     inputText: string
-    readOnly?: boolean
 }
 
-export const TextForm: FC<TextFormProps> = ({ inputText, readOnly, submit }) => {
+const TextForm: FC<TextFormProps> = ({ inputText, submit }) => {
 
     const checkForm = ({ nativeEvent }: NativeSyntheticEvent<TextInputEndEditingEventData>, form: FormApi<FormProps>) => {
         if (nativeEvent.text === '') {
@@ -22,7 +21,7 @@ export const TextForm: FC<TextFormProps> = ({ inputText, readOnly, submit }) => 
     }
 
     const submitHandler = (values: FormProps) => {
-        submit && submit(values.text);
+        submit(values.text);
     }
 
     return (
@@ -37,7 +36,7 @@ export const TextForm: FC<TextFormProps> = ({ inputText, readOnly, submit }) => 
                                 <Field name="text" render={
                                     ({ input }) => {
                                         return (
-                                            <StyledInput editable={!readOnly} value={input.value} onChangeText={input.onChange} onEndEditing={(e) => { checkForm(e, form) }} />
+                                            <StyledInput value={input.value} onChangeText={input.onChange} onEndEditing={(e) => { checkForm(e, form) }} />
                                         )
                                     }
                                 } />
@@ -50,3 +49,5 @@ export const TextForm: FC<TextFormProps> = ({ inputText, readOnly, submit }) => 
         />
     );
 }
+
+export default TextForm;

@@ -1,14 +1,14 @@
 import React, { FC } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
-import { DeskList } from "../screens/DeskList";;
+import { ColumnList } from "../screens/ColumnList";;
 import { Detail } from "../screens/Detail";
 import { colors } from "../styles/colors";
-import { Desk } from "../screens/Desk";
+import { Column } from "../screens/Column";
 
 export type RootStackParamList = {
-    DeskList: undefined
-    Desk: { name: string, id: number }
+    ColumnList: undefined
+    Column: { name: string, id: number }
     Detail: undefined
 };
 
@@ -25,9 +25,9 @@ export const myTheme = {
 export const StackRoute: FC = () => {
     return (
         <NavigationContainer theme={myTheme}>
-            <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="DeskList">
-                <Stack.Screen name="DeskList" component={DeskList} />
-                <Stack.Screen name="Desk" component={Desk} />
+            <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="ColumnList">
+                <Stack.Screen name="ColumnList" component={ColumnList} />
+                <Stack.Screen name="Column" component={Column} />
                 <Stack.Screen name="Detail" component={Detail} />
             </Stack.Navigator>
         </NavigationContainer>

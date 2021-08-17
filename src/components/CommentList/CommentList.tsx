@@ -1,15 +1,15 @@
 import React, { FC } from "react";
 import { FlatList } from "react-native";
-import { colors } from "../styles/colors";
-import { AppText } from "../ui/AppText";
-import { Comment, IComment } from "../ui/Comment";
-import { Container } from "../ui/Container";
+import { colors } from "../../styles/colors";
+import { AppText } from "../../ui/AppText";
+import { Comment, IComment } from "../../ui/Comment";
+import { Container } from "../../ui/Container";
 
 interface CommentListProps {
     comments: Array<IComment>
 }
 
-export const CommentList: FC<CommentListProps> = ({ comments }) => {
+const CommentList: FC<CommentListProps> = ({ comments }) => {
     return (
         <Container>
             <AppText fs={13} color={colors.blue} bold upp>Comments</AppText>
@@ -19,3 +19,5 @@ export const CommentList: FC<CommentListProps> = ({ comments }) => {
         </Container>
     )
 };
+
+export default CommentList;

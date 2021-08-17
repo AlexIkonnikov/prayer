@@ -6,7 +6,6 @@ import { UpdatePrayerPayload } from './types';
 
 function* getAllPrayersHandler() {
     const {data} = yield call(getPrayers);
-    console.log(data);
     yield put(actions.getAllPrayersSuccsesResponse(data));
 }
 

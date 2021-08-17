@@ -1,17 +1,17 @@
 import React from "react";
 import { FC } from "react";
-import { colors } from "../styles/colors";
-import { AppText } from "../ui/AppText";
-import { Avatar } from "../ui/Avatar";
-import { Container } from "../ui/Container";
-import { RoundButton } from "../ui/RoundButton";
-import { Row } from "../ui/Row";
+import { colors } from "../../styles/colors";
+import { AppText } from "../../ui/AppText";
+import { Avatar } from "../../ui/Avatar";
+import { Container } from "../../ui/Container";
+import { RoundButton } from "../../ui/RoundButton";
+import { Row } from "../../ui/Row";
 
 interface MemberListProps {
     srcs: Array<string>
 }
 
-export const MemberList: FC<MemberListProps> = ({srcs}) => {
+const MemberList: FC<MemberListProps> = ({srcs}) => {
     return (
         <Container>
             <AppText fs={13} color={colors.blue} upp bold>Members</AppText>
@@ -22,3 +22,5 @@ export const MemberList: FC<MemberListProps> = ({srcs}) => {
         </Container>
     )
 };
+
+export default MemberList;

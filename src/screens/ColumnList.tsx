@@ -5,7 +5,7 @@ import { Card } from '../ui/Card';
 import { Container } from '../ui/Container';
 import { Header } from '../ui/Header';
 import { RootStackParamList } from "../routes/StackRoute";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList } from "react-native";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useEffect } from "react";
 import { actions, selectors } from "../store/ducks";
@@ -17,7 +17,7 @@ interface DeskListProps {
     navigation: DeskListNavigationProps
 }
 
-export const DeskList: FC<DeskListProps> = ({ navigation }) => {
+export const ColumnList: FC<DeskListProps> = ({ navigation }) => {
 
     const dispatch = useAppDispatch();
     const columns = useAppSelector(selectors.column.selectColumnSlice);
@@ -31,7 +31,7 @@ export const DeskList: FC<DeskListProps> = ({ navigation }) => {
     }, []);
 
     const next = (name: string, id: number) => {
-        navigation.navigate('Desk', { name, id });
+        navigation.navigate('Column', { name, id });
     };
 
     const addColumn = (title: string) => {
@@ -49,7 +49,7 @@ export const DeskList: FC<DeskListProps> = ({ navigation }) => {
                     renderItem={({ item }) => {
                         return <Card name={item.title} onPress={() => { next(item.title, item.id) }} />
                     }}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.id + ""}
                 />
             </Container>
         </View>

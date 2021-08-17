@@ -2,12 +2,7 @@ import React, { FC } from "react";
 import styled from "styled-components/native";
 import { Container } from "./Container"
  
-interface HeaderProps {
-    name?: string
-    icon?: () => JSX.Element
-}
-
-export const Header: FC<HeaderProps> = ({ name, icon, children }) => {
+export const Header: FC = ({ children }) => {
     return (
         <HeaderContainer>
             <Container>

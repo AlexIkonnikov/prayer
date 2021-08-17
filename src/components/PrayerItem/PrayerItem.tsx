@@ -1,19 +1,19 @@
 import React, { FC, useState } from "react";
 import { TouchableOpacity } from "react-native";
-import { actions } from "../store/ducks";
-import { IPrayer } from "../store/ducks/prayer";
-import { useAppDispatch } from "../store/hooks";
-import { AppText } from "../ui/AppText";
-import { CheckBox } from "../ui/Checkbox";
-import { Hands } from "../ui/icons/Hands";
-import { User } from "../ui/icons/User";
-import { Row } from "../ui/Row";
+import { actions } from "../../store/ducks";
+import { IPrayer } from "../../store/ducks/prayer";
+import { useAppDispatch } from "../../store/hooks";
+import { AppText } from "../../ui/AppText";
+import { CheckBox } from "../../ui/Checkbox";
+import { Hands } from "../../ui/icons/Hands";
+import { User } from "../../ui/icons/User";
+import { Row } from "../../ui/Row";
 
 interface PrayerItemProps extends IPrayer {
     onPress: () => void,
 }
 
-export const PrayerItem: FC<PrayerItemProps> = ({onPress, title, checked, id, description, commentsIds}) => {
+const PrayerItem: FC<PrayerItemProps> = ({onPress, title, checked, id, description, commentsIds}) => {
 
     const [itemCheckedState, setItemState] = useState(checked);
     const dispatch = useAppDispatch();
@@ -21,7 +21,6 @@ export const PrayerItem: FC<PrayerItemProps> = ({onPress, title, checked, id, de
     const onChangeState = () => {
         dispatch(actions.prayer.updatePrayerRequest({id, title, description, checked: !itemCheckedState}))
     }
-    console.log(commentsIds);
 
     return (
         <TouchableOpacity onPress={onPress}>
@@ -38,3 +37,5 @@ export const PrayerItem: FC<PrayerItemProps> = ({onPress, title, checked, id, de
         </TouchableOpacity>
     )
 };
+
+export default PrayerItem;
