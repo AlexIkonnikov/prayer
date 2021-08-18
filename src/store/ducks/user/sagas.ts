@@ -6,8 +6,8 @@ import { actions } from './userSlice';
 
 function* signUpRequestHandler({payload}: PayloadAction<SignUpPayload>) {
     const {data} = yield call(signUp, {...payload});
-    const {email, name, password, token} = data;
-    yield put(actions.signUpSuccsecResponse({email, name, password, token}));
+    const {id, email, name, password, token} = data;
+    yield put(actions.signUpSuccsecResponse({id, email, name, password, token}));
 }
 
 function* signInRequestHandler({payload}: PayloadAction<SignInPayload>) {
@@ -16,8 +16,8 @@ function* signInRequestHandler({payload}: PayloadAction<SignInPayload>) {
         yield put(actions.requestFailed(data.message));
         return;
     }
-    const {name, email, token} = data;
-    yield put(actions.signInSuccsecRequest({name, email, token}));
+    const {id, name, email, token} = data;
+    yield put(actions.signInSuccsecRequest({id, name, email, token}));
 }
 
 export function* userWatcher() {

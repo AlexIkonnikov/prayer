@@ -6,10 +6,12 @@ import { all } from "redux-saga/effects";
 import { userReducer } from "./ducks/user";
 import { columnReducer } from "./ducks/column";
 import { prayerReducer } from "./ducks/prayer";
+import { commentReducer } from "./ducks/comment";
 
 import { userWatcher } from "./ducks/user/sagas";
 import { columnWatcher } from "./ducks/column/sagas";
 import { prayerWatcher } from "./ducks/prayer/sagas";
+import { commentWatcher } from "./ducks/comment/sagas";
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -17,6 +19,7 @@ const rootReducer = combineReducers({
     user: userReducer,
     column: columnReducer,
     prayer: prayerReducer,
+    comment: commentReducer,
 })
 
 export const store = configureStore({
@@ -30,6 +33,7 @@ function* rootSaga() {
         userWatcher(),
         columnWatcher(),
         prayerWatcher(),
+        commentWatcher()
     ])
 };
 
