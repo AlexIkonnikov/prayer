@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { Button } from "../ui/Button";
 import { Container } from "../ui/Container";
 import { Loader } from "../ui/Loader";
-import { StyledInput } from "../ui/StyledInput";
+import { Input } from "../ui/Input";
 
 export const Authentication: FC = () => {
 
@@ -32,13 +32,13 @@ export const Authentication: FC = () => {
                             <Field name="email" render={
                                 ({ input }) => {
                                     return (
-                                        <StyledInput placeholder="Write your email" value={input.value} onChangeText={input.onChange} />
+                                        <Input placeholder="Write your email" value={input.value} onChangeText={input.onChange} />
                                     )
                                 }
                             } />
                             <Field name="password" render={
                                 ({ input }) => {
-                                    return <StyledInput placeholder="Write your password" secureTextEntry value={input.value} onChangeText={input.onChange} />
+                                    return <Input placeholder="Write your password" secureTextEntry value={input.value} onChangeText={input.onChange} />
                                 }
                             } />
                             <Button title="sign in" onPress={handleSubmit} disabled={!values.password || !values.email} />

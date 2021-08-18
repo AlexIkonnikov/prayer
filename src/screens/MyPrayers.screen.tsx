@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { ScrollView } from "react-native";
-import { AddPrayerForm } from "../ui/Input";
+import { AddPrayerForm } from "../ui/AddPrayerForm";
 import { Container } from "../ui/Container";
 import { PrayerItem } from "../components/PrayerItem";
 import { Button } from "../ui/Button";

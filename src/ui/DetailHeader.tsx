@@ -3,7 +3,7 @@ import { Field, Form, FormProps } from "react-final-form";
 import styled from "styled-components/native";
 import { colors } from "../styles/colors";
 import { Row } from "./Row";
-import { StyledInput } from "./StyledInput";
+import { Input } from "./Input";
 
 interface DetailHeaderProps {
     title?: string
@@ -25,7 +25,7 @@ export const DetailHeader: FC<DetailHeaderProps> = ({title, children, submit}) =
                             name="title"
                             render={
                                 ({input}) => {
-                                    return <StyledInput multiline={true} value={input.value} onChangeText={input.onChange} onBlur={handleSubmit} />
+                                    return <Input color={colors.white} multiline={true} value={input.value} onChangeText={input.onChange} onBlur={handleSubmit} />
                                 }
                             }
                         />

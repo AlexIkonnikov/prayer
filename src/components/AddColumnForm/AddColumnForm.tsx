@@ -5,7 +5,7 @@ import { NativeSyntheticEvent, TextInputEndEditingEventData } from "react-native
 import { colors } from "../../styles/colors";
 import { Center } from "../../ui/Center";
 import { Plus } from "../../ui/icons/Plus";
-import { StyledInput } from "../../ui/StyledInput";
+import { Input } from "../../ui/Input";
 
 interface AddColumnFormProps {
     submit: (text: string) => void
@@ -36,7 +36,7 @@ const AddColumnForm: FC<AddColumnFormProps> = ({ inputText, submit }) => {
                                 <Field name="text" render={
                                     ({ input }) => {
                                         return (
-                                            <StyledInput value={input.value} onChangeText={input.onChange} onEndEditing={(e) => { checkForm(e, form) }} />
+                                            <Input bold value={input.value} onChangeText={input.onChange} onEndEditing={(e) => { checkForm(e, form) }} />
                                         )
                                     }
                                 } />

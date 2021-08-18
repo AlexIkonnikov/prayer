@@ -34,7 +34,7 @@ const EditableColumn: FC<EditableColumnProps> = ({ column, updateResource, cance
                         <Field name="title" render={({ input }) => {
                             return (
                                 <Center>
-                                    <TextInput value={input.value} onChangeText={input.onChange} />
+                                    <TextInput autoFocus value={input.value} onChangeText={input.onChange} />
                                 </Center>
                             )
                         }}

@@ -1,42 +1,29 @@
-import { FormApi } from "final-form";
 import React, { FC } from "react";
-import { Field, Form, FormProps } from "react-final-form";
+import { TextInputProps } from "react-native"
 import styled from "styled-components/native";
 import { colors } from "../styles/colors";
-import { Plus } from "./icons/Plus";
-import { ViewRow } from "./Row";
-import { StyledInput } from './StyledInput';
 
-interface AddPrayerFormProps{
-    submit: (values: FormProps, form: FormApi<FormProps>) => void
+interface InputProps extends TextInputProps {
+    bold?: boolean
+    color?: string
 }
 
-export const AddPrayerForm: FC<AddPrayerFormProps> = ({ submit }) => {
-    return (
-        <Form onSubmit={submit} initialValues={{title: ''}} render={
-            ({handleSubmit}) => {
-                return (
-                    <Wrapper>
-                        <Plus width={22} color={colors.blue} onPress={handleSubmit} />
-                        <Field  name="title" render={
-                            ({input}) => {
-                                return <StyledInput placeholder="Add a prayer..." value={input.value} onChangeText={input.onChange} />
-                            }
-                        }/>
-                    </Wrapper>
-                )
+export const Input: FC<InputProps> = ({ ...outerProps }) => {
+    return <StyledInput {...outerProps} />
+}
+
+const StyledInput = styled.TextInput<InputProps>`
+    padding: 0;
+    padding-left: 15px;
+    padding-right: 25px;
+    font-size: 17px;
+    ${
+        ({color}) => {
+            if (color !== '') {
+                return `color: ${color};`
             }
-        }/>
-    )
-}
-
-const Wrapper = styled(ViewRow)`
-    padding-left: 14px;
-    height: 50px;
-    border-width: 1px;
-    border-color: #E5E5E5;
-    border-radius: 10px;
-    width: 100%;
-    margin-top: 15px;
-    margin-bottom: 34px;
+            return `color: ${colors.ligthBlack};`
+        }
+    }
+    ${({bold}) => bold && 'font-weight: bold;'}
 `;

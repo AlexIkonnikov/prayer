@@ -4,7 +4,7 @@ import { Container } from '../ui/Container';
 import { Header } from '../ui/Header';
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { actions, selectors } from "../store/ducks";
-import { AddColumnForm } from "../components/TextForm";
+import { AddColumnForm } from "../components/AddColumnForm";
 import { ColumnItem } from "../components/ColumnItem";
 import { Loader } from "../ui/Loader";
 import { useNavigation } from "@react-navigation/native";
