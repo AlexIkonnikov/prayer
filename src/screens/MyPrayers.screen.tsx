@@ -49,13 +49,13 @@ export const MyPrayers: FC<DeskProps> = ({ navigation, route }) => {
     const unCheckedItem = prayersItem.filter((prayer) => !prayer.checked);
 
     return (
-        <ScrollView style={{ marginTop: 15 }}>
+        <ScrollView >
             <Container>
                 <Input submit={createPrayer}/>
-                {unCheckedItem.map((item) => <PrayerItem key={item.id} onPress={onPressItem} {...item} />)}
-                {checkedItem.length > 0 && <Button title="Show Answered Prayers" onPress={onChangeState} />}
-                {!visibleAnsweredPrayers && checkedItem.map((item) => <PrayerItem key={item.id} onPress={onPressItem} {...item} />)}
             </Container>
+                {unCheckedItem.map((item) => <PrayerItem key={item.id} onPress={onPressItem} {...item} />)}
+                {checkedItem.length > 0 && <Button title={visibleAnsweredPrayers ? ' Show Answered Prayers' : 'hide Answered Prayers'} onPress={onChangeState} />}
+                {!visibleAnsweredPrayers && checkedItem.map((item) => <PrayerItem key={item.id} onPress={onPressItem} {...item} />)}
         </ScrollView>
     )
 }

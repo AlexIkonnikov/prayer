@@ -29,7 +29,15 @@ const prayerSlice = createSlice({
         addPrayerToColumnSuccses(state, {payload}: PayloadAction<IPrayer>) {
             state.dataUpdateStatus = 'done';   
             state.prayers.push(payload);
-        }
+        },
+        deletPrayerRequest(state, {payload}: PayloadAction<number>) {
+            state.dataUpdateStatus = 'inProcess';
+        },
+        deletPrayerSuccses(state, {payload}: PayloadAction<number>) {
+            state.dataUpdateStatus = 'done';
+            const index = state.prayers.findIndex((pray) => pray.id === payload);
+            if (index !== -1) state.prayers.splice(index, 1);
+        },
     }
 });
 

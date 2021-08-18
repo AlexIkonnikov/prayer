@@ -37,5 +37,6 @@ const Wrapper = styled(ViewRow)`
     border-color: #E5E5E5;
     border-radius: 10px;
     width: 100%;
+    margin-top: 15px;
     margin-bottom: 34px;
 `;
