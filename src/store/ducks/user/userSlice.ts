@@ -3,6 +3,7 @@ import { IUserSlice, IUser, SignUpPayload, SignInPayload } from "./types";
 
 const initialState: IUserSlice = {
     user: {
+        id: -1,
         name: '',
         email: '',
         password: '',

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { ScrollView } from "react-native";
-import { Input } from "../ui/Input";
+import { AddPrayerForm } from "../ui/Input";
 import { Container } from "../ui/Container";
 import { PrayerItem } from "../components/PrayerItem";
 import { Button } from "../ui/Button";
@@ -45,7 +45,7 @@ export const MyPrayers: FC = () => {
     return (
         <ScrollView >
             <Container>
-                <Input submit={createPrayer}/>
+                <AddPrayerForm submit={createPrayer}/>
             </Container>
                 {unCheckedItem.map((item) => <PrayerItem key={item.id} onPress={() => {onPressItem(item)}} {...item} />)}
                 {checkedItem.length > 0 && <Button title={visibleAnsweredPrayers ? 'show answered prayers' : 'hide Answered Prayers'} onPress={onChangeState} />}

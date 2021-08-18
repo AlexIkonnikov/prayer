@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import { Field, Form, FormProps } from "react-final-form";
 import styled from "styled-components/native";
 import { colors } from "../styles/colors";
-import { AppText } from "./AppText";
 import { Row } from "./Row";
 import { StyledInput } from "./StyledInput";
 
@@ -17,7 +16,6 @@ export const DetailHeader: FC<DetailHeaderProps> = ({title, children, submit}) =
             <Row css="justify-content: space-between; margin-bottom: 15px;">
                 {children}
             </Row>
-            {/* <AppText color={colors.white}>{title}</AppText> */}
             <Form 
                 onSubmit={(values: FormProps) => {submit(values.title)}}
                 initialValues={{title: title}}
@@ -27,7 +25,7 @@ export const DetailHeader: FC<DetailHeaderProps> = ({title, children, submit}) =
                             name="title"
                             render={
                                 ({input}) => {
-                                    return <StyledInput value={input.value} onChangeText={input.onChange} onBlur={handleSubmit} />
+                                    return <StyledInput multiline={true} value={input.value} onChangeText={input.onChange} onBlur={handleSubmit} />
                                 }
                             }
                         />

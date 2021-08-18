@@ -7,11 +7,11 @@ import { Plus } from "./icons/Plus";
 import { ViewRow } from "./Row";
 import { StyledInput } from './StyledInput';
 
-interface InputProps{
+interface AddPrayerFormProps{
     submit: (values: FormProps, form: FormApi<FormProps>) => void
 }
 
-export const Input: FC<InputProps> = ({ submit }) => {
+export const AddPrayerForm: FC<AddPrayerFormProps> = ({ submit }) => {
     return (
         <Form onSubmit={submit} initialValues={{title: ''}} render={
             ({handleSubmit}) => {

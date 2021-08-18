@@ -5,8 +5,8 @@ export const getColumns = () => {
     return Api.get('columns');
 }
 
-export const addColumn = ({title, description}: AddColumnPayload) => {
-    return Api.post('columns', {title, description});
+export const addColumn = (data: AddColumnPayload) => {
+    return Api.post('columns', {data});
 }
 
 export const deleteColumn = (id: number) => {
@@ -14,5 +14,5 @@ export const deleteColumn = (id: number) => {
 }
 
 export const updateColumn = ({id, title, description}: IColumn) => {
-    return Api.put(`columns/${id}`, {title, description});
+    return Api.put(`columns/${id}`, {data: {title, description}});
 }

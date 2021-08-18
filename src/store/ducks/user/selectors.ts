@@ -1,4 +1,4 @@
-import { createSelector, Selector } from '@reduxjs/toolkit';
+import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import { IUser, IUserSlice } from './types';
 
@@ -24,6 +24,6 @@ const selectFetchingStatus = createSelector(
 const selectErrors=createSelector(
     selectUserSlice,
     (user: IUserSlice) => user.errors
-)
+);
 
 export const selectors = {selectUser, selectUserToken, selectFetchingStatus, selectErrors};

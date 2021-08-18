@@ -1,7 +1,7 @@
 import { FormApi } from "final-form";
 import React, { FC } from "react";
 import { Field, Form, FormProps } from "react-final-form";
-import { View, Text, Modal } from "react-native";
+import { View } from "react-native";
 import { actions, selectors } from "../store/ducks";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { Button } from "../ui/Button";
@@ -46,13 +46,6 @@ export const Authentication: FC = () => {
                     )
                 }
             } />
-            <Modal animationType="slide" visible={errors.length > 0} >
-                <View>
-                   {errors.map((err) => <Text style={{color: 'red'}}>{err}</Text>)}
-                   <Button title="Ok" onPress={() => {dispatch(actions.user.cleanErrors())}}/>
-                </View>
-            </Modal>
         </Container>
     );
-
 }

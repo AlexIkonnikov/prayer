@@ -23,7 +23,7 @@ class Api {
         });
     }
 
-    async post(url: string, data?: any) {
+    async post(url: string, {data}: AxiosRequestConfig) {
         return this.api.post(url, data);
     }
 
@@ -31,12 +31,12 @@ class Api {
         return this.api.get(url);
     }
 
-    async put(url: string, data?: any) {
+    async put(url: string, {data}: AxiosRequestConfig) {
         return this.api.put(url, data);
     }
 
-    async delete(url: string, data?: any) {
-        return this.api.delete(url, data);
+    async delete(url: string) {
+        return this.api.delete(url);
     }
 }
 
