@@ -16,7 +16,7 @@ export const Counter: FC<CounterProps> = ({numeric}) => {
 };
 
 const Circle = styled.View`
-    background: #AC5253;
+    background: ${colors.red};
     width: 16px;
     height: 16px;
     border-radius: 8px;

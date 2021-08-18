@@ -1,23 +1,18 @@
 import React, { FC } from "react";
 import { TabRoute } from "../routes/TabRoute";
 import { Header } from "../ui/Header";
-import { TabStackParam } from "../routes/TabRoute";
-import { RouteProp } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import { AppText } from "../ui/AppText";
 import { Center } from "../ui/Center";
 import { Setting } from "../ui/icons/Setting";
+import { ColumnScreenRouteProp } from '../types';
 
-type DeskRouteProp = RouteProp<TabStackParam, "My prayers">;
-
-interface DeskProps {
-    route: DeskRouteProp
-}
-
-export const Column: FC<DeskProps> = ({ route }) => {
+export const Column: FC = () => {
+    const route = useRoute<ColumnScreenRouteProp>();
 
     return (
         <React.Fragment>
-            <Header>
+            <Header withTab>
                 <Center>
                     <AppText bold>{route.params.name}</AppText>
                 </Center>
@@ -26,4 +21,4 @@ export const Column: FC<DeskProps> = ({ route }) => {
             <TabRoute id={route.params.id} />
         </React.Fragment>
     )
-}
+};

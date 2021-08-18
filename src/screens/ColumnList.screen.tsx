@@ -1,28 +1,25 @@
-import { StackNavigationProp } from "@react-navigation/stack";
 import React, { FC, useEffect, useState } from "react";
-import { FlatList, ScrollView, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { Container } from '../ui/Container';
 import { Header } from '../ui/Header';
-import { RootStackParamList } from "../routes/StackRoute";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { actions, selectors } from "../store/ducks";
-import { TextForm } from "../components/TextForm";
+import { AddColumnForm } from "../components/TextForm";
 import { ColumnItem } from "../components/ColumnItem";
 import { Loader } from "../ui/Loader";
+import { useNavigation } from "@react-navigation/native";
+import { ColumnListScreenNavigationProp } from '../types';
 
-type DeskListNavigationProps = StackNavigationProp<RootStackParamList>
 
-interface DeskListProps {
-    navigation: DeskListNavigationProps
-}
-
-export const ColumnList: FC<DeskListProps> = ({ navigation }) => {
+export const ColumnList: FC = ( ) => {
     const [editColumnId, setEditColumnId] = useState(-1);
-    const dataUpdateStatus = useAppSelector(selectors.column.selectDataUpdateStatus);
 
     const dispatch = useAppDispatch();
+    const dataUpdateStatus = useAppSelector(selectors.column.selectDataUpdateStatus);
     const columns = useAppSelector(selectors.column.selectColumn);
 
+    const navigation = useNavigation<ColumnListScreenNavigationProp>()
+    
     useEffect(() => {
         dispatch(actions.column.addColumnsRequest());
     }, []);
@@ -42,7 +39,7 @@ export const ColumnList: FC<DeskListProps> = ({ navigation }) => {
     return (
         <View>
             <Header>
-                <TextForm inputText="My Desk" submit={addColumn} />
+                <AddColumnForm inputText="My Desk" submit={addColumn} />
             </Header>
                 <Container>
                     {

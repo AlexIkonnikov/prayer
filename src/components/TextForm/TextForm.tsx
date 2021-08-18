@@ -7,12 +7,12 @@ import { Center } from "../../ui/Center";
 import { Plus } from "../../ui/icons/Plus";
 import { StyledInput } from "../../ui/StyledInput";
 
-interface TextFormProps {
+interface AddColumnFormProps {
     submit: (text: string) => void
     inputText: string
 }
 
-const TextForm: FC<TextFormProps> = ({ inputText, submit }) => {
+const AddColumnForm: FC<AddColumnFormProps> = ({ inputText, submit }) => {
 
     const checkForm = ({ nativeEvent }: NativeSyntheticEvent<TextInputEndEditingEventData>, form: FormApi<FormProps>) => {
         if (nativeEvent.text === '') {
@@ -50,4 +50,4 @@ const TextForm: FC<TextFormProps> = ({ inputText, submit }) => {
     );
 }
 
-export default TextForm;
+export default AddColumnForm;

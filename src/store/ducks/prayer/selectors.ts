@@ -13,4 +13,16 @@ const selectPrayersById = (id: number) => {
     )
 };
 
-export const selectors = {selectPrayerSlice, selectPrayersById};
+const selectPrayerById = (id: number) => {
+    return createSelector(
+        selectPrayerSlice,
+        (slice: IPrayerSlice) => slice.prayers.find((prayer) => prayer.id === id)
+    )
+};
+
+const selectDataUpdateStatus = createSelector(
+    selectPrayerSlice, 
+    (slice: IPrayerSlice) => slice.dataUpdateStatus
+);
+
+export const selectors = {selectPrayerSlice, selectPrayersById, selectPrayerById, selectDataUpdateStatus};

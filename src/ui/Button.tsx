@@ -4,9 +4,9 @@ import styled from "styled-components/native";
 import { colors } from "../styles/colors";
 import { AppText } from "./AppText";
 
-export const Button: FC<ButtonProps> = ({ title, onPress, disabled }) => {
+export const Button: FC<ButtonProps> = ({ title, ...outerProps }) => {
     return (
-        <StyledButton onPress={onPress} disabled={disabled}>
+        <StyledButton {...outerProps}>
             <TextWrapper>
                 <AppText fs={12} color={colors.white} upp bold>{title}</AppText>
             </TextWrapper>

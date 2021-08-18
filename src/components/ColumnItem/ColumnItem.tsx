@@ -1,5 +1,5 @@
 import React, { FC, Dispatch, SetStateAction } from "react";
-import { actions, selectors } from "../../store/ducks";
+import { actions } from "../../store/ducks";
 import { IColumn } from "../../store/ducks/column";
 import { useAppDispatch } from "../../store/hooks";
 import { Card } from "../../ui/Card";

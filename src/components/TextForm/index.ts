@@ -1,1 +1,1 @@
-export {default as TextForm} from './TextForm';
+export {default as AddColumnForm} from './TextForm';

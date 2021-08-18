@@ -8,7 +8,6 @@ export const Subscribed = () => {
     return (
         <View style={{marginTop: 15}}>
             <Container>
-                {/* <PrayerItem onPress={() => {}}/> */}
                 <Button title="Show Answered Prayers" onPress={() => {}}/>
             </Container>
         </View>

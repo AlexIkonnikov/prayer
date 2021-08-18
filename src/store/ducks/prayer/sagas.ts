@@ -20,7 +20,7 @@ function* addPrayerRequestHandler({payload}: PayloadAction<AddPrayerPayload>) {
 }
 
 function* deletePrayerRequestHandler({payload}: PayloadAction<number>) {
-    const {data} = yield call(deletePrayer, payload);
+    yield call(deletePrayer, payload);
     yield put(actions.deletPrayerSuccses(payload));
 }
 

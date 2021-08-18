@@ -1,7 +1,5 @@
 import React, { FC } from "react";
-import { RouteProp } from '@react-navigation/native';
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../routes/StackRoute";
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { ScrollView } from "react-native";
 import { Input } from "../ui/Input";
 import { Container } from "../ui/Container";
@@ -12,25 +10,21 @@ import { actions, selectors } from "../store/ducks";
 import { useState } from "react";
 import { FormProps } from "react-final-form";
 import { FormApi } from "final-form";
+import { IPrayer } from "../store/ducks/prayer";
+import { MyPrayerScreenNavigationProp, MyPrayerScreenScreenRouteProp } from "../types";
 
-type DeskNavigationProps = StackNavigationProp<RootStackParamList>
-type DeskScreenRouteProp = RouteProp<RootStackParamList, "Column">;
-
-interface DeskProps {
-    navigation: DeskNavigationProps,
-    route: DeskScreenRouteProp
-}
-
-export const MyPrayers: FC<DeskProps> = ({ navigation, route }) => {
-    const dispatch = useAppDispatch()
+export const MyPrayers: FC = () => {
     const [visibleAnsweredPrayers, setVisibleAnsweredPrayers] = useState(false);
-
     const onChangeState = () => {
         setVisibleAnsweredPrayers(!visibleAnsweredPrayers);
     };
 
-    const onPressItem = () => {
-        navigation.navigate('Detail');
+    const dispatch = useAppDispatch();
+    const navigation = useNavigation<MyPrayerScreenNavigationProp>();
+    const route = useRoute<MyPrayerScreenScreenRouteProp>();
+
+    const onPressItem = (item: IPrayer) => {
+        navigation.navigate('Detail', {prayer: item})
     };
 
     const createPrayer = (values: FormProps, form: FormApi<FormProps>) => {
@@ -53,9 +47,9 @@ export const MyPrayers: FC<DeskProps> = ({ navigation, route }) => {
             <Container>
                 <Input submit={createPrayer}/>
             </Container>
-                {unCheckedItem.map((item) => <PrayerItem key={item.id} onPress={onPressItem} {...item} />)}
-                {checkedItem.length > 0 && <Button title={visibleAnsweredPrayers ? ' Show Answered Prayers' : 'hide Answered Prayers'} onPress={onChangeState} />}
-                {!visibleAnsweredPrayers && checkedItem.map((item) => <PrayerItem key={item.id} onPress={onPressItem} {...item} />)}
+                {unCheckedItem.map((item) => <PrayerItem key={item.id} onPress={() => {onPressItem(item)}} {...item} />)}
+                {checkedItem.length > 0 && <Button title={visibleAnsweredPrayers ? 'show answered prayers' : 'hide Answered Prayers'} onPress={onChangeState} />}
+                {!visibleAnsweredPrayers && checkedItem.map((item) => <PrayerItem key={item.id} onPress={() => {onPressItem(item)}} {...item} />)}
         </ScrollView>
     )
 }

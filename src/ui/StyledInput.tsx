@@ -8,9 +8,9 @@ export const StyledInput: FC<TextInputProps> = ({ ...outerProps }) => {
 }
 
 const CustomInput = styled.TextInput`
-    
     padding: 0;
     padding-left: 15px;
+    padding-right: 25px;
     font-size: 17px;
     color: ${colors.ligthBlack};
 `;

@@ -1,4 +1,3 @@
-import { FormApi } from "final-form";
 import React, { FC } from "react";
 import { Field, Form, FormProps } from "react-final-form";
 import { View, Button, TextInput } from "react-native";
@@ -16,7 +15,7 @@ interface EditableColumnProps {
 
 const EditableColumn: FC<EditableColumnProps> = ({ column, updateResource, cancel, deleteResource }) => {
 
-    const submitHandler = (values: FormProps, form: FormApi<FormProps>) => {
+    const submitHandler = (values: FormProps) => {
         if (values.title === column.title) {
             cancel();
         } else {
@@ -26,13 +25,12 @@ const EditableColumn: FC<EditableColumnProps> = ({ column, updateResource, cance
     }
 
     return (
-
         <Form
             onSubmit={submitHandler}
             initialValues={{title: column.title}}
             render={({ handleSubmit }) => {
                 return (
-                    <View style={{marginBottom: 10}}>
+                    <View>
                         <Field name="title" render={({ input }) => {
                             return (
                                 <Center>
@@ -54,4 +52,3 @@ const EditableColumn: FC<EditableColumnProps> = ({ column, updateResource, cance
 };
 
 export default EditableColumn;
-

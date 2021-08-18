@@ -1,30 +1,17 @@
 import React, { FC } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { ColumnList } from "../screens/ColumnList.screen";;
 import { Detail } from "../screens/Detail.screen";
-import { colors } from "../styles/colors";
 import { Column } from "../screens/Column.screen";
-
-export type RootStackParamList = {
-    ColumnList: undefined
-    Column: { name: string, id: number }
-    Detail: undefined
-};
+import { RootStackParamList } from "../types";
+import { navigationTheme } from "../styles/theme";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-export const myTheme = {
-    ...DefaultTheme,
-    colors: {
-        ...DefaultTheme.colors,
-        background: colors.white
-    }
-};
-
 export const StackRoute: FC = () => {
     return (
-        <NavigationContainer theme={myTheme}>
+        <NavigationContainer theme={navigationTheme}>
             <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="ColumnList">
                 <Stack.Screen name="ColumnList" component={ColumnList} />
                 <Stack.Screen name="Column" component={Column} />

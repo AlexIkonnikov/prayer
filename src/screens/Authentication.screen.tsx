@@ -1,12 +1,13 @@
 import { FormApi } from "final-form";
 import React, { FC } from "react";
 import { Field, Form, FormProps } from "react-final-form";
-import { View, TextInput, Text, Modal } from "react-native";
+import { View, Text, Modal } from "react-native";
 import { actions, selectors } from "../store/ducks";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { Button } from "../ui/Button";
 import { Container } from "../ui/Container";
 import { Loader } from "../ui/Loader";
+import { StyledInput } from "../ui/StyledInput";
 
 export const Authentication: FC = () => {
 
@@ -31,13 +32,13 @@ export const Authentication: FC = () => {
                             <Field name="email" render={
                                 ({ input }) => {
                                     return (
-                                        <TextInput placeholder="Write your email" value={input.value} onChangeText={input.onChange} />
+                                        <StyledInput placeholder="Write your email" value={input.value} onChangeText={input.onChange} />
                                     )
                                 }
                             } />
                             <Field name="password" render={
                                 ({ input }) => {
-                                    return <TextInput placeholder="Write your password" secureTextEntry value={input.value} onChangeText={input.onChange} />
+                                    return <StyledInput placeholder="Write your password" secureTextEntry value={input.value} onChangeText={input.onChange} />
                                 }
                             } />
                             <Button title="sign in" onPress={handleSubmit} disabled={!values.password || !values.email} />
@@ -45,7 +46,7 @@ export const Authentication: FC = () => {
                     )
                 }
             } />
-            <Modal animationType="slide"visible={errors.length > 0} >
+            <Modal animationType="slide" visible={errors.length > 0} >
                 <View>
                    {errors.map((err) => <Text style={{color: 'red'}}>{err}</Text>)}
                    <Button title="Ok" onPress={() => {dispatch(actions.user.cleanErrors())}}/>

@@ -1,10 +1,14 @@
 import React, { FC } from "react";
 import styled from "styled-components/native";
 import { Container } from "./Container"
+
+interface HeaderProps {
+    withTab?: boolean
+}
  
-export const Header: FC = ({ children }) => {
+export const Header: FC<HeaderProps> = ({ children, withTab }) => {
     return (
-        <HeaderContainer>
+        <HeaderContainer withTab={withTab ?? false}>
             <Container>
                 <Row>
                     {children}
@@ -14,11 +18,13 @@ export const Header: FC = ({ children }) => {
     )
 };
 
-const HeaderContainer = styled.View`
-    margin-bottom: 15px;
-    border-bottom-color: #E5E5E5;
-    border-bottom-width: 1px;
-    border-style: solid;
+const HeaderContainer = styled.View<HeaderProps>`
+    ${props => props.withTab === false && `
+        margin-bottom: 15px;
+        border-bottom-color: #E5E5E5;
+        border-bottom-width: 1px;
+        border-style: solid;
+    `}
     padding: 22px 0;
 `;
 

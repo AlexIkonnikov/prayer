@@ -1,18 +1,39 @@
 import React, { FC } from "react";
+import { Field, Form, FormProps } from "react-final-form";
 import styled from "styled-components/native";
 import { colors } from "../styles/colors";
-import { BackArrow } from "./icons/BackArrow";
-import { Hands } from "./icons/Hands";
+import { AppText } from "./AppText";
 import { Row } from "./Row";
+import { StyledInput } from "./StyledInput";
 
-export const DetailHeader: FC = () => {
+interface DetailHeaderProps {
+    title?: string
+    submit: (title: string) => void
+}
+
+export const DetailHeader: FC<DetailHeaderProps> = ({title, children, submit}) => {
     return (
         <Wrapper>
             <Row css="justify-content: space-between; margin-bottom: 15px;">
-                <BackArrow />
-                <Hands color={colors.white} />
+                {children}
             </Row>
-            <StyledText>Prayer item two which is for my family to love God whole heartedly.</StyledText>
+            {/* <AppText color={colors.white}>{title}</AppText> */}
+            <Form 
+                onSubmit={(values: FormProps) => {submit(values.title)}}
+                initialValues={{title: title}}
+                render={
+                    ({handleSubmit}) => {
+                        return <Field 
+                            name="title"
+                            render={
+                                ({input}) => {
+                                    return <StyledInput value={input.value} onChangeText={input.onChange} onBlur={handleSubmit} />
+                                }
+                            }
+                        />
+                    }
+                }
+            />
         </Wrapper>
     )
 };
@@ -20,10 +41,4 @@ export const DetailHeader: FC = () => {
 const Wrapper = styled.View`
     padding: 20px 15px 23px 15px;
     background-color: #BFB393;
-`;
-
-const StyledText = styled.Text`
-    font-size: 17px;
-    line-height: 27px;
-    color: white;
 `;
