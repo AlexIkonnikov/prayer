@@ -2,14 +2,14 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { addComment, deleteComment, getAllComments, updateComment } from './api';
 import { actions } from './commentSlice';
-import { IComment, UpdateCommentPayload } from './types';
+import { IComment, UpdateCommentPayload, AddCommentPayload } from './types';
 
 function* getAllCommentsRequestHandler() {
     const {data} = yield call(getAllComments);
-    yield put(actions.addCommentSuccses(data));
+    yield put(actions.getAllCommentsSuccses(data));
 }
 
-function* addCommentRequestHandler({payload}: PayloadAction<IComment>) {
+function* addCommentRequestHandler({payload}: PayloadAction<AddCommentPayload>) {
     const {data} = yield call(addComment, payload);
     const {id, body, created, userId, prayerId} = data;
     yield put(actions.addCommentSuccses({id, body, created, userId, prayerId}));

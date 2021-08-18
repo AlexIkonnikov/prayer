@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ICommentSlice, IComment, UpdateCommentPayload } from "./types";
+import { ICommentSlice, IComment, UpdateCommentPayload, AddCommentPayload } from "./types";
 
 const initialState: ICommentSlice = {
     comments: [],
@@ -17,7 +17,7 @@ const commentSlice = createSlice({
             state.comments = [...payload];
             state.dataUpdateStatus = 'done';
         },
-        addCommentRequest(state, {payload}: PayloadAction<IComment>) {
+        addCommentRequest(state, {payload}: PayloadAction<AddCommentPayload>) {
             state.dataUpdateStatus = 'inProcess';
         },
         addCommentSuccses(state, {payload}: PayloadAction<IComment>) {

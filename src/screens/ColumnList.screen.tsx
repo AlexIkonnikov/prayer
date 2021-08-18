@@ -28,6 +28,10 @@ export const ColumnList: FC = ( ) => {
         dispatch(actions.prayer.getAllPrayersRequest());
     }, []);
 
+    useEffect(() => {
+        dispatch(actions.comment.getAllCommentsRequest());
+    }, []);
+
     const next = (name: string, id: number) => {
         navigation.navigate('Column', { name, id });
     };

@@ -8,16 +8,21 @@ const selectCommentSlice = (state: RootState): ICommentSlice => {
 
 const selectAllComment = createSelector(
     selectCommentSlice,
-    (slice: ICommentSlice) => slice.comments
+    (slice: ICommentSlice): Array<IComment> => slice.comments
 );
 
-const selectCommentsByPrayerId = (id: number) => {
+const selectDataUpdateStatus = createSelector(
+    selectCommentSlice,
+    (slice: ICommentSlice) => slice.dataUpdateStatus
+)
+
+const selectCommentsByPrayerId = (prayerId: number) => {
     return createSelector(
         selectAllComment,
         (comments: Array<IComment> ) => {
-            return comments.filter((comment) => comment.prayerId === id);
+           return comments.filter((comment) => comment.prayerId === prayerId);
         }
     )
 };
 
-export const selectors = {selectAllComment, selectCommentsByPrayerId};
+export const selectors = {selectAllComment, selectCommentsByPrayerId, selectDataUpdateStatus};

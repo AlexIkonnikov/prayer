@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { CSSProp } from "styled-components";
 import styled from "styled-components/native";
 import { colors } from "../styles/colors";
 
@@ -8,6 +9,7 @@ interface AppTextProps {
     bold?: boolean
     upp?: boolean,
     lineThrough?:boolean
+    css?: CSSProp
 }
 
 export const AppText: FC<AppTextProps> = ({children, ...outerProps}) => {
@@ -22,4 +24,5 @@ const StyledText = styled.Text<AppTextProps>`
     color: ${props => props.color ?? colors.ligthBlack};
     font-weight: ${props => props.bold ? 'bold' : 'normal'};
     text-decoration: ${props => props.lineThrough ? 'line-through' : 'none'};
+    ${({css}) => css && `${css}`}
 `;

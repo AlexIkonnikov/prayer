@@ -17,3 +17,8 @@ export interface UpdateCommentPayload {
     id: number
     body: string
 }
+
+export interface AddCommentPayload {
+    id: number
+    body: string
+}

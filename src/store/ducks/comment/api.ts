@@ -1,12 +1,12 @@
 import Api from "../../../services/Api";
-import { IComment, UpdateCommentPayload } from "./types";
+import { UpdateCommentPayload, AddCommentPayload } from "./types";
 
 export const getAllComments = () => {
     return Api.get('comments');
 }
 
-export const addComment = (data: IComment) => {
-    return Api.post(`prayers​/${data.prayerId}​/comments`, {data});
+export const addComment = (data: AddCommentPayload) => {
+    return Api.post(`prayers/${data.id}/comments`, {data});
 };
 
 export const updateComment = (data: UpdateCommentPayload) => {
