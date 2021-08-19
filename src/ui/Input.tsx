@@ -1,15 +1,18 @@
 import React, { FC } from "react";
 import { TextInputProps } from "react-native"
+import { CSSProp } from "styled-components";
 import styled from "styled-components/native";
 import { colors } from "../styles/colors";
 
 interface InputProps extends TextInputProps {
     bold?: boolean
     color?: string
+    containerStyled?:CSSProp
+
 }
 
-export const Input: FC<InputProps> = ({ ...outerProps }) => {
-    return <StyledInput {...outerProps} />
+export const Input: FC<InputProps> = ({...outerProps}) => {
+    return <StyledInput {...outerProps} />;
 }
 
 const StyledInput = styled.TextInput<InputProps>`

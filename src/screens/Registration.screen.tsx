@@ -5,7 +5,6 @@ import { TextInput, View } from "react-native";
 import { actions, selectors } from "../store/ducks";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { Button } from "../ui/Button";
-import { Container } from "../ui/Container";
 import { Loader } from "../ui/Loader";
 
 export const Registration: FC = () => {
@@ -22,31 +21,29 @@ export const Registration: FC = () => {
         return <Loader />
     } 
     return (
-        <Container>
-            <Form onSubmit={onSubmitForm} render={
-                ({ handleSubmit, values }) => {
-                    return (
-                        <View>
-                            <Field name="name" render={
-                                ({ input }) => {
-                                    return <TextInput placeholder="Write your name" onChangeText={input.onChange} value={input.value} />
-                                }
-                            } />
-                            <Field name="email" render={
-                                ({ input }) => {
-                                    return <TextInput placeholder="Write your email" onChangeText={input.onChange} value={input.value} />
-                                }
-                            } />
-                            <Field name="password" render={
-                                ({ input }) => {
-                                    return <TextInput placeholder="Write your password" onChangeText={input.onChange} value={input.value} />
-                                }
-                            } />
-                            <Button title="sign up" onPress={handleSubmit} disabled={!values.name || !values.email || !values.password} />
-                        </View>
-                    )
-                }
-            } />
-        </Container>
+        <Form onSubmit={onSubmitForm} render={
+            ({ handleSubmit, values }) => {
+                return (
+                    <View>
+                        <Field name="name" render={
+                            ({ input }) => {
+                                return <TextInput placeholder="Write your name" onChangeText={input.onChange} value={input.value} />
+                            }
+                        } />
+                        <Field name="email" render={
+                            ({ input }) => {
+                                return <TextInput placeholder="Write your email" onChangeText={input.onChange} value={input.value} />
+                            }
+                        } />
+                        <Field name="password" render={
+                            ({ input }) => {
+                                return <TextInput placeholder="Write your password" onChangeText={input.onChange} value={input.value} />
+                            }
+                        } />
+                        <Button title="sign up" onPress={handleSubmit} disabled={!values.name || !values.email || !values.password} />
+                    </View>
+                )
+            }
+        } />
     );
 };

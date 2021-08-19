@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Svg, { Color, Path } from "react-native-svg";
 import styled from "styled-components/native";
 import { colors } from "../../styles/colors";
+import { Row } from "../Row";
 
 interface HandsIconProps {
     prayerCount?: number;
@@ -10,7 +11,7 @@ interface HandsIconProps {
 
 export const Hands: FC<HandsIconProps> = ({ prayerCount, color }) => {
     return (
-        <Wrapper>
+        <Row containerStyled={`justify-content: flex-start;`}>
             <Svg width="29" height="23" viewBox="0 0 29 23" fill="white">
                 <Path
                     fillRule="evenodd"
@@ -20,16 +21,9 @@ export const Hands: FC<HandsIconProps> = ({ prayerCount, color }) => {
                 />
             </Svg>
             <Number>{prayerCount}</Number>
-        </Wrapper>
+        </Row>
     )
 };
-
-const Wrapper = styled.View`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-`;
 
 const Number = styled.Text`
     font-size: 12px;

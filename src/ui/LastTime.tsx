@@ -11,7 +11,7 @@ interface LastTimeProps {
 export const LastTime: FC<LastTimeProps> = ({timeInMin}) => {
     return (
         <Container>
-            <Row css="padding: 15px 0;">
+            <Row containerStyled={`padding: 15px 0;`}>
                 <Line/>
                 <AppText>Last prayed {timeInMin} min ago</AppText>
             </Row>

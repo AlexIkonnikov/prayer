@@ -25,4 +25,11 @@ const selectCommentsByPrayerId = (prayerId: number) => {
     )
 };
 
-export const selectors = {selectAllComment, selectCommentsByPrayerId, selectDataUpdateStatus};
+const selectCommentCountById = (prayerId: number) => {
+    return createSelector(
+        selectCommentsByPrayerId(prayerId),
+        (comments: Array<IComment> ) => comments.length
+    )
+}
+
+export const selectors = {selectAllComment, selectCommentsByPrayerId, selectCommentCountById, selectDataUpdateStatus};

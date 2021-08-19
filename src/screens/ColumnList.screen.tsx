@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { FlatList, View } from "react-native";
+import { View } from "react-native";
 import { Container } from '../ui/Container';
 import { Header } from '../ui/Header';
 import { useAppDispatch, useAppSelector } from "../store/hooks";
@@ -9,9 +9,10 @@ import { ColumnItem } from "../components/ColumnItem";
 import { Loader } from "../ui/Loader";
 import { useNavigation } from "@react-navigation/native";
 import { ColumnListScreenNavigationProp } from '../types';
+import { ScrollView } from "react-native-gesture-handler";
 
 
-export const ColumnList: FC = ( ) => {
+export const ColumnList: FC = () => {
     const [editColumnId, setEditColumnId] = useState(-1);
 
     const dispatch = useAppDispatch();
@@ -19,7 +20,7 @@ export const ColumnList: FC = ( ) => {
     const columns = useAppSelector(selectors.column.selectColumn);
 
     const navigation = useNavigation<ColumnListScreenNavigationProp>()
-    
+
     useEffect(() => {
         dispatch(actions.column.addColumnsRequest());
     }, []);
@@ -45,14 +46,16 @@ export const ColumnList: FC = ( ) => {
             <Header>
                 <AddColumnForm inputText="My Desk" submit={addColumn} />
             </Header>
+            <ScrollView>
                 <Container>
                     {
                         dataUpdateStatus === "inProcess" ?
                             <Loader />
                             :
-                            <FlatList data={columns} keyExtractor={item => item.id + ''} renderItem={({ item }) => <ColumnItem column={item} editColumnId={editColumnId} setEditColumnId={setEditColumnId} onPress={next} />} />
+                            columns.map((col) => <ColumnItem column={col} editColumnId={editColumnId} setEditColumnId={setEditColumnId} onPress={next} key={col.id} />)
                     }
                 </Container>
+            </ScrollView>
         </View>
     );
 }

@@ -10,15 +10,15 @@ interface CheckBoxProps {
 
 export const CheckBox: FC<CheckBoxProps> = ({ checked, onChange }) => {
     return (
-        <Row css="padding-right: 15px;">
-            <Box onPress={onChange}>
+        <Row containerStyled="padding-right: 15px;">
+            <TouchableBox onPress={onChange}>
                 {checked && <CheckMark />}
-            </Box>
+            </TouchableBox>
         </Row>
     )
 };
 
-const Box = styled.TouchableOpacity`
+const TouchableBox = styled.TouchableOpacity`
     width: 22px;
     height: 22px;
     border-color: #514D47;

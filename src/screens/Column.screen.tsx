@@ -6,6 +6,7 @@ import { AppText } from "../ui/AppText";
 import { Center } from "../ui/Center";
 import { Setting } from "../ui/icons/Setting";
 import { ColumnScreenRouteProp } from '../types';
+import { StyledContainer } from "../ui/StyledContainer";
 
 export const Column: FC = () => {
     const route = useRoute<ColumnScreenRouteProp>();
@@ -13,9 +14,9 @@ export const Column: FC = () => {
     return (
         <React.Fragment>
             <Header withTab>
-                <Center>
+                <StyledContainer containerStyled={`flex-grow: 1; align-items: center;`}>
                     <AppText bold>{route.params.name}</AppText>
-                </Center>
+                </StyledContainer>
                 <Setting />
             </Header>
             <TabRoute id={route.params.id} />

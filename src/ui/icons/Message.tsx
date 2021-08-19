@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { TouchableOpacity, TouchableOpacityProps } from "react-native";
-import Svg, { Path, Color } from "react-native-svg";
+import Svg, { Path } from "react-native-svg";
 import { colors } from "../../styles/colors";
 
 export const Message: FC<TouchableOpacityProps> = ({...outerProps}) => {

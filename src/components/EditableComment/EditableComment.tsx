@@ -1,15 +1,14 @@
 import React, { FC } from "react";
 import { Field, Form, FormProps } from "react-final-form";
-import { View, Button, TextInput } from "react-native";
+import { Button, View } from "react-native";
 import { actions } from "../../store/ducks";
 import { IComment } from "../../store/ducks/comment/types";
 import { selectors } from "../../store/ducks";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { colors } from "../../styles/colors";
-import { Center } from "../../ui/Center";
 import { Input } from "../../ui/Input";
-import { Row } from "../../ui/Row";
 import { Loader } from "../../ui/Loader";
+import { Row } from "../../ui/Row";
 
 const EditableComment: FC<IComment> = ({id, body}) => {
 
@@ -42,10 +41,10 @@ const EditableComment: FC<IComment> = ({id, body}) => {
                             />
                             {status === 'inProcess' ? 
                                 <Loader/> : 
-                                <>
-                                <Button title="save" color={colors.blue} onPress={handleSubmit} />
-                                <Button title="delete" color={colors.red} onPress={deleteComment} />
-                                </>
+                                <Row>
+                                    <Button title="save" color={colors.gray} onPress={handleSubmit} />
+                                    <Button title="delete" color={colors.red} onPress={deleteComment} />
+                                </Row>
                             }
                         </View>
                     )

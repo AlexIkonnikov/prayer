@@ -3,8 +3,8 @@ import { Field, Form, FormProps } from "react-final-form";
 import { View, Button, TextInput } from "react-native";
 import { IColumn } from "../../store/ducks/column";
 import { colors } from "../../styles/colors";
-import { Center } from "../../ui/Center";
 import { Row } from "../../ui/Row";
+import { StyledContainer } from "../../ui/StyledContainer";
 
 interface EditableColumnProps {
     column: IColumn
@@ -33,13 +33,13 @@ const EditableColumn: FC<EditableColumnProps> = ({ column, updateResource, cance
                     <View>
                         <Field name="title" render={({ input }) => {
                             return (
-                                <Center>
+                                <StyledContainer containerStyled={`flex-grow: 1; align-items: center;`}>
                                     <TextInput autoFocus value={input.value} onChangeText={input.onChange} />
-                                </Center>
+                                </StyledContainer>
                             )
                         }}
                         />
-                        <Row css="justify-content: space-between;">
+                        <Row containerStyled={`justify-content: space-between;`}>
                             <Button color={colors.blue} title="SAVE" onPress={handleSubmit} />
                             <Button color={colors.ligthGray} title="CANCEL" onPress={cancel} />
                             <Button color={colors.red} title="DELETE" onPress={deleteResource} />

@@ -4,9 +4,8 @@ import { Field, Form, FormProps } from "react-final-form";
 import { actions } from "../../store/ducks";
 import { useAppDispatch } from "../../store/hooks";
 import { Input } from "../../ui/Input";
-import { ViewRow } from "../../ui/Row";
-import styled from "styled-components/native";
 import { Message } from "../../ui/icons/Message";
+import { StyledContainer } from "../../ui/StyledContainer";
 
 interface AddCommentPayloadProps {
     prayerId: number
@@ -25,7 +24,16 @@ const AddCommentForm: FC<AddCommentPayloadProps> = ({prayerId}) => {
             render={
                 ({handleSubmit, pristine}) => {
                     return (
-                        <Wrapper>
+                        <StyledContainer containerStyled={`
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            padding-left: 14px;
+                            height: 50px;
+                            width: 100%;
+                            border-top-width: 1px;
+                            border-color: #E5E5E5;
+                        `}>
                             <Message disabled={pristine} onPress={handleSubmit}/>
                             <Field
                                 name="body"
@@ -35,21 +43,12 @@ const AddCommentForm: FC<AddCommentPayloadProps> = ({prayerId}) => {
                                     }
                                 }
                             />
-                        </Wrapper>
+                        </StyledContainer>
                     )
                 }
             }
         />
     )
 };
-
-const Wrapper = styled(ViewRow)`
-    padding-left: 14px;
-    height: 50px;
-    width: 100%;
-    margin-top: 15px;
-    border-top-width: 1px;
-    border-color: #E5E5E5;
-`;
 
 export default AddCommentForm;

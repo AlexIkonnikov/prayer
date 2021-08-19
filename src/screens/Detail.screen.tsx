@@ -12,8 +12,7 @@ import { DetailHeader } from "../ui/DetailHeader";
 import { BackArrow } from "../ui/icons/BackArrow";
 import { Hands } from "../ui/icons/Hands";
 import { LastTime } from "../ui/LastTime";
-import { Row } from "../ui/Row";
-import { Square } from "../ui/Square";
+import { Statisticks } from "../ui/Statisticks";
 
 const src = ["https://sun1-84.userapi.com/s/v1/ig2/KaYR6LGXCEg9pNmHl9mCB-uTZc8aN5-dKa5xYF2COoYZyB3GLX9bgVkAmhPSwaJhKFpqv_YnYbL-YmekB7MqhIs3.jpg?size=100x100&quality=96&crop=0,0,453,453&ava=1"];
 
@@ -51,18 +50,11 @@ export const Detail: FC = () => {
             </DetailHeader>
             <ScrollView>
                 <LastTime timeInMin={21} />
-                <Row>
-                    <Square />
-                    <Square />
-                </Row>
-                <Row css="margin-bottom:20px;">
-                    <Square />
-                    <Square />
-                </Row>
+                <Statisticks/>
                 <MemberList srcs={src} />
                 <CommentList comments={comments} />
-                <AddCommentForm prayerId={prayer.id}/>
             </ScrollView>
+            <AddCommentForm prayerId={prayer.id}/>
         </React.Fragment>
     )
 };

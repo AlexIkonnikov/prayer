@@ -3,9 +3,9 @@ import React, { FC } from "react";
 import { Field, Form, FormProps } from "react-final-form";
 import { NativeSyntheticEvent, TextInputEndEditingEventData } from "react-native";
 import { colors } from "../../styles/colors";
-import { Center } from "../../ui/Center";
 import { Plus } from "../../ui/icons/Plus";
 import { Input } from "../../ui/Input";
+import { StyledContainer } from "../../ui/StyledContainer";
 
 interface AddColumnFormProps {
     submit: (text: string) => void
@@ -32,7 +32,7 @@ const AddColumnForm: FC<AddColumnFormProps> = ({ inputText, submit }) => {
                 ({ handleSubmit, form, values }) => {
                     return (
                         <>
-                            <Center>
+                            <StyledContainer containerStyled={`flex-grow: 1; align-items: center;`}>
                                 <Field name="text" render={
                                     ({ input }) => {
                                         return (
@@ -40,7 +40,7 @@ const AddColumnForm: FC<AddColumnFormProps> = ({ inputText, submit }) => {
                                         )
                                     }
                                 } />
-                            </Center>
+                            </StyledContainer>
                             <Plus color={colors.blue} onPress={handleSubmit} disabled={!values.text} />
                         </>
                     )
