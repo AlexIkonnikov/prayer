@@ -1,20 +1,19 @@
 import React, { FC } from "react";
-import styled from "styled-components/native";
+import { colors } from "../styles/colors";
 import { Plus } from "./icons/Plus";
+import { StyledContainer } from "./StyledContainer";
 
 export const RoundButton: FC = () => {
     return (
-        <Circle>
+        <StyledContainer containerStyled={`
+            width: 32px;
+            height: 32px;
+            background-color: ${colors.gray};
+            border-radius: 16px;
+            align-items: center;
+            justify-content: center;
+        `}>
             <Plus/>
-        </Circle>
+        </StyledContainer>
     )
 };
-
-const Circle = styled.View`
-    width: 32px;
-    height: 32px;
-    background-color: #BFB393;
-    border-radius: 16px;
-    align-items: center;
-    justify-content: center;
-`;
