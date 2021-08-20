@@ -13,7 +13,6 @@ import { ScrollView } from "react-native-gesture-handler";
 
 
 export const ColumnList: FC = () => {
-    const [editColumnId, setEditColumnId] = useState(-1);
 
     const dispatch = useAppDispatch();
     const dataUpdateStatus = useAppSelector(selectors.column.selectDataUpdateStatus);
@@ -52,7 +51,7 @@ export const ColumnList: FC = () => {
                         dataUpdateStatus === "inProcess" ?
                             <Loader />
                             :
-                            columns.map((col) => <ColumnItem column={col} editColumnId={editColumnId} setEditColumnId={setEditColumnId} onPress={next} key={col.id} />)
+                            columns.map((col) => <ColumnItem column={col} onPress={next} key={col.id} />)
                     }
                 </Container>
             </ScrollView>

@@ -11,7 +11,7 @@ import { useState } from "react";
 import { FormProps } from "react-final-form";
 import { FormApi } from "final-form";
 import { IPrayer } from "../store/ducks/prayer";
-import { MyPrayerScreenNavigationProp, MyPrayerScreenScreenRouteProp } from "../types";
+import { MyPrayerScreenNavigationProp, MyPrayerScreenRouteProp } from "../types";
 
 export const MyPrayers: FC = () => {
     const [visibleAnsweredPrayers, setVisibleAnsweredPrayers] = useState(false);
@@ -21,7 +21,7 @@ export const MyPrayers: FC = () => {
 
     const dispatch = useAppDispatch();
     const navigation = useNavigation<MyPrayerScreenNavigationProp>();
-    const route = useRoute<MyPrayerScreenScreenRouteProp>();
+    const route = useRoute<MyPrayerScreenRouteProp>();
 
     const onPressItem = (item: IPrayer) => {
         navigation.navigate('Detail', {prayer: item})

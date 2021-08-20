@@ -18,7 +18,8 @@ export const TabRoute: FC<TabRouteProps> = ({id}) => {
             <Tab.Screen name="My prayers" component={MyPrayers} initialParams={{id}} />
             <Tab.Screen 
                 name="Subscribed" 
-                component={Subscribed} 
+                component={Subscribed}
+                initialParams={{id}} 
                 options={
                     {
                         tabBarIcon: counter,

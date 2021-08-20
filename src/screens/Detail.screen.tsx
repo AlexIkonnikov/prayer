@@ -24,7 +24,6 @@ export const Detail: FC = () => {
     const prayer = route.params.prayer;
     const dispatch = useAppDispatch();
     const comments = useAppSelector(selectors.comment.selectCommentsByPrayerId(prayer.id));
-    console.log(prayer)
 
     const goBack = () => {
         navigation.goBack();
@@ -38,8 +37,7 @@ export const Detail: FC = () => {
                 description: prayer.description,
                 checked: prayer.checked
             }
-        )
-        );
+        ));
     }
 
     return (

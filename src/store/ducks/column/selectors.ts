@@ -1,7 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
-import { IColumnSlice, StatusType } from './types';
-
+import { IColumnSlice } from './types';
 
 const selectColumnSlice = (state: RootState): IColumnSlice => {
     return state.column;
@@ -14,7 +13,7 @@ const selectColumn = createSelector(
 
 const selectDataUpdateStatus = createSelector(
     selectColumnSlice,
-    (slice: IColumnSlice): StatusType  => slice.dataUpdateStatus
+    (slice: IColumnSlice)  => slice.dataUpdateStatus
 );
 
 export const selectors = { selectColumnSlice, selectColumn, selectDataUpdateStatus};

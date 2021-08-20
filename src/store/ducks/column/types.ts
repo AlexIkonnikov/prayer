@@ -10,10 +10,7 @@ export interface AddColumnPayload{
     description: null
 };
 
-export type StatusType = 'inProcess' | 'done';
-
-
 export interface IColumnSlice {
     columns: Array<IColumn>
-    dataUpdateStatus: StatusType
+    dataUpdateStatus: 'inProcess' | 'done'
 }

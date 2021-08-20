@@ -1,5 +1,3 @@
-import { StatusType } from "../column/types";
-
 export interface IPrayer {
     id: number
     title: string
@@ -18,7 +16,7 @@ export interface UpdatePrayerPayload {
 
 export interface IPrayerSlice {
     prayers: Array<IPrayer>
-    dataUpdateStatus: StatusType
+    dataUpdateStatus: 'done' | 'inProcess'
 }
 
 export interface AddPrayerPayload {
