@@ -1,21 +1,26 @@
 import React, { FC } from "react";
 import { CSSProp } from "styled-components";
 import styled from "styled-components/native";
+import { colors } from "../styles/colors";
+import { User } from "./icons/User";
+import { StyledContainer } from "./StyledContainer";
 
 interface AvatarProps {
-    src: string
-    width?: number,
-    css?: CSSProp
+    big?: boolean
 }
 
-export const Avatar: FC<AvatarProps> = ({src, ...outerProps}) => {
-    return <StyledImage source={{uri: src}} {...outerProps} />
-}
-
-const StyledImage = styled.Image<{width?: number, css?: CSSProp}>`
-    border-radius: ${props => props.width ? props.width / 2 + 'px' : '16px'};
-    width: ${props => props.width  ? props.width + "px" : '32px'};
-    height: ${props => props.width  ? props.width + "px" : '32px'};
-    margin-right: 8px;
-    ${props => props.css ?? ''};
-`
+export const Avatar: FC<AvatarProps> = ({big}) => {
+    return (
+        <StyledContainer containerStyled={`
+            width: ${big ? `40px` : `32px`};
+            height: ${big ? `40px` : `32px`};
+            border-radius: ${big ? `20px;` : `16px;`};
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: ${colors.blue};
+        `}>
+            <User color={colors.white}/>
+        </StyledContainer>
+    )
+};

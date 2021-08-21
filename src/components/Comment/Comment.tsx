@@ -10,7 +10,6 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { StyledContainer } from "../../ui/StyledContainer";
 import { EditableForm } from "../../ui/EditableForm";
 import { timeFromNow } from "../../utils/utils";
-const src = "https://sun1-84.userapi.com/s/v1/ig2/KaYR6LGXCEg9pNmHl9mCB-uTZc8aN5-dKa5xYF2COoYZyB3GLX9bgVkAmhPSwaJhKFpqv_YnYbL-YmekB7MqhIs3.jpg?size=100x100&quality=96&crop=0,0,453,453&ava=1"
 
 const Comment: FC<IComment> = ({ body, created, id }) => {
 
@@ -44,7 +43,9 @@ const Comment: FC<IComment> = ({ body, created, id }) => {
                 border-top-width: 1px; 
                 border-style: solid;`
                 }>
-                    <Avatar width={40} css="margin-right: 12px;" src={src} />
+                    <StyledContainer containerStyled={`margin-right: 12px;`}>
+                        <Avatar big/>
+                    </StyledContainer>
                     <View>
                         <Row>
                             <StyledContainer containerStyled={`margin-right: 6px;`}>

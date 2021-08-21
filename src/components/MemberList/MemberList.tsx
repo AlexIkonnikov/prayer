@@ -15,7 +15,14 @@ const MemberList: FC<MemberListProps> = ({srcs}) => {
         <StyledContainer containerStyled={`margin: 0 15px 30px;`}>
             <AppText fs={13} color={colors.blue} upp bold>Members</AppText>
             <Row containerStyled={`margin-top: 15px;`}>
-                {srcs.map((src, idx) => <Avatar src={src} key={src + idx}/>)}
+                {srcs.map((src, idx) => {
+                    return (
+                        <StyledContainer containerStyled={`margin-right: 8px;`} key={src + idx}>
+                            <Avatar/>
+                        </StyledContainer>
+                    )    
+                }
+                )}
                 <RoundButton/>
             </Row>
         </StyledContainer>
