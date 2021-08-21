@@ -8,10 +8,10 @@ import { columnReducer } from "./ducks/column";
 import { prayerReducer } from "./ducks/prayer";
 import { commentReducer } from "./ducks/comment";
 
-import { userWatcher } from "./ducks/user/sagas";
-import { columnWatcher } from "./ducks/column/sagas";
-import { prayerWatcher } from "./ducks/prayer/sagas";
-import { commentWatcher } from "./ducks/comment/sagas";
+import { userWatcher } from "./ducks/user";
+import { columnWatcher } from "./ducks/column";
+import { prayerWatcher } from "./ducks/prayer";
+import { commentWatcher } from "./ducks/comment";
 
 const sagaMiddleware = createSagaMiddleware()
 
