@@ -9,6 +9,7 @@ import { actions, selectors } from "../../store/ducks";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { StyledContainer } from "../../ui/StyledContainer";
 import { EditableForm } from "../../ui/EditableForm";
+import { timeFromNow } from "../../utils/utils";
 const src = "https://sun1-84.userapi.com/s/v1/ig2/KaYR6LGXCEg9pNmHl9mCB-uTZc8aN5-dKa5xYF2COoYZyB3GLX9bgVkAmhPSwaJhKFpqv_YnYbL-YmekB7MqhIs3.jpg?size=100x100&quality=96&crop=0,0,453,453&ava=1"
 
 const Comment: FC<IComment> = ({ body, created, id }) => {
@@ -49,7 +50,7 @@ const Comment: FC<IComment> = ({ body, created, id }) => {
                             <StyledContainer containerStyled={`margin-right: 6px;`}>
                                 <AppText bold>{name}</AppText>
                             </StyledContainer>
-                            <AppText fs={13} color={colors.ligthGray}>{created}</AppText>
+                            <AppText fs={13} color={colors.ligthGray}>{timeFromNow(created)}</AppText>
                         </Row>
                         <AppText>{body}</AppText>
                     </View>
