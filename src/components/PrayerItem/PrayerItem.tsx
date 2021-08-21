@@ -11,6 +11,7 @@ import { User } from "../../ui/icons/User";
 import { Line } from "../../ui/Line";
 import { Row } from "../../ui/Row";
 import { DeleteButton } from "../../ui/DeleteButton";
+import { cropText } from "../../utils/utils";
 
 interface PrayerItemProps extends IPrayer {
     onPress: () => void,
@@ -31,14 +32,7 @@ const PrayerItem: FC<PrayerItemProps> = ({ onPress, title, checked, id, descript
         return commentCount > 0 ? true : false;
     }
 
-    const cropText = () => {
-        const stringLimit = isCommentExist() ? 15 : 21;
-        if (title.length > stringLimit) {
-            const shortText = title.split('').slice(0, stringLimit).join('') + '...';
-            return shortText;
-        }
-        return title;
-    };
+    const pryerTitle = cropText(title, isCommentExist());
 
     const deletePrayer = () => {
         dispatch(actions.prayer.deletPrayerRequest(id));
@@ -70,7 +64,7 @@ const PrayerItem: FC<PrayerItemProps> = ({ onPress, title, checked, id, descript
                     <Row>
                         <Line />
                         <CheckBox checked={itemCheckedState} onChange={onChangeState} />
-                        {itemCheckedState === true ? <AppText lineThrough>{cropText()}</AppText> : <AppText>{cropText()}</AppText>}
+                        {itemCheckedState === true ? <AppText lineThrough>{pryerTitle}</AppText> : <AppText>{pryerTitle}</AppText>}
                     </Row>
                     <Row>
                         {isCommentExist() ? <User userCount={commentCount} /> : null}
