@@ -5,23 +5,39 @@ import { actions } from './prayersSlice';
 import { AddPrayerPayload, UpdatePrayerPayload } from './types';
 
 function* getAllPrayersRequestHandler() {
-    const {data} = yield call(getPrayers);
-    yield put(actions.getAllPrayersSuccsesResponse(data));
+    try {
+        const {data} = yield call(getPrayers);
+        yield put(actions.getAllPrayersSuccsesResponse(data));
+    } catch (e) {
+        console.error(e);
+    }
 }
 
 function* updatePrayerRequestHandler({payload}: PayloadAction<UpdatePrayerPayload>) {
-    const {data} = yield call(updatePrayerById, {...payload});
-    yield put(actions.updatePrayerSuccsesResponse(data));
+    try {
+        const {data} = yield call(updatePrayerById, {...payload});
+        yield put(actions.updatePrayerSuccsesResponse(data));
+    } catch (e) {
+        console.error(e);
+    }
 }
 
 function* addPrayerRequestHandler({payload}: PayloadAction<AddPrayerPayload>) {
-    const {data} = yield call(addPrayer, payload);
-    yield put(actions.addPrayerToColumnSuccses(data));
+    try {
+        const {data} = yield call(addPrayer, payload);
+        yield put(actions.addPrayerToColumnSuccses(data));
+    } catch (e) {
+        console.error(e);
+    }
 }
 
 function* deletePrayerRequestHandler({payload}: PayloadAction<number>) {
-    yield call(deletePrayer, payload);
-    yield put(actions.deletPrayerSuccses(payload));
+    try {
+        yield call(deletePrayer, payload);
+        yield put(actions.deletPrayerSuccses(payload));
+    } catch (e) {
+        console.error(e);
+    }
 }
 
 export function* prayerWatcher() {
