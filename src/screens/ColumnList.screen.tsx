@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import { View } from "react-native";
 import { Container } from '../ui/Container';
 import { Header } from '../ui/Header';
@@ -6,16 +6,13 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { actions, selectors } from "../store/ducks";
 import { AddColumnForm } from "../components/AddColumnForm";
 import { ColumnItem } from "../components/ColumnItem";
-import { Loader } from "../ui/Loader";
 import { useNavigation } from "@react-navigation/native";
 import { ColumnListScreenNavigationProp } from '../types';
 import { ScrollView } from "react-native-gesture-handler";
 
-
 export const ColumnList: FC = () => {
 
     const dispatch = useAppDispatch();
-    const dataUpdateStatus = useAppSelector(selectors.column.selectDataUpdateStatus);
     const columns = useAppSelector(selectors.column.selectColumn);
 
     const navigation = useNavigation<ColumnListScreenNavigationProp>()
@@ -47,12 +44,7 @@ export const ColumnList: FC = () => {
             </Header>
             <ScrollView>
                 <Container>
-                    {
-                        dataUpdateStatus === "inProcess" ?
-                            <Loader />
-                            :
-                            columns.map((col) => <ColumnItem column={col} onPress={next} key={col.id} />)
-                    }
+                    {columns.map((col) => <ColumnItem column={col} onPress={next} key={col.id} />)}
                 </Container>
             </ScrollView>
         </View>

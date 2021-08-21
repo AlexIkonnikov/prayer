@@ -2,17 +2,19 @@ import { useRoute } from "@react-navigation/native";
 import { FormApi } from "final-form";
 import React, { FC } from "react";
 import { Field, Form, FormProps } from "react-final-form";
-import { actions } from "../../store/ducks";
-import { useAppDispatch } from "../../store/hooks";
+import { actions, selectors } from "../../store/ducks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { colors } from "../../styles/colors";
 import { ColumnScreenRouteProp } from "../../types";
 import { Plus } from "../../ui/icons/Plus";
 import { Input } from '../../ui/Input';
+import { Loader } from "../../ui/Loader";
 import { StyledContainer } from "../../ui/StyledContainer";
 
-export const AddPrayerForm: FC = () => {
+const AddPrayerForm: FC = () => {
 
     const dispatch = useAppDispatch();
+    const status = useAppSelector(selectors.prayer.selectDataUpdateStatus);
     const route = useRoute<ColumnScreenRouteProp>();
     const createPrayer = (values: FormProps, form: FormApi<FormProps>) => {
         dispatch(actions.prayer.addPrayerToColumnRequest({
@@ -41,7 +43,10 @@ export const AddPrayerForm: FC = () => {
                         flex-direction: row;
                         align-items: center;
                     `}>
-                        <Plus width={22} color={colors.blue} onPress={handleSubmit} />
+                        {status === 'inProcess' ? 
+                            <Loader size='small'/> :
+                            <Plus width={22} color={colors.blue} onPress={handleSubmit} />
+                        }
                         <Field  name="title" render={
                             ({input}) => {
                                 return <Input placeholder="Add a prayer..." value={input.value} onChangeText={input.onChange} />
@@ -53,4 +58,6 @@ export const AddPrayerForm: FC = () => {
         }/>
     )
 };
+
+export default AddPrayerForm;
 
