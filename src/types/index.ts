@@ -14,18 +14,16 @@ export type AuthNavigationProps = {
 }
 
 export type TabNavigationProps = {
-    'My prayers': { id: number },
-    Subscribed: { id: number },
+    'My prayers': {id: number},
+    Subscribed: {id: number},
 }
 
-export type ColumnListScreenNavigationProp = StackNavigationProp<RootStackParamList>;
+export type ColumnListScreenNavigationProp = StackNavigationProp<RootStackParamList, 'ColumnList'>;
 
-export type ColumnScreenRouteProp = RouteProp<TabNavigationProps, 'My prayers'>;
+export type ColumnScreenRouteProp = RouteProp<RootStackParamList, 'Column'>;
+
+export type ColumnScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Column'>;
 
 export type DetailScreenRouterProp = RouteProp<RootStackParamList, 'Detail'>;
 
 export type DetailScreenNavigationProp = StackNavigationProp<RootStackParamList>;
-
-export type MyPrayerScreenNavigationProp = StackNavigationProp<RootStackParamList>;
-
-export type MyPrayerScreenRouteProp = RouteProp<RootStackParamList, "Column">;

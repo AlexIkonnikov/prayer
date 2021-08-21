@@ -3,7 +3,6 @@ import { TabRoute } from "../routes/TabRoute";
 import { Header } from "../ui/Header";
 import { useRoute } from '@react-navigation/native';
 import { AppText } from "../ui/AppText";
-import { Center } from "../ui/Center";
 import { Setting } from "../ui/icons/Setting";
 import { ColumnScreenRouteProp } from '../types';
 import { StyledContainer } from "../ui/StyledContainer";
@@ -19,7 +18,7 @@ export const Column: FC = () => {
                 </StyledContainer>
                 <Setting />
             </Header>
-            <TabRoute id={route.params.id} />
+            <TabRoute/>
         </React.Fragment>
     )
 };

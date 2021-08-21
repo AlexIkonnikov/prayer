@@ -1,18 +1,31 @@
+import { useRoute } from "@react-navigation/native";
 import { FormApi } from "final-form";
 import React, { FC } from "react";
 import { Field, Form, FormProps } from "react-final-form";
-import { colors } from "../styles/colors";
-import { Plus } from "./icons/Plus";
-import { Input } from './Input';
-import { StyledContainer } from "./StyledContainer";
+import { actions } from "../../store/ducks";
+import { useAppDispatch } from "../../store/hooks";
+import { colors } from "../../styles/colors";
+import { ColumnScreenRouteProp } from "../../types";
+import { Plus } from "../../ui/icons/Plus";
+import { Input } from '../../ui/Input';
+import { StyledContainer } from "../../ui/StyledContainer";
 
-interface AddPrayerFormProps{
-    submit: (values: FormProps, form: FormApi<FormProps>) => void
-}
+export const AddPrayerForm: FC = () => {
 
-export const AddPrayerForm: FC<AddPrayerFormProps> = ({ submit }) => {
+    const dispatch = useAppDispatch();
+    const route = useRoute<ColumnScreenRouteProp>();
+    const createPrayer = (values: FormProps, form: FormApi<FormProps>) => {
+        dispatch(actions.prayer.addPrayerToColumnRequest({
+            columnId: route.params.id,
+            title: values.title,
+            description: '',
+            checked: false
+        }));
+        form.reset();
+    };
+
     return (
-        <Form onSubmit={submit} initialValues={{title: ''}} render={
+        <Form onSubmit={createPrayer} initialValues={{title: ''}} render={
             ({handleSubmit}) => {
                 return (
                     <StyledContainer containerStyled={`
