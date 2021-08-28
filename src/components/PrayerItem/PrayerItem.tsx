@@ -32,7 +32,7 @@ const PrayerItem: FC<PrayerItemProps> = ({ onPress, title, checked, id, descript
         return commentCount > 0 ? true : false;
     }
 
-    const pryerTitle = cropText(title, isCommentExist());
+    const prayerTitle = cropText(title, isCommentExist());
 
     const deletePrayer = () => {
         dispatch(actions.prayer.deletPrayerRequest(id));
@@ -64,7 +64,7 @@ const PrayerItem: FC<PrayerItemProps> = ({ onPress, title, checked, id, descript
                     <Row>
                         <Line />
                         <CheckBox checked={itemCheckedState} onChange={onChangeState} />
-                        {itemCheckedState === true ? <AppText lineThrough>{pryerTitle}</AppText> : <AppText>{pryerTitle}</AppText>}
+                        {itemCheckedState === true ? <AppText lineThrough>{prayerTitle}</AppText> : <AppText>{prayerTitle}</AppText>}
                     </Row>
                     <Row>
                         {isCommentExist() ? <User userCount={commentCount} /> : null}

@@ -22,6 +22,7 @@ const prayerSlice = createSlice({
             if (index !== -1) {
                 state.prayers.splice(index, 1, payload);
             }
+            state.dataUpdateStatus = 'done';
         },
         addPrayerToColumnRequest(state, {payload}: PayloadAction<AddPrayerPayload>) {
             state.dataUpdateStatus = 'inProcess';
