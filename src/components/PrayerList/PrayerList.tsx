@@ -22,9 +22,9 @@ const PrayerList: FC = () => {
         setVisibleAnsweredPrayers(!visibleAnsweredPrayers);
     };
 
-    const prayers = useAppSelector(selectors.prayer.selectPrayersById(route.params.id));
-    const checkedItem = prayers.filter((prayer) => prayer.checked);
-    const unCheckedItem = prayers.filter((prayer) => !prayer.checked);
+    //const prayers = useAppSelector(selectors.prayer.selectPrayersByColumnId(route.params.id));
+    const checkedItem = useAppSelector(selectors.prayer.selectCheckedPrayersByColumnId(route.params.id));
+    const unCheckedItem = useAppSelector(selectors.prayer.selectUncheckedPrayersByColumnId(route.params.id));
 
     return (
         <>

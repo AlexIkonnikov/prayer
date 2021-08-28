@@ -6,10 +6,24 @@ const selectPrayerSlice = (state: RootState): IPrayerSlice => {
     return state.prayer;
 };
 
-const selectPrayersById = (id: number) => {
+const selectPrayersByColumnId = (id: number) => {
     return createSelector(
         selectPrayerSlice,
         (slice: IPrayerSlice) => slice.prayers.filter((prayer) => prayer.columnId === id)
+    )
+};
+
+const selectCheckedPrayersByColumnId = (id: number) => {
+    return createSelector(
+        selectPrayersByColumnId(id),
+        (prayers: Array<IPrayer>) => prayers.filter((prayer) => prayer.checked)
+    )
+};
+
+const selectUncheckedPrayersByColumnId = (id: number) => {
+    return createSelector(
+        selectPrayersByColumnId(id),
+        (prayers: Array<IPrayer>) => prayers.filter((prayer) => !prayer.checked)
     )
 };
 
@@ -25,4 +39,4 @@ const selectDataUpdateStatus = createSelector(
     (slice: IPrayerSlice) => slice.dataUpdateStatus
 );
 
-export const selectors = {selectPrayerSlice, selectPrayersById, selectPrayerById, selectDataUpdateStatus};
+export const selectors = {selectPrayerSlice, selectPrayersByColumnId, selectCheckedPrayersByColumnId, selectUncheckedPrayersByColumnId, selectPrayerById, selectDataUpdateStatus};
