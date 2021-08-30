@@ -2,7 +2,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import React, {FC} from 'react';
 import {useState} from 'react';
 import {selectors} from '../../store/ducks';
-import {IPrayer} from '../../store/ducks/prayer';
+import {IPrayer} from '../../store/prayer';
 import {useAppSelector} from '../../store/hooks';
 import {ColumnScreenNavigationProp, ColumnScreenRouteProp} from '../../types';
 import {Button} from '../../ui/Button';

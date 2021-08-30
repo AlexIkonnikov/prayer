@@ -1,4 +1,4 @@
-import Api from './../../../services/Api';
+import Api from '../../services/Api';
 import {SignUpPayload, SignInPayload} from './types';
 
 export const signUp = (data: SignUpPayload) => {

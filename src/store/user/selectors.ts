@@ -1,5 +1,5 @@
 import {createSelector} from '@reduxjs/toolkit';
-import {RootState} from '../../store';
+import {RootState} from '../store';
 import {IUser, IUserSlice} from './types';
 
 const selectUserSlice = (state: RootState): IUserSlice => {

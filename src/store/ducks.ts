@@ -1,7 +1,7 @@
-import * as column from './ducks/column';
-import * as user from './ducks/user';
-import * as prayer from './ducks/prayer';
-import * as comment from './ducks/comment';
+import * as column from './column';
+import * as user from './user';
+import * as prayer from './prayer';
+import * as comment from './comment';
 
 export const actions = {
   column: column.actions,

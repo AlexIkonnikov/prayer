@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {useState} from 'react';
 import {actions} from '../../store/ducks';
-import {IColumn} from '../../store/ducks/column';
+import {IColumn} from '../../store/column';
 import {useAppDispatch} from '../../store/hooks';
 import {Card} from '../../ui/Card';
 import {EditableForm} from '../../ui/EditableForm';

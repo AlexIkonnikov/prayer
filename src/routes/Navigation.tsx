@@ -1,4 +1,4 @@
-import React, {FC} from 'React';
+import React, {FC} from 'react';
 import {AuthRoute} from './AuthRoute';
 import {StackRoute} from './StackRoute';
 import {useAppSelector} from '../store/hooks';

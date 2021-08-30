@@ -1,5 +1,5 @@
 import {createSelector} from '@reduxjs/toolkit';
-import {RootState} from '../../store';
+import {RootState} from '../store';
 import {IColumnSlice} from './types';
 
 const selectColumnSlice = (state: RootState): IColumnSlice => {

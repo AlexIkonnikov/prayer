@@ -2,7 +2,7 @@ import React, {FC, useState} from 'react';
 import {TouchableOpacity, Animated} from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {actions, selectors} from '../../store/ducks';
-import {IPrayer} from '../../store/ducks/prayer';
+import {IPrayer} from '../../store/prayer';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {AppText} from '../../ui/AppText';
 import {CheckBox} from '../../ui/Checkbox';

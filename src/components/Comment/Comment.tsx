@@ -4,7 +4,7 @@ import {colors} from '../../styles/colors';
 import {AppText} from '../../ui/AppText';
 import {Avatar} from '../../ui/Avatar';
 import {Row} from '../../ui/Row';
-import {IComment} from '../../store/ducks/comment/types';
+import {IComment} from '../../store/comment/types';
 import {actions, selectors} from '../../store/ducks';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {StyledContainer} from '../../ui/StyledContainer';

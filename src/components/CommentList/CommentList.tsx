@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {IComment} from '../../store/ducks/comment/types';
+import {IComment} from '../../store/comment/types';
 import {colors} from '../../styles/colors';
 import {AppText} from '../../ui/AppText';
 import {Container} from '../../ui/Container';

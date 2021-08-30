@@ -1,19 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {combineReducers} from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import {all} from 'redux-saga/effects';
 
-import {userReducer} from './ducks/user';
-import {columnReducer} from './ducks/column';
-import {prayerReducer} from './ducks/prayer';
-import {commentReducer} from './ducks/comment';
-
-import {userWatcher} from './ducks/user';
-import {columnWatcher} from './ducks/column';
-import {prayerWatcher} from './ducks/prayer';
-import {commentWatcher} from './ducks/comment';
-
-const sagaMiddleware = createSagaMiddleware();
+import {userReducer} from './user';
+import {columnReducer} from './column';
+import {prayerReducer} from './prayer';
+import {commentReducer} from './comment';
+import {sagaMiddleware, rootSaga} from './sagas';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -27,15 +19,6 @@ export const store = configureStore({
   devTools: true,
   middleware: [sagaMiddleware],
 });
-
-function* rootSaga() {
-  yield all([
-    userWatcher(),
-    columnWatcher(),
-    prayerWatcher(),
-    commentWatcher(),
-  ]);
-}
 
 sagaMiddleware.run(rootSaga);
 

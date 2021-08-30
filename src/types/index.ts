@@ -1,6 +1,6 @@
 import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {IPrayer} from '../store/ducks/prayer';
+import {IPrayer} from '../store/prayer';
 
 export type RootStackParamList = {
   ColumnList: undefined;

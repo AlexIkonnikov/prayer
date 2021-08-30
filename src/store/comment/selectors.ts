@@ -1,5 +1,5 @@
 import {createSelector} from '@reduxjs/toolkit';
-import {RootState} from '../../store';
+import {RootState} from '../store';
 import {ICommentSlice, IComment} from './types';
 
 const selectCommentSlice = (state: RootState): ICommentSlice => {
