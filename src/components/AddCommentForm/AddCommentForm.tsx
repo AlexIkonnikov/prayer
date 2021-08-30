@@ -5,9 +5,9 @@ import { actions, selectors } from '../../store/ducks';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { Input } from '../../ui/Input';
 import { MessageIcon } from '../../ui/icons/MessageIcon';
-import { StyledContainer } from '../../ui/StyledContainer';
 import { Loader } from '../../ui/Loader';
 import { IconButton } from '../../ui/IconButton';
+import styled from 'styled-components/native';
 
 interface AddCommentPayloadProps {
   prayerId: number;
@@ -26,17 +26,7 @@ const AddCommentForm: FC<AddCommentPayloadProps> = ({ prayerId }) => {
       onSubmit={handlerSubmit}
       render={({ handleSubmit, pristine }) => {
         return (
-          <StyledContainer
-            containerStyled={`
-                            display: flex;
-                            flex-direction: row;
-                            align-items: center;
-                            padding-left: 14px;
-                            height: 50px;
-                            width: 100%;
-                            border-top-width: 1px;
-                            border-color: #E5E5E5;
-                        `}>
+          <FormWrapper>
             {status === 'inProcess' ? (
               <Loader size="small" />
             ) : (
@@ -54,11 +44,24 @@ const AddCommentForm: FC<AddCommentPayloadProps> = ({ prayerId }) => {
                 );
               }}
             />
-          </StyledContainer>
+          </FormWrapper>
         );
       }}
     />
   );
 };
+
+const FormWrapper = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+  border-color: #E5E5E5;
+  width: 100%;
+  padding-left: 14px;
+  
+  border-top-width: 1px;
+  
+`
 
 export default AddCommentForm;

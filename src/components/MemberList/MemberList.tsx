@@ -1,42 +1,38 @@
 import React, { FC } from 'react';
 import { css } from 'styled-components';
+import styled from 'styled-components/native';
 import { colors } from '../../styles/colors';
 import { AppText } from '../../ui/AppText';
 import { Avatar } from '../../ui/Avatar';
 import { RoundButton } from '../../ui/RoundButton';
 import { Row } from '../../ui/Row';
-import { StyledContainer } from '../../ui/StyledContainer';
-
 
 const MemberList: FC = () => {
   return (
-    <StyledContainer containerStyled={'margin: 0 15px 30px;'}>
+    <ListWrapper>
       <AppText fs={13} color={colors.blue} upp bold>
         Members
       </AppText>
       <Row containerStyled={rowStyle}>
-        <StyledContainer
-          containerStyled={'margin-right: 8px;'}
-        >
+        <AvatarWrapper>
           <Avatar />
-        </StyledContainer>
-
-        <StyledContainer
-          containerStyled={'margin-right: 8px;'}
-        >
+        </AvatarWrapper>
+        <AvatarWrapper>
           <Avatar />
-        </StyledContainer>
-
-        <StyledContainer
-          containerStyled={'margin-right: 8px;'}
-        >
-          <Avatar />
-        </StyledContainer>
+        </AvatarWrapper>
         <RoundButton />
       </Row>
-    </StyledContainer>
+    </ListWrapper>
   );
 };
+
+const ListWrapper = styled.View`
+  margin: 0 15px 30px;
+`
+
+const AvatarWrapper = styled.View`
+  margin-right: 8px;
+`
 
 const rowStyle = css`margin-top: 15px;`
 

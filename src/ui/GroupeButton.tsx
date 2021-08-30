@@ -1,7 +1,8 @@
-import React, {FC} from 'react';
-import {Button, NativeSyntheticEvent, NativeTouchEvent} from 'react-native';
-import {colors} from '../styles/colors';
-import {Row} from './Row';
+import React, { FC } from 'react';
+import { Button, NativeSyntheticEvent, NativeTouchEvent } from 'react-native';
+import { css } from 'styled-components';
+import { colors } from '../styles/colors';
+import { Row } from './Row';
 
 interface GroupeButtonProps {
   onCancel: () => void;
@@ -15,16 +16,17 @@ export const GroupeButton: FC<GroupeButtonProps> = ({
   onDeleted,
 }) => {
   return (
-    <Row
-      containerStyled={`
-            justify-content:space-between;
-            width:80%;
-            margin:0 auto;
-            margin-top:20px;
-        `}>
+    <Row containerStyled={rowStyle}>
       <Button title="save" color={colors.blue} onPress={onSave} />
       <Button title="cancel" color={colors.ligthGray} onPress={onCancel} />
       <Button title="delete" color={colors.red} onPress={onDeleted} />
     </Row>
   );
 };
+
+const rowStyle = css`
+  justify-content:space-between;
+  width:80%;
+  margin:0 auto;
+  margin-top:20px;
+`

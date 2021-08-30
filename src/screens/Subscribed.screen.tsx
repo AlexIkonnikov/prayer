@@ -1,13 +1,17 @@
 import React from 'react';
-import {StyledContainer} from '../ui/StyledContainer';
 import {PrayerList} from '../components/PrayerList';
 import { FC } from 'react';
 import { ColumnScreenProps } from '../routes/MainRoute';
+import styled from 'styled-components/native';
 
 export const Subscribed: FC<ColumnScreenProps> = ({navigation, route}) => {
   return (
-    <StyledContainer containerStyled={'marginTop: 15px;'}>
+    <Wrapper>
       <PrayerList navigation={navigation} route={route} />
-    </StyledContainer>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.View`
+  margin-top: 15px;
+`

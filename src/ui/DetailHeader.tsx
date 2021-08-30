@@ -3,7 +3,8 @@ import {Field, Form, FormProps} from 'react-final-form';
 import {colors} from '../styles/colors';
 import {Row} from './Row';
 import {Input} from './Input';
-import {StyledContainer} from './StyledContainer';
+import { css } from 'styled-components';
+import styled from 'styled-components/native';
 
 interface DetailHeaderProps {
   title: string;
@@ -16,14 +17,8 @@ export const DetailHeader: FC<DetailHeaderProps> = ({
   onSubmitForm,
 }) => {
   return (
-    <StyledContainer
-      containerStyled={`
-            padding: 20px 15px 23px 15px;
-            background-color: ${colors.gray};`}>
-      <Row
-        containerStyled={`
-                justify-content: space-between;
-                margin-bottom: 15px;`}>
+    <HeaderWrapper>
+      <Row containerStyled={styleRow}>
         {children}
       </Row>
       <Form
@@ -48,6 +43,16 @@ export const DetailHeader: FC<DetailHeaderProps> = ({
           );
         }}
       />
-    </StyledContainer>
+    </HeaderWrapper>
   );
 };
+
+const HeaderWrapper = styled.View`
+  padding: 20px 15px 23px 15px;
+  background-color: ${colors.gray};
+`;
+
+const styleRow = css`
+  justify-content: space-between;
+  margin-bottom: 15px;
+`

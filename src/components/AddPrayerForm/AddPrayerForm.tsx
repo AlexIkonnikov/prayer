@@ -1,6 +1,7 @@
 import {FormApi} from 'final-form';
 import React, {FC} from 'react';
 import {Field, Form, FormProps} from 'react-final-form';
+import styled from 'styled-components/native';
 import {actions, selectors} from '../../store/ducks';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {colors} from '../../styles/colors';
@@ -8,7 +9,6 @@ import { IconButton } from '../../ui/IconButton';
 import {PlusIcon} from '../../ui/icons/PlusIcon';
 import {Input} from '../../ui/Input';
 import {Loader} from '../../ui/Loader';
-import {StyledContainer} from '../../ui/StyledContainer';
 
 interface AddPrayerFormProps {
   columnId: number
@@ -35,20 +35,7 @@ const AddPrayerForm: FC<AddPrayerFormProps> = ({columnId}) => {
       initialValues={{title: ''}}
       render={({handleSubmit}) => {
         return (
-          <StyledContainer
-            containerStyled={`
-                        padding-left: 14px;
-                        height: 50px;
-                        border-width: 1px;
-                        border-color: #E5E5E5;
-                        border-radius: 10px;
-                        width: 100%;
-                        margin-top: 15px;
-                        margin-bottom: 34px;
-                        display: flex;
-                        flex-direction: row;
-                        align-items: center;
-                    `}>
+          <FormWrapper>
             {status === 'inProcess' ? (
               <Loader size="small" />
             ) : (
@@ -66,11 +53,26 @@ const AddPrayerForm: FC<AddPrayerFormProps> = ({columnId}) => {
                 );
               }}
             />
-          </StyledContainer>
+          </FormWrapper>
         );
       }}
     />
   );
 };
+
+const FormWrapper = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 14px;
+  height: 50px;
+  border-color: #E5E5E5;
+  width: 100%;
+
+  border-width: 1px;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 34px;
+`
 
 export default AddPrayerForm;

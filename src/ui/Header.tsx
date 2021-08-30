@@ -1,15 +1,15 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import styled, { css } from 'styled-components/native';
-import {Container} from './Container';
-import {Row} from './Row'
+import { Container } from './Container';
+import { Row } from './Row'
 
 interface HeaderProps {
   withTab?: boolean;
 }
 
-export const Header: FC<HeaderProps> = ({children, withTab = false}) => {
+export const Header: FC<HeaderProps> = ({ children, withTab = false }) => {
   return (
-    <HeaderContainer withTab={withTab}>
+    <HeaderContainer $isTab={withTab}>
       <Container>
         <Row containerStyled={rowStyle}>{children}</Row>
       </Container>
@@ -17,9 +17,9 @@ export const Header: FC<HeaderProps> = ({children, withTab = false}) => {
   );
 };
 
-const HeaderContainer = styled.View<HeaderProps>`
+const HeaderContainer = styled.View<{ $isTab: boolean }>`
   ${props =>
-    props.withTab === false &&
+    props.$isTab === false &&
     `
         margin-bottom: 15px;
         border-bottom-color: #E5E5E5;

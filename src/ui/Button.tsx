@@ -3,16 +3,13 @@ import {ButtonProps} from 'react-native';
 import styled from 'styled-components/native';
 import {colors} from '../styles/colors';
 import {AppText} from './AppText';
-import {StyledContainer} from './StyledContainer';
 
 export const Button: FC<ButtonProps> = ({title, ...outerProps}) => {
   return (
     <StyledButton {...outerProps}>
-      <StyledContainer containerStyled={'align-items: center;'}>
         <AppText fs={12} color={colors.white} upp bold>
           {title}
         </AppText>
-      </StyledContainer>
     </StyledButton>
   );
 };
@@ -26,5 +23,6 @@ const StyledButton = styled.TouchableOpacity`
   border-radius: 15px;
   margin-left: auto;
   margin-right: auto;
+  align-items: center;
   opacity: ${props => (props.disabled ? '0.6' : '1')};
 `;

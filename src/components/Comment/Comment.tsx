@@ -7,10 +7,10 @@ import { Row } from '../../ui/Row';
 import { IComment } from '../../store/comment/types';
 import { actions, selectors } from '../../store/ducks';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { StyledContainer } from '../../ui/StyledContainer';
 import { EditableForm } from '../../ui/EditableForm';
 import { timeFromNow } from '../../utils/utils';
 import { css } from 'styled-components';
+import styled from 'styled-components/native';
 
 const Comment: FC<IComment> = ({ body, created, id }) => {
   const dispatch = useAppDispatch();
@@ -38,14 +38,14 @@ const Comment: FC<IComment> = ({ body, created, id }) => {
     <>
       <TouchableOpacity onLongPress={handleActiveEditMode}>
         <Row containerStyled={rowStyle}>
-          <StyledContainer containerStyled={'margin-right: 12px;'}>
+          <AvatarWrapper>
             <Avatar big />
-          </StyledContainer>
+          </AvatarWrapper>
           <View>
             <Row>
-              <StyledContainer containerStyled={'margin-right: 6px;'}>
+              <TextWrapper>
                 <AppText bold>{name}</AppText>
-              </StyledContainer>
+              </TextWrapper>
               <AppText fs={13} color={colors.ligthGray}>
                 {timeFromNow(created)}
               </AppText>
@@ -64,6 +64,14 @@ const Comment: FC<IComment> = ({ body, created, id }) => {
     </>
   );
 };
+
+const TextWrapper = styled.View`
+  margin-right: 6px;
+`
+
+const AvatarWrapper = styled.View`
+  margin-right: 12px;
+`
 
 const rowStyle = css`
   padding:17px 0;

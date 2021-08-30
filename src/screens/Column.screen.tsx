@@ -3,7 +3,6 @@ import { TabRoute } from '../routes/TabRoute';
 import { Header } from '../ui/Header';
 import { AppText } from '../ui/AppText';
 import { SettingIcon } from '../ui/icons/SettingIcon';
-import { StyledContainer } from '../ui/StyledContainer';
 import { AppModal } from '../ui/AppModal';
 import { useState } from 'react';
 import { Button } from '../ui/Button';
@@ -11,6 +10,7 @@ import { useAppDispatch } from '../store/hooks';
 import { actions } from '../store/ducks';
 import { ColumnScreenProps } from '../routes/MainRoute';
 import { IconButton } from '../ui/IconButton';
+import styled from 'styled-components/native';
 
 export const Column: FC<ColumnScreenProps> = ({ route }) => {
   const dispatch = useAppDispatch();
@@ -30,9 +30,9 @@ export const Column: FC<ColumnScreenProps> = ({ route }) => {
   return (
     <React.Fragment>
       <Header withTab>
-        <StyledContainer containerStyled={'flex-grow: 1; align-items: center;'}>
+        <TextWrapper>
           <AppText bold>{route.params.name}</AppText>
-        </StyledContainer>
+        </TextWrapper>
         <IconButton onPress={handleOpenModal} render={() => <SettingIcon />} />
       </Header>
       <TabRoute columnId={route.params.id} />
@@ -44,3 +44,8 @@ export const Column: FC<ColumnScreenProps> = ({ route }) => {
     </React.Fragment>
   );
 };
+
+const TextWrapper = styled.View`
+  flex-grow: 1;
+  align-items: center;
+`

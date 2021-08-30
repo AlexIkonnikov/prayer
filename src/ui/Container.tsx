@@ -1,10 +1,14 @@
 import React, {FC} from 'react';
-import {StyledContainer} from './StyledContainer';
+import styled from 'styled-components/native';
 
 export const Container: FC = ({children}) => {
   return (
-    <StyledContainer containerStyled={'margin: 0 15px;'}>
+    <StyledContainer>
       {children}
     </StyledContainer>
   );
 };
+
+const StyledContainer = styled.View`
+  margin: 0 15px;
+`

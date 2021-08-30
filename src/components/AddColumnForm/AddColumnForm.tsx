@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Field, Form, FormProps } from 'react-final-form';
+import styled from 'styled-components/native';
 import { selectors } from '../../store/ducks';
 import { useAppSelector } from '../../store/hooks';
 import { colors } from '../../styles/colors';
@@ -7,7 +8,6 @@ import { IconButton } from '../../ui/IconButton';
 import { PlusIcon } from '../../ui/icons/PlusIcon';
 import { Input } from '../../ui/Input';
 import { Loader } from '../../ui/Loader';
-import { StyledContainer } from '../../ui/StyledContainer';
 
 interface AddColumnFormProps {
   onSubmit: (text: string) => void;
@@ -30,8 +30,7 @@ const AddColumnForm: FC<AddColumnFormProps> = ({ inputText, onSubmit }) => {
       render={({ handleSubmit, values }) => {
         return (
           <>
-            <StyledContainer
-              containerStyled={'flex-grow: 1; align-items: center;'}>
+            <FieldContainer>
               <Field
                 name="text"
                 render={({ input }) => {
@@ -44,7 +43,7 @@ const AddColumnForm: FC<AddColumnFormProps> = ({ inputText, onSubmit }) => {
                   );
                 }}
               />
-            </StyledContainer>
+            </FieldContainer>
             {dataUpdateStatus === 'inProcess' ? (
               <Loader size="small" />
             ) : (
@@ -56,5 +55,10 @@ const AddColumnForm: FC<AddColumnFormProps> = ({ inputText, onSubmit }) => {
     />
   );
 };
+
+const FieldContainer = styled.View`
+  flex-grow: 1; 
+  align-items: center;
+`
 
 export default AddColumnForm;
