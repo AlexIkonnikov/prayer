@@ -34,7 +34,7 @@ export const Column: FC<ColumnScreenProps> = ({ route }) => {
         </StyledContainer>
         <Setting onPress={openModal} />
       </Header>
-      <TabRoute />
+      <TabRoute columnId={route.params.id}/>
       <AppModal visible={stateModal}>
         <AppText>Do you want to log out?</AppText>
         <Button title="YES" onPress={logOut} />

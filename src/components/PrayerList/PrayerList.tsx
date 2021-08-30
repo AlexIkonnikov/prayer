@@ -1,29 +1,27 @@
-import {useNavigation, useRoute} from '@react-navigation/native';
-import React, {FC} from 'react';
-import {useState} from 'react';
-import {selectors} from '../../store/ducks';
-import {IPrayer} from '../../store/prayer';
-import {useAppSelector} from '../../store/hooks';
-import {ColumnScreenNavigationProp, ColumnScreenRouteProp} from '../../types';
-import {Button} from '../../ui/Button';
-import {PrayerItem} from '../PrayerItem';
+import React, { FC } from 'react';
+import { useState } from 'react';
+import { selectors } from '../../store/ducks';
+import { IPrayer } from '../../store/prayer';
+import { useAppSelector } from '../../store/hooks';
+import { Button } from '../../ui/Button';
+import { PrayerItem } from '../PrayerItem';
+import { ColumnScreenProps } from '../../routes/MainRoute';
 
-const PrayerList: FC = () => {
+const PrayerList: FC<ColumnScreenProps> = ({ navigation, route }) => {
   const [visibleAnsweredPrayers, setVisibleAnsweredPrayers] = useState(false);
 
-  const navigation = useNavigation<ColumnScreenNavigationProp>();
-  const route = useRoute<ColumnScreenRouteProp>();
-
-  const onPressItem = (item: IPrayer) => {
-    navigation.navigate('Detail', {prayer: item});
+  const onPrayerItemPress = (item: IPrayer) => {
+    navigation.navigate('Detail', { prayer: item })
   };
 
   const onChangeState = () => {
     setVisibleAnsweredPrayers(!visibleAnsweredPrayers);
   };
+
   const checkedItem = useAppSelector(
     selectors.prayer.selectCheckedPrayersByColumnId(route.params.id),
   );
+
   const unCheckedItem = useAppSelector(
     selectors.prayer.selectUncheckedPrayersByColumnId(route.params.id),
   );
@@ -34,7 +32,7 @@ const PrayerList: FC = () => {
         <PrayerItem
           key={item.id}
           onPress={() => {
-            onPressItem(item);
+            onPrayerItemPress(item);
           }}
           {...item}
         />
@@ -54,7 +52,7 @@ const PrayerList: FC = () => {
           <PrayerItem
             key={item.id}
             onPress={() => {
-              onPressItem(item);
+              onPrayerItemPress(item);
             }}
             {...item}
           />
