@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { TabRoute } from '../routes/TabRoute';
 import { Header } from '../ui/Header';
 import { AppText } from '../ui/AppText';
-import { Setting } from '../ui/icons/Setting';
+import { SettingIcon } from '../ui/icons/SettingIcon';
 import { StyledContainer } from '../ui/StyledContainer';
 import { AppModal } from '../ui/AppModal';
 import { useState } from 'react';
@@ -32,7 +32,7 @@ export const Column: FC<ColumnScreenProps> = ({ route }) => {
         <StyledContainer containerStyled={'flex-grow: 1; align-items: center;'}>
           <AppText bold>{route.params.name}</AppText>
         </StyledContainer>
-        <Setting onPress={openModal} />
+        <SettingIcon onPress={openModal} />
       </Header>
       <TabRoute columnId={route.params.id}/>
       <AppModal visible={stateModal}>

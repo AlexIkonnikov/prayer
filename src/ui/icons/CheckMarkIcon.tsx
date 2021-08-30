@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import Svg, {Path} from 'react-native-svg';
 import {colors} from '../../styles/colors';
 
-export const CheckMark: FC = () => {
+export const CheckMarkIcon: FC = () => {
   return (
     <Svg width="14" height="13" viewBox="0 0 14 13" fill="none">
       <Path

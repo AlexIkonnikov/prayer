@@ -9,7 +9,7 @@ interface PlusIconProps extends TouchableOpacityProps {
   color?: Color;
 }
 
-export const Plus: FC<PlusIconProps> = ({width, onPress, color, disabled}) => {
+export const PlusIcon: FC<PlusIconProps> = ({width, onPress, color, disabled}) => {
   return (
     <TouchableOpacity onPress={onPress} disabled={disabled}>
       <Svg

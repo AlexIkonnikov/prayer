@@ -9,7 +9,7 @@ interface UserIconProps {
   color?: string;
 }
 
-export const User: FC<UserIconProps> = ({userCount, color}) => {
+export const UserIcon: FC<UserIconProps> = ({userCount, color}) => {
   return (
     <Row
       containerStyled={`

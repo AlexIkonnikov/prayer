@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {colors} from '../styles/colors';
-import {User} from './icons/User';
+import {UserIcon} from './icons/UserIcon';
 import {StyledContainer} from './StyledContainer';
 
 interface AvatarProps {
@@ -19,7 +19,7 @@ export const Avatar: FC<AvatarProps> = ({big}) => {
             align-items: center;
             background-color: ${colors.blue};
         `}>
-      <User color={colors.white} />
+      <UserIcon color={colors.white} />
     </StyledContainer>
   );
 };

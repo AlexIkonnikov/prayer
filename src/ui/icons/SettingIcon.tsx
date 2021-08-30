@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import Svg, {Path} from 'react-native-svg';
 import {TouchableOpacity, TouchableOpacityProps} from 'react-native';
 
-export const Setting: FC<TouchableOpacityProps> = ({...outerProps}) => {
+export const SettingIcon: FC<TouchableOpacityProps> = ({...outerProps}) => {
   return (
     <TouchableOpacity {...outerProps}>
       <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">

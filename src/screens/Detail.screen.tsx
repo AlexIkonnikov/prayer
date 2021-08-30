@@ -9,8 +9,8 @@ import {actions, selectors} from '../store/ducks';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {colors} from '../styles/colors';
 import {DetailHeader} from '../ui/DetailHeader';
-import {BackArrow} from '../ui/icons/BackArrow';
-import {Hands} from '../ui/icons/Hands';
+import {BackArrowIcon} from '../ui/icons/BackArrowIcon';
+import {HandsIcon} from '../ui/icons/HandsIcon';
 import {LastTime} from '../ui/LastTime';
 import {Statisticks} from '../ui/Statisticks';
 
@@ -19,8 +19,6 @@ const src = [
 ];
 
 export const Detail: FC<DetailScreenProps> = ({navigation, route}) => {
-  // const route = useRoute<DetailScreenRouterProp>();
-  // const navigation = useNavigation<DetailScreenNavigationProp>();
 
   const prayer = route.params.prayer;
   const dispatch = useAppDispatch();
@@ -28,7 +26,7 @@ export const Detail: FC<DetailScreenProps> = ({navigation, route}) => {
     selectors.comment.selectCommentsByPrayerId(prayer.id),
   );
 
-  const goBack = () => {
+  const handleGoBack = () => {
     navigation.goBack();
   };
 
@@ -46,8 +44,8 @@ export const Detail: FC<DetailScreenProps> = ({navigation, route}) => {
   return (
     <React.Fragment>
       <DetailHeader title={prayer.title} submit={updatePrayer}>
-        <BackArrow onPress={goBack} />
-        <Hands color={colors.white} />
+        <BackArrowIcon onPress={handleGoBack} />
+        <HandsIcon color={colors.white} />
       </DetailHeader>
       <ScrollView>
         <LastTime timeInMin={21} />

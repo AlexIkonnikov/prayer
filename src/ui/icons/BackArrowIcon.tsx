@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {TouchableOpacity, TouchableOpacityProps} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
 
-export const BackArrow: FC<TouchableOpacityProps> = ({...outerProps}) => {
+export const BackArrowIcon: FC<TouchableOpacityProps> = ({...outerProps}) => {
   return (
     <TouchableOpacity {...outerProps}>
       <Svg width="18" height="16" viewBox="0 0 18 16" fill="none">

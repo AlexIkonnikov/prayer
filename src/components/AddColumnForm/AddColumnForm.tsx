@@ -5,7 +5,7 @@ import {NativeSyntheticEvent, TextInputEndEditingEventData} from 'react-native';
 import {selectors} from '../../store/ducks';
 import {useAppSelector} from '../../store/hooks';
 import {colors} from '../../styles/colors';
-import {Plus} from '../../ui/icons/Plus';
+import {PlusIcon} from '../../ui/icons/PlusIcon';
 import {Input} from '../../ui/Input';
 import {Loader} from '../../ui/Loader';
 import {StyledContainer} from '../../ui/StyledContainer';
@@ -61,7 +61,7 @@ const AddColumnForm: FC<AddColumnFormProps> = ({inputText, submit}) => {
             {dataUpdateStatus === 'inProcess' ? (
               <Loader size="small" />
             ) : (
-              <Plus
+              <PlusIcon
                 color={colors.blue}
                 onPress={handleSubmit}
                 disabled={!values.text}

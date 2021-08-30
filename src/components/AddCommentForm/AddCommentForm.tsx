@@ -4,7 +4,7 @@ import {Field, Form, FormProps} from 'react-final-form';
 import {actions, selectors} from '../../store/ducks';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {Input} from '../../ui/Input';
-import {Message} from '../../ui/icons/Message';
+import {MessageIcon} from '../../ui/icons/MessageIcon';
 import {StyledContainer} from '../../ui/StyledContainer';
 import {Loader} from '../../ui/Loader';
 
@@ -39,7 +39,7 @@ const AddCommentForm: FC<AddCommentPayloadProps> = ({prayerId}) => {
             {status === 'inProcess' ? (
               <Loader size="small" />
             ) : (
-              <Message disabled={pristine} onPress={handleSubmit} />
+              <MessageIcon disabled={pristine} onPress={handleSubmit} />
             )}
             <Field
               name="body"

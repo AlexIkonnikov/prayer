@@ -4,7 +4,7 @@ import {Field, Form, FormProps} from 'react-final-form';
 import {actions, selectors} from '../../store/ducks';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {colors} from '../../styles/colors';
-import {Plus} from '../../ui/icons/Plus';
+import {PlusIcon} from '../../ui/icons/PlusIcon';
 import {Input} from '../../ui/Input';
 import {Loader} from '../../ui/Loader';
 import {StyledContainer} from '../../ui/StyledContainer';
@@ -51,7 +51,7 @@ const AddPrayerForm: FC<AddPrayerFormProps> = ({columnId}) => {
             {status === 'inProcess' ? (
               <Loader size="small" />
             ) : (
-              <Plus width={22} color={colors.blue} onPress={handleSubmit} />
+              <PlusIcon width={22} color={colors.blue} onPress={handleSubmit} />
             )}
             <Field
               name="title"

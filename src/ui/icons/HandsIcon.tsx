@@ -9,7 +9,7 @@ interface HandsIconProps {
   color?: Color;
 }
 
-export const Hands: FC<HandsIconProps> = ({prayerCount, color}) => {
+export const HandsIcon: FC<HandsIconProps> = ({prayerCount, color}) => {
   return (
     <Row containerStyled={'justify-content: flex-start;'}>
       <Svg width="29" height="23" viewBox="0 0 29 23" fill="white">

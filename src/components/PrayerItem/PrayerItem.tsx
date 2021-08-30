@@ -6,8 +6,8 @@ import {IPrayer} from '../../store/prayer';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {AppText} from '../../ui/AppText';
 import {CheckBox} from '../../ui/Checkbox';
-import {Hands} from '../../ui/icons/Hands';
-import {User} from '../../ui/icons/User';
+import {HandsIcon} from '../../ui/icons/HandsIcon';
+import {UserIcon} from '../../ui/icons/UserIcon';
 import {Line} from '../../ui/Line';
 import {Row} from '../../ui/Row';
 import {DeleteButton} from '../../ui/DeleteButton';
@@ -89,8 +89,8 @@ const PrayerItem: FC<PrayerItemProps> = ({
             )}
           </Row>
           <Row>
-            {isCommentExist() ? <User userCount={commentCount} /> : null}
-            <Hands prayerCount={15} />
+            {isCommentExist() ? <UserIcon userCount={commentCount} /> : null}
+            <HandsIcon prayerCount={15} />
           </Row>
         </Row>
       </TouchableOpacity>

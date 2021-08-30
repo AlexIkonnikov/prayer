@@ -3,7 +3,7 @@ import {TouchableOpacity, TouchableOpacityProps} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
 import {colors} from '../../styles/colors';
 
-export const Message: FC<TouchableOpacityProps> = ({...outerProps}) => {
+export const MessageIcon: FC<TouchableOpacityProps> = ({...outerProps}) => {
   return (
     <TouchableOpacity {...outerProps}>
       <Svg width="20" height="20" viewBox="0 0 20 20" fill="none">

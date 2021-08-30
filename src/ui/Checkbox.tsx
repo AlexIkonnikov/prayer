@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import styled from 'styled-components/native';
-import {CheckMark} from './icons/CheckMark';
+import {CheckMarkIcon} from './icons/CheckMarkIcon';
 import {Row} from './Row';
 
 interface CheckBoxProps {
@@ -11,7 +11,7 @@ interface CheckBoxProps {
 export const CheckBox: FC<CheckBoxProps> = ({checked, onChange}) => {
   return (
     <Row containerStyled="padding-right: 15px;">
-      <TouchableBox onPress={onChange}>{checked && <CheckMark />}</TouchableBox>
+      <TouchableBox onPress={onChange}>{checked && <CheckMarkIcon />}</TouchableBox>
     </Row>
   );
 };
