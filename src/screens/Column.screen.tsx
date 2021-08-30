@@ -10,12 +10,13 @@ import { Button } from '../ui/Button';
 import { useAppDispatch } from '../store/hooks';
 import { actions } from '../store/ducks';
 import { ColumnScreenProps } from '../routes/MainRoute';
+import { IconButton } from '../ui/IconButton';
 
 export const Column: FC<ColumnScreenProps> = ({ route }) => {
   const dispatch = useAppDispatch();
   const [stateModal, setStateModal] = useState(false);
 
-  const openModal = () => {
+  const handlerOpenModal = () => {
     setStateModal(true);
   };
 
@@ -32,9 +33,9 @@ export const Column: FC<ColumnScreenProps> = ({ route }) => {
         <StyledContainer containerStyled={'flex-grow: 1; align-items: center;'}>
           <AppText bold>{route.params.name}</AppText>
         </StyledContainer>
-        <SettingIcon onPress={openModal} />
+        <IconButton onPress={handlerOpenModal} render={() => <SettingIcon />} />
       </Header>
-      <TabRoute columnId={route.params.id}/>
+      <TabRoute columnId={route.params.id} />
       <AppModal visible={stateModal}>
         <AppText>Do you want to log out?</AppText>
         <Button title="YES" onPress={logOut} />

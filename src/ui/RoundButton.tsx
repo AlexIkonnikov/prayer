@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {colors} from '../styles/colors';
+import { IconButton } from './IconButton';
 import {PlusIcon} from './icons/PlusIcon';
 import {StyledContainer} from './StyledContainer';
 
@@ -14,7 +15,7 @@ export const RoundButton: FC = () => {
             align-items: center;
             justify-content: center;
         `}>
-      <PlusIcon />
+      <IconButton render={() => <PlusIcon />} />
     </StyledContainer>
   );
 };

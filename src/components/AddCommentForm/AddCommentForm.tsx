@@ -7,6 +7,7 @@ import {Input} from '../../ui/Input';
 import {MessageIcon} from '../../ui/icons/MessageIcon';
 import {StyledContainer} from '../../ui/StyledContainer';
 import {Loader} from '../../ui/Loader';
+import { IconButton } from '../../ui/IconButton';
 
 interface AddCommentPayloadProps {
   prayerId: number;
@@ -39,7 +40,7 @@ const AddCommentForm: FC<AddCommentPayloadProps> = ({prayerId}) => {
             {status === 'inProcess' ? (
               <Loader size="small" />
             ) : (
-              <MessageIcon disabled={pristine} onPress={handleSubmit} />
+              <IconButton disabled={pristine} onPress={handleSubmit} render={() => <MessageIcon/>}/>
             )}
             <Field
               name="body"

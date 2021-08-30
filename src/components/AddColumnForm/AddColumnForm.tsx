@@ -1,27 +1,28 @@
-import {FormApi} from 'final-form';
-import React, {FC} from 'react';
-import {Field, Form, FormProps} from 'react-final-form';
-import {NativeSyntheticEvent, TextInputEndEditingEventData} from 'react-native';
-import {selectors} from '../../store/ducks';
-import {useAppSelector} from '../../store/hooks';
-import {colors} from '../../styles/colors';
-import {PlusIcon} from '../../ui/icons/PlusIcon';
-import {Input} from '../../ui/Input';
-import {Loader} from '../../ui/Loader';
-import {StyledContainer} from '../../ui/StyledContainer';
+import { FormApi } from 'final-form';
+import React, { FC } from 'react';
+import { Field, Form, FormProps } from 'react-final-form';
+import { NativeSyntheticEvent, TextInputEndEditingEventData } from 'react-native';
+import { selectors } from '../../store/ducks';
+import { useAppSelector } from '../../store/hooks';
+import { colors } from '../../styles/colors';
+import { IconButton } from '../../ui/IconButton';
+import { PlusIcon } from '../../ui/icons/PlusIcon';
+import { Input } from '../../ui/Input';
+import { Loader } from '../../ui/Loader';
+import { StyledContainer } from '../../ui/StyledContainer';
 
 interface AddColumnFormProps {
   submit: (text: string) => void;
   inputText: string;
 }
 
-const AddColumnForm: FC<AddColumnFormProps> = ({inputText, submit}) => {
+const AddColumnForm: FC<AddColumnFormProps> = ({ inputText, submit }) => {
   const dataUpdateStatus = useAppSelector(
     selectors.column.selectDataUpdateStatus,
   );
 
   const checkForm = (
-    {nativeEvent}: NativeSyntheticEvent<TextInputEndEditingEventData>,
+    { nativeEvent }: NativeSyntheticEvent<TextInputEndEditingEventData>,
     form: FormApi<FormProps>,
   ) => {
     if (nativeEvent.text === '') {
@@ -36,15 +37,15 @@ const AddColumnForm: FC<AddColumnFormProps> = ({inputText, submit}) => {
   return (
     <Form
       onSubmit={submitHandler}
-      initialValues={{text: inputText}}
-      render={({handleSubmit, form, values}) => {
+      initialValues={{ text: inputText }}
+      render={({ handleSubmit, form, values }) => {
         return (
           <>
             <StyledContainer
               containerStyled={'flex-grow: 1; align-items: center;'}>
               <Field
                 name="text"
-                render={({input}) => {
+                render={({ input }) => {
                   return (
                     <Input
                       bold
@@ -61,11 +62,7 @@ const AddColumnForm: FC<AddColumnFormProps> = ({inputText, submit}) => {
             {dataUpdateStatus === 'inProcess' ? (
               <Loader size="small" />
             ) : (
-              <PlusIcon
-                color={colors.blue}
-                onPress={handleSubmit}
-                disabled={!values.text}
-              />
+              <IconButton onPress={handleSubmit} disabled={!values.text} render={() => <PlusIcon color={colors.blue} />} />
             )}
           </>
         );

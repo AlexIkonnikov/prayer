@@ -9,6 +9,7 @@ import {actions, selectors} from '../store/ducks';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {colors} from '../styles/colors';
 import {DetailHeader} from '../ui/DetailHeader';
+import { IconButton } from '../ui/IconButton';
 import {BackArrowIcon} from '../ui/icons/BackArrowIcon';
 import {HandsIcon} from '../ui/icons/HandsIcon';
 import {LastTime} from '../ui/LastTime';
@@ -44,7 +45,7 @@ export const Detail: FC<DetailScreenProps> = ({navigation, route}) => {
   return (
     <React.Fragment>
       <DetailHeader title={prayer.title} submit={updatePrayer}>
-        <BackArrowIcon onPress={handleGoBack} />
+        <IconButton onPress={handleGoBack} render={() => <BackArrowIcon/>}/>
         <HandsIcon color={colors.white} />
       </DetailHeader>
       <ScrollView>
