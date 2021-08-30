@@ -7,7 +7,7 @@ interface AvatarProps {
   big?: boolean;
 }
 
-export const Avatar: FC<AvatarProps> = ({big}) => {
+export const Avatar: FC<AvatarProps> = ({big = false}) => {
   return (
     <StyledContainer
       containerStyled={`

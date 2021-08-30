@@ -7,36 +7,36 @@ import {InputField} from './InputField';
 
 interface EditableFormProps extends ModalProps {
   value: string;
-  save: (value: string) => void;
-  cancel: () => void;
-  deleted: () => void;
+  onSave: (value: string) => void;
+  onCancel: () => void;
+  onDeleted: () => void;
 }
 
 export const EditableForm: FC<EditableFormProps> = ({
   value,
-  save,
-  cancel,
-  deleted,
+  onSave,
+  onCancel,
+  onDeleted,
   ...outerProps
 }) => {
-  const onSubmit = ({text}: FormProps) => {
-    save(text);
-    cancel();
+  const handleSave = ({text}: FormProps) => {
+    onSave(text);
+    onCancel();
   };
 
   return (
     <AppModal {...outerProps}>
       <Form
-        onSubmit={onSubmit}
+        onSubmit={handleSave}
         initialValues={{text: value}}
         render={({handleSubmit}) => {
           return (
             <View>
               <Field name="text" component={InputField} />
               <GroupeButton
-                save={handleSubmit}
-                cancel={cancel}
-                deleted={deleted}
+                onSave={handleSubmit}
+                onCancel={onCancel}
+                onDeleted={onDeleted}
               />
             </View>
           );

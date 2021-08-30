@@ -1,5 +1,5 @@
-import {useNavigation, useRoute} from '@react-navigation/native';
 import React, {FC} from 'react';
+import { FormProps } from 'react-final-form';
 import {ScrollView} from 'react-native';
 import {AddCommentForm} from '../components/AddCommentForm';
 import {CommentList} from '../components/CommentList';
@@ -13,11 +13,7 @@ import { IconButton } from '../ui/IconButton';
 import {BackArrowIcon} from '../ui/icons/BackArrowIcon';
 import {HandsIcon} from '../ui/icons/HandsIcon';
 import {LastTime} from '../ui/LastTime';
-import {Statisticks} from '../ui/Statisticks';
-
-const src = [
-  'https://sun1-84.userapi.com/s/v1/ig2/KaYR6LGXCEg9pNmHl9mCB-uTZc8aN5-dKa5xYF2COoYZyB3GLX9bgVkAmhPSwaJhKFpqv_YnYbL-YmekB7MqhIs3.jpg?size=100x100&quality=96&crop=0,0,453,453&ava=1',
-];
+import {Statistics} from '../ui/Statistics';
 
 export const Detail: FC<DetailScreenProps> = ({navigation, route}) => {
 
@@ -31,11 +27,11 @@ export const Detail: FC<DetailScreenProps> = ({navigation, route}) => {
     navigation.goBack();
   };
 
-  const updatePrayer = (title: string) => {
+  const handleUpdatePrayer = (values: FormProps) => {
     dispatch(
       actions.prayer.updatePrayerRequest({
         id: prayer.id,
-        title,
+        title: values.title,
         description: prayer.description,
         checked: prayer.checked,
       }),
@@ -44,14 +40,14 @@ export const Detail: FC<DetailScreenProps> = ({navigation, route}) => {
 
   return (
     <React.Fragment>
-      <DetailHeader title={prayer.title} submit={updatePrayer}>
+      <DetailHeader title={prayer.title} onSubmitForm={handleUpdatePrayer}>
         <IconButton onPress={handleGoBack} render={() => <BackArrowIcon/>}/>
         <HandsIcon color={colors.white} />
       </DetailHeader>
       <ScrollView>
         <LastTime timeInMin={21} />
-        <Statisticks />
-        <MemberList srcs={src} />
+        <Statistics />
+        <MemberList />
         <CommentList comments={comments} />
       </ScrollView>
       <AddCommentForm prayerId={prayer.id} />

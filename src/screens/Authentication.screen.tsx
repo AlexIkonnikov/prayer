@@ -15,7 +15,7 @@ export const Authentication: FC = () => {
   const fetchingStatus = useAppSelector(selectors.user.selectFetchingStatus);
   const errors = useAppSelector(selectors.user.selectErrors);
 
-  const onSubmitForm = (values: FormProps) => {
+  const handleSubmitForm = (values: FormProps) => {
     dispatch(
       actions.user.signInRequest({
         email: values.email,
@@ -24,13 +24,13 @@ export const Authentication: FC = () => {
     );
   };
 
-  const closeModal = () => {
+  const handleCloseModal = () => {
     dispatch(actions.user.cleanErrors());
   };
 
   return (
     <Form
-      onSubmit={onSubmitForm}
+      onSubmit={handleSubmitForm}
       render={({handleSubmit, values}) => {
         return (
           <View>
@@ -60,7 +60,7 @@ export const Authentication: FC = () => {
                   {err}
                 </AppText>
               ))}
-              <Button title="Ok" onPress={closeModal} />
+              <Button title="Ok" onPress={handleCloseModal} />
             </AppModal>
           </View>
         );

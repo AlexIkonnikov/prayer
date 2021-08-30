@@ -16,15 +16,15 @@ export const Column: FC<ColumnScreenProps> = ({ route }) => {
   const dispatch = useAppDispatch();
   const [stateModal, setStateModal] = useState(false);
 
-  const handlerOpenModal = () => {
+  const handleOpenModal = () => {
     setStateModal(true);
   };
 
-  const closeModal = () => {
+  const handleCloseModal = () => {
     setStateModal(false);
   };
 
-  const logOut = () => {
+  const handleLogOut = () => {
     dispatch(actions.user.logOut());
   };
   return (
@@ -33,13 +33,13 @@ export const Column: FC<ColumnScreenProps> = ({ route }) => {
         <StyledContainer containerStyled={'flex-grow: 1; align-items: center;'}>
           <AppText bold>{route.params.name}</AppText>
         </StyledContainer>
-        <IconButton onPress={handlerOpenModal} render={() => <SettingIcon />} />
+        <IconButton onPress={handleOpenModal} render={() => <SettingIcon />} />
       </Header>
       <TabRoute columnId={route.params.id} />
       <AppModal visible={stateModal}>
         <AppText>Do you want to log out?</AppText>
-        <Button title="YES" onPress={logOut} />
-        <Button title="NO" onPress={closeModal} />
+        <Button title="YES" onPress={handleLogOut} />
+        <Button title="NO" onPress={handleCloseModal} />
       </AppModal>
     </React.Fragment>
   );

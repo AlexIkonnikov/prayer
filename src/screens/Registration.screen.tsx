@@ -15,17 +15,17 @@ export const Registration: FC = () => {
   const fetchingStatus = useAppSelector(selectors.user.selectFetchingStatus);
   const errors = useAppSelector(selectors.user.selectErrors);
 
-  const closeModal = () => {
+  const handleCloseModal = () => {
     dispatch(actions.user.cleanErrors());
   };
 
-  const onSubmitForm = ({name, email, password}: FormProps) => {
+  const handleSubmitForm = ({name, email, password}: FormProps) => {
     dispatch(actions.user.signUpRequest({email, name, password}));
   };
 
   return (
     <Form
-      onSubmit={onSubmitForm}
+      onSubmit={handleSubmitForm}
       render={({handleSubmit, values}) => {
         return (
           <View>
@@ -60,7 +60,7 @@ export const Registration: FC = () => {
                   {err}
                 </AppText>
               ))}
-              <Button title="Ok" onPress={closeModal} />
+              <Button title="Ok" onPress={handleCloseModal} />
             </AppModal>
           </View>
         );

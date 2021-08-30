@@ -17,7 +17,7 @@ interface AddPrayerFormProps {
 const AddPrayerForm: FC<AddPrayerFormProps> = ({columnId}) => {
   const dispatch = useAppDispatch();
   const status = useAppSelector(selectors.prayer.selectDataUpdateStatus);
-  const createPrayer = (values: FormProps, form: FormApi<FormProps>) => {
+  const handleCreatePrayer = (values: FormProps, form: FormApi<FormProps>) => {
     dispatch(
       actions.prayer.addPrayerToColumnRequest({
         columnId: columnId,
@@ -31,7 +31,7 @@ const AddPrayerForm: FC<AddPrayerFormProps> = ({columnId}) => {
 
   return (
     <Form
-      onSubmit={createPrayer}
+      onSubmit={handleCreatePrayer}
       initialValues={{title: ''}}
       render={({handleSubmit}) => {
         return (

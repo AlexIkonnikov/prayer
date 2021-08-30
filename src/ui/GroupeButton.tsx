@@ -4,15 +4,15 @@ import {colors} from '../styles/colors';
 import {Row} from './Row';
 
 interface GroupeButtonProps {
-  cancel: () => void;
-  save: (e: NativeSyntheticEvent<NativeTouchEvent>) => void;
-  deleted: () => void;
+  onCancel: () => void;
+  onSave: (e: NativeSyntheticEvent<NativeTouchEvent>) => void;
+  onDeleted: () => void;
 }
 
 export const GroupeButton: FC<GroupeButtonProps> = ({
-  save,
-  cancel,
-  deleted,
+  onSave,
+  onCancel,
+  onDeleted,
 }) => {
   return (
     <Row
@@ -22,9 +22,9 @@ export const GroupeButton: FC<GroupeButtonProps> = ({
             margin:0 auto;
             margin-top:20px;
         `}>
-      <Button title="save" color={colors.blue} onPress={save} />
-      <Button title="cancel" color={colors.ligthGray} onPress={cancel} />
-      <Button title="delete" color={colors.red} onPress={deleted} />
+      <Button title="save" color={colors.blue} onPress={onSave} />
+      <Button title="cancel" color={colors.ligthGray} onPress={onCancel} />
+      <Button title="delete" color={colors.red} onPress={onDeleted} />
     </Row>
   );
 };

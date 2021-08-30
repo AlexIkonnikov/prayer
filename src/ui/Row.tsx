@@ -1,21 +1,27 @@
-import React, {FC} from 'react';
-import {CSSProp} from 'styled-components';
-import {StyledContainer} from './StyledContainer';
+import React, { FC } from 'react';
+import { CSSProp } from 'styled-components';
+import styled from 'styled-components/native'
+
 
 interface RowProps {
   containerStyled?: CSSProp;
 }
 
-export const Row: FC<RowProps> = ({children, containerStyled}) => {
+export const Row: FC<RowProps> = ({ children, containerStyled = {} }) => {
   return (
-    <StyledContainer
-      containerStyled={
-        `
-            display: flex; 
-            flex-direction: row; 
-            align-items: center;` + containerStyled
-      }>
+    <StyledRow $CSS={containerStyled}>
       {children}
-    </StyledContainer>
+    </StyledRow>
   );
 };
+
+interface StyledRowProps {
+  $CSS: CSSProp
+}
+
+const StyledRow = styled.View<StyledRowProps>`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  ${({$CSS}) => $CSS};
+`

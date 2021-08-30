@@ -6,14 +6,14 @@ import {Input} from './Input';
 import {StyledContainer} from './StyledContainer';
 
 interface DetailHeaderProps {
-  title?: string;
-  submit: (title: string) => void;
+  title: string;
+  onSubmitForm: (values: FormProps) => void;
 }
 
 export const DetailHeader: FC<DetailHeaderProps> = ({
   title,
   children,
-  submit,
+  onSubmitForm,
 }) => {
   return (
     <StyledContainer
@@ -22,14 +22,12 @@ export const DetailHeader: FC<DetailHeaderProps> = ({
             background-color: ${colors.gray};`}>
       <Row
         containerStyled={`
-                justify-content: space-between; 
+                justify-content: space-between;
                 margin-bottom: 15px;`}>
         {children}
       </Row>
       <Form
-        onSubmit={(values: FormProps) => {
-          submit(values.title);
-        }}
+        onSubmit={onSubmitForm}
         initialValues={{title: title}}
         render={({handleSubmit}) => {
           return (

@@ -8,30 +8,30 @@ import {EditableForm} from '../../ui/EditableForm';
 
 interface ColumnItemProps {
   column: IColumn;
-  onPress: (name: string, id: number) => void;
+  onNext: (name: string, id: number) => void;
 }
 
-const ColumnItem: FC<ColumnItemProps> = ({column, onPress}) => {
+const ColumnItem: FC<ColumnItemProps> = ({column, onNext}) => {
   const dispatch = useAppDispatch();
   const [editMode, setEditMode] = useState(false);
 
-  const onPressHandler = () => {
-    onPress(column.title, column.id);
+  const handlerPressItem = () => {
+    onNext(column.title, column.id);
   };
 
-  const activeEditMode = () => {
+  const handleActiveEditMode = () => {
     setEditMode(true);
   };
 
-  const offEditMode = () => {
+  const handleOffEditMode = () => {
     setEditMode(false);
   };
 
-  const updateColumn = (title: string) => {
+  const handleUpdateColumn = (title: string) => {
     dispatch(actions.column.updateColumnRequest({...column, title}));
   };
 
-  const deleteColumn = () => {
+  const handleDeleteColumn = () => {
     dispatch(actions.column.deletColumnRequest(column.id));
   };
 
@@ -39,15 +39,15 @@ const ColumnItem: FC<ColumnItemProps> = ({column, onPress}) => {
     <>
       <Card
         name={column.title}
-        onPress={onPressHandler}
-        onLongPress={activeEditMode}
+        onPress={handlerPressItem}
+        onLongPress={handleActiveEditMode}
       />
       <EditableForm
         value={column.title}
         visible={editMode}
-        save={updateColumn}
-        cancel={offEditMode}
-        deleted={deleteColumn}
+        onSave={handleUpdateColumn}
+        onCancel={handleOffEditMode}
+        onDeleted={handleDeleteColumn}
       />
     </>
   );

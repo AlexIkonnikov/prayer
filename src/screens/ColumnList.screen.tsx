@@ -25,23 +25,23 @@ export const ColumnList: FC<ColumnListScreenProps> = ({ navigation }) => {
     dispatch(actions.comment.getAllCommentsRequest());
   }, [dispatch]);
 
-  const next = (name: string, id: number) => {
+  const handleNextPage = (name: string, id: number) => {
     navigation.navigate('Column', { name, id });
   };
 
-  const addColumn = (title: string) => {
+  const handleAddColumn = (title: string) => {
     dispatch(actions.column.addColumnRequest({ title, description: null }));
   };
 
   return (
     <View>
       <Header>
-        <AddColumnForm inputText="My Desk" submit={addColumn} />
+        <AddColumnForm inputText="My Desk" onSubmit={handleAddColumn} />
       </Header>
       <ScrollView>
         <Container>
           {columns.map(col => (
-            <ColumnItem column={col} onPress={next} key={col.id} />
+            <ColumnItem column={col} onNext={handleNextPage} key={col.id} />
           ))}
         </Container>
       </ScrollView>

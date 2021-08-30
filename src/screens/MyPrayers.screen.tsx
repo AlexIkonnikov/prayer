@@ -7,9 +7,7 @@ import { ColumnScreenProps } from '../routes/MainRoute';
 import { IPrayer } from '../store/prayer';
 
 export const MyPrayers: FC<ColumnScreenProps> = ({ navigation, route }) => {
-  const goToDetail = (item: IPrayer) => {
-    navigation.navigate('Detail', { prayer: item })
-  }
+
   return (
     <ScrollView>
       <Container>

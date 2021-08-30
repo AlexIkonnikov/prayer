@@ -4,6 +4,7 @@ import {NativeSyntheticEvent, TextInputFocusEventData} from 'react-native';
 import {StyledContainer} from './StyledContainer';
 import {colors} from '../styles/colors';
 import {TextInput} from 'react-native';
+import { Input } from './Input';
 
 interface InputFieldProps extends FieldRenderProps<string> {
   onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
@@ -25,7 +26,7 @@ export const InputField: FC<InputFieldProps> = ({
             padding: 0 15px;
             border-radius: 5px;
             border: 1px solid ${colors.blue};`}>
-      <TextInput {...input} {...meta} {...outerProps} />
+      <Input {...input} {...meta} {...outerProps} />
     </StyledContainer>
   );
 };

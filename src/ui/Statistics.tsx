@@ -4,7 +4,7 @@ import {colors} from '../styles/colors';
 import {AppText} from './AppText';
 import {Row} from './Row';
 
-export const Statisticks: FC = () => {
+export const Statistics: FC = () => {
   return (
     <ContentWrapper>
       <Row>

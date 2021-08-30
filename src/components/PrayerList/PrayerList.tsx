@@ -10,11 +10,11 @@ import { ColumnScreenProps } from '../../routes/MainRoute';
 const PrayerList: FC<ColumnScreenProps> = ({ navigation, route }) => {
   const [visibleAnsweredPrayers, setVisibleAnsweredPrayers] = useState(false);
 
-  const onPrayerItemPress = (item: IPrayer) => {
+  const handlePrayerItemPress = (item: IPrayer) => {
     navigation.navigate('Detail', { prayer: item })
   };
 
-  const onChangeState = () => {
+  const handleChangeState = () => {
     setVisibleAnsweredPrayers(!visibleAnsweredPrayers);
   };
 
@@ -32,7 +32,7 @@ const PrayerList: FC<ColumnScreenProps> = ({ navigation, route }) => {
         <PrayerItem
           key={item.id}
           onPress={() => {
-            onPrayerItemPress(item);
+            handlePrayerItemPress(item);
           }}
           {...item}
         />
@@ -44,7 +44,7 @@ const PrayerList: FC<ColumnScreenProps> = ({ navigation, route }) => {
               ? 'show answered prayers'
               : 'hide Answered Prayers'
           }
-          onPress={onChangeState}
+          onPress={handleChangeState}
         />
       )}
       {!visibleAnsweredPrayers &&
@@ -52,7 +52,7 @@ const PrayerList: FC<ColumnScreenProps> = ({ navigation, route }) => {
           <PrayerItem
             key={item.id}
             onPress={() => {
-              onPrayerItemPress(item);
+              handlePrayerItemPress(item);
             }}
             {...item}
           />

@@ -1,7 +1,5 @@
-import { FormApi } from 'final-form';
 import React, { FC } from 'react';
 import { Field, Form, FormProps } from 'react-final-form';
-import { NativeSyntheticEvent, TextInputEndEditingEventData } from 'react-native';
 import { selectors } from '../../store/ducks';
 import { useAppSelector } from '../../store/hooks';
 import { colors } from '../../styles/colors';
@@ -12,33 +10,24 @@ import { Loader } from '../../ui/Loader';
 import { StyledContainer } from '../../ui/StyledContainer';
 
 interface AddColumnFormProps {
-  submit: (text: string) => void;
+  onSubmit: (text: string) => void;
   inputText: string;
 }
 
-const AddColumnForm: FC<AddColumnFormProps> = ({ inputText, submit }) => {
+const AddColumnForm: FC<AddColumnFormProps> = ({ inputText, onSubmit }) => {
   const dataUpdateStatus = useAppSelector(
     selectors.column.selectDataUpdateStatus,
   );
 
-  const checkForm = (
-    { nativeEvent }: NativeSyntheticEvent<TextInputEndEditingEventData>,
-    form: FormApi<FormProps>,
-  ) => {
-    if (nativeEvent.text === '') {
-      form.restart();
-    }
-  };
-
-  const submitHandler = (values: FormProps) => {
-    submit(values.text);
+  const handleSubmit = (values: FormProps) => {
+    onSubmit(values.text);
   };
 
   return (
     <Form
-      onSubmit={submitHandler}
+      onSubmit={handleSubmit}
       initialValues={{ text: inputText }}
-      render={({ handleSubmit, form, values }) => {
+      render={({ handleSubmit, values }) => {
         return (
           <>
             <StyledContainer
@@ -51,9 +40,6 @@ const AddColumnForm: FC<AddColumnFormProps> = ({ inputText, submit }) => {
                       bold
                       value={input.value}
                       onChangeText={input.onChange}
-                      onEndEditing={e => {
-                        checkForm(e, form);
-                      }}
                     />
                   );
                 }}

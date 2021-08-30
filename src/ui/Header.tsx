@@ -1,16 +1,17 @@
 import React, {FC} from 'react';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import {Container} from './Container';
+import {Row} from './Row'
 
 interface HeaderProps {
   withTab?: boolean;
 }
 
-export const Header: FC<HeaderProps> = ({children, withTab}) => {
+export const Header: FC<HeaderProps> = ({children, withTab = false}) => {
   return (
-    <HeaderContainer withTab={withTab ?? false}>
+    <HeaderContainer withTab={withTab}>
       <Container>
-        <Row>{children}</Row>
+        <Row containerStyled={rowStyle}>{children}</Row>
       </Container>
     </HeaderContainer>
   );
@@ -28,9 +29,6 @@ const HeaderContainer = styled.View<HeaderProps>`
   padding: 22px 0;
 `;
 
-const Row = styled.View`
-  display: flex;
-  flex-direction: row;
+const rowStyle = css`
   justify-content: flex-end;
-  align-items: center;
 `;
