@@ -21,8 +21,6 @@ const PrayerList: FC = () => {
   const onChangeState = () => {
     setVisibleAnsweredPrayers(!visibleAnsweredPrayers);
   };
-
-  //const prayers = useAppSelector(selectors.prayer.selectPrayersByColumnId(route.params.id));
   const checkedItem = useAppSelector(
     selectors.prayer.selectCheckedPrayersByColumnId(route.params.id),
   );

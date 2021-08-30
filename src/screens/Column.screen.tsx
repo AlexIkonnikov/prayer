@@ -1,19 +1,17 @@
-import React, {FC} from 'react';
-import {TabRoute} from '../routes/TabRoute';
-import {Header} from '../ui/Header';
-import {useRoute} from '@react-navigation/native';
-import {AppText} from '../ui/AppText';
-import {Setting} from '../ui/icons/Setting';
-import {ColumnScreenRouteProp} from '../types';
-import {StyledContainer} from '../ui/StyledContainer';
-import {AppModal} from '../ui/AppModal';
-import {useState} from 'react';
-import {Button} from '../ui/Button';
-import {useAppDispatch} from '../store/hooks';
-import {actions} from '../store/ducks';
+import React, { FC } from 'react';
+import { TabRoute } from '../routes/TabRoute';
+import { Header } from '../ui/Header';
+import { AppText } from '../ui/AppText';
+import { Setting } from '../ui/icons/Setting';
+import { StyledContainer } from '../ui/StyledContainer';
+import { AppModal } from '../ui/AppModal';
+import { useState } from 'react';
+import { Button } from '../ui/Button';
+import { useAppDispatch } from '../store/hooks';
+import { actions } from '../store/ducks';
+import { ColumnScreenProps } from '../routes/MainRoute';
 
-export const Column: FC = () => {
-  const route = useRoute<ColumnScreenRouteProp>();
+export const Column: FC<ColumnScreenProps> = ({ route }) => {
   const dispatch = useAppDispatch();
   const [stateModal, setStateModal] = useState(false);
 

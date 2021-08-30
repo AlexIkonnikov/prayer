@@ -18,19 +18,9 @@ export type TabNavigationProps = {
   Subscribed: {id: number};
 };
 
-export type ColumnListScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'ColumnList'
->;
-
 export type ColumnScreenRouteProp = RouteProp<RootStackParamList, 'Column'>;
 
 export type ColumnScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   'Column'
 >;
-
-export type DetailScreenRouterProp = RouteProp<RootStackParamList, 'Detail'>;
-
-export type DetailScreenNavigationProp =
-  StackNavigationProp<RootStackParamList>;
