@@ -1,29 +1,31 @@
-import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '../../store';
-import { IUser, IUserSlice } from './types';
+import {createSelector} from '@reduxjs/toolkit';
+import {RootState} from '../../store';
+import {IUser, IUserSlice} from './types';
 
-const selectUserSlice = (state:RootState): IUserSlice => {
-    return (state.user);
+const selectUserSlice = (state: RootState): IUserSlice => {
+  return state.user;
 };
 
 const selectUser = createSelector(
-    selectUserSlice,
-    (user: IUserSlice) => user.user
+  selectUserSlice,
+  (user: IUserSlice) => user.user,
 );
 
-const selectUserToken = createSelector(
-    selectUser,
-    (user: IUser) => user.token
-);
+const selectUserToken = createSelector(selectUser, (user: IUser) => user.token);
 
 const selectFetchingStatus = createSelector(
-    selectUserSlice,
-    (user: IUserSlice) => user.fetchingStatus
+  selectUserSlice,
+  (user: IUserSlice) => user.fetchingStatus,
 );
 
-const selectErrors=createSelector(
-    selectUserSlice,
-    (user: IUserSlice) => user.errors
+const selectErrors = createSelector(
+  selectUserSlice,
+  (user: IUserSlice) => user.errors,
 );
 
-export const selectors = {selectUser, selectUserToken, selectFetchingStatus, selectErrors};
+export const selectors = {
+  selectUser,
+  selectUserToken,
+  selectFetchingStatus,
+  selectErrors,
+};

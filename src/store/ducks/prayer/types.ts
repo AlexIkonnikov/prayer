@@ -1,27 +1,27 @@
 export interface IPrayer {
-    id: number
-    title: string
-    description: string
-    checked: boolean
-    columnId: number
-    commentsIds: Array<number>
+  id: number;
+  title: string;
+  description: string;
+  checked: boolean;
+  columnId: number;
+  commentsIds: Array<number>;
 }
 
 export interface UpdatePrayerPayload {
-    id:number
-    title:string
-    description: string
-    checked: boolean
+  id: number;
+  title: string;
+  description: string;
+  checked: boolean;
 }
 
 export interface IPrayerSlice {
-    prayers: Array<IPrayer>
-    dataUpdateStatus: 'done' | 'inProcess'
+  prayers: Array<IPrayer>;
+  dataUpdateStatus: 'done' | 'inProcess';
 }
 
 export interface AddPrayerPayload {
-    columnId: number
-    title: string,
-    description: string,
-    checked: boolean
+  columnId: number;
+  title: string;
+  description: string;
+  checked: boolean;
 }
