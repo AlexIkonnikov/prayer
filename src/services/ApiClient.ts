@@ -2,7 +2,7 @@ import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
 import {store} from '../store/store';
 const baseUrl = 'https://prayer.herokuapp.com/';
 
-class Api {
+class ApiClient {
   private api: AxiosInstance;
 
   constructor() {
@@ -39,4 +39,4 @@ class Api {
   }
 }
 
-export default new Api();
+export default new ApiClient();
