@@ -10,11 +10,7 @@ export const Row: FC<RowProps> = ({children, containerStyled = {}}) => {
   return <StyledRow $CSS={containerStyled}>{children}</StyledRow>;
 };
 
-interface StyledRowProps {
-  $CSS: CSSProp;
-}
-
-const StyledRow = styled.View<StyledRowProps>`
+const StyledRow = styled.View<{$CSS: CSSProp}>`
   display: flex;
   flex-direction: row;
   align-items: center;

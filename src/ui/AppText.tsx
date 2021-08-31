@@ -11,7 +11,7 @@ export const AppText: FC<AppTextProps> = ({children, containerStyled = {}}) => {
   return <StyledText $CSS={containerStyled}>{children}</StyledText>;
 };
 
-const StyledText = styled.Text<{$CSS?: CSSProp}>`
+const StyledText = styled.Text<{$CSS: CSSProp}>`
   font-size: 17px;
   color: ${colors.lightBlack};
   ${({$CSS}) => $CSS};

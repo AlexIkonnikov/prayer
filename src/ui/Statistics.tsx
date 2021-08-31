@@ -1,5 +1,4 @@
 import React, {FC} from 'react';
-import {CSSProp} from 'styled-components';
 import styled, {css} from 'styled-components/native';
 import {colors} from '../styles/colors';
 import {AppText} from './AppText';
@@ -13,22 +12,24 @@ export const Statistics: FC = () => {
           <AppText containerStyled={[bigStyleText, middleStyleText]}>
             July 25 2017
           </AppText>
-          <StyledText>Date Added</StyledText>
-          <StyledText $CSS={textStyle}>Opened for 4 days</StyledText>
+          <AppText containerStyled={textStyle}>Date Added</AppText>
+          <AppText containerStyled={[textStyle, blueText]}>
+            Opened for 4 days
+          </AppText>
         </Wrapper>
         <Wrapper>
           <AppText containerStyled={bigStyleText}>123</AppText>
-          <StyledText>Times Prayed Total</StyledText>
+          <AppText containerStyled={textStyle}>Times Prayed Total</AppText>
         </Wrapper>
       </Row>
       <Row>
         <Wrapper>
           <AppText containerStyled={bigStyleText}>63</AppText>
-          <StyledText>Times Prayed by Me</StyledText>
+          <AppText containerStyled={textStyle}>Times Prayed by Me</AppText>
         </Wrapper>
         <Wrapper>
           <AppText containerStyled={bigStyleText}>60</AppText>
-          <StyledText>Times Prayed by Others</StyledText>
+          <AppText containerStyled={textStyle}>Times Prayed by Others</AppText>
         </Wrapper>
       </Row>
     </ContentWrapper>
@@ -55,12 +56,10 @@ const middleStyleText = css`
   font-size: 22px;
 `;
 
-const StyledText = styled.Text<{$CSS?: CSSProp}>`
+const textStyle = css`
   font-size: 13px;
   line-height: 15px;
-  ${({$CSS}) => $CSS};
 `;
-
-const textStyle = css`
+const blueText = css`
   color: ${colors.blue};
 `;
