@@ -13,7 +13,7 @@ export const AppText: FC<AppTextProps> = ({children, containerStyled = {}}) => {
 
 const StyledText = styled.Text<{$CSS?: CSSProp}>`
   font-size: 17px;
-  color: ${colors.ligthBlack};
+  color: ${colors.lightBlack};
   ${({$CSS}) => $CSS};
 `
 

@@ -14,6 +14,7 @@ import { DeleteButton } from '../../ui/DeleteButton';
 import { cropText } from '../../utils/utils';
 import { css } from 'styled-components';
 import { StrikethroughText } from '../../ui/StrikethroughText';
+import { colors } from '../../styles/colors';
 
 interface PrayerItemProps extends IPrayer {
   onPress: () => void;
@@ -51,7 +52,7 @@ const PrayerItem: FC<PrayerItemProps> = ({
   const prayerTitle = cropText(title, isCommentExist());
 
   const deletePrayer = () => {
-    dispatch(actions.prayer.deletPrayerRequest(id));
+    dispatch(actions.prayer.deletePrayerRequest(id));
   };
 
   const renderRightActions = (
@@ -95,7 +96,7 @@ const PrayerItem: FC<PrayerItemProps> = ({
 const rowStyle = css`
   justify-content: space-between;
   padding: 18px 0;
-  border-bottom-color:#E5E5E5;
+  border-bottom-color:${colors.lightGraySecond};
   border-bottom-width: 1px;
   border-style: solid;
   margin: 0 15px;

@@ -37,7 +37,7 @@ export const UserIcon: FC<UserIconProps> = ({ userCount = 0, color = colors.blue
 
 const Number = styled.Text`
   font-size: 12px;
-  color: ${colors.ligthBlack};
+  color: ${colors.lightBlack};
   padding-left: 5px;
 `;
 

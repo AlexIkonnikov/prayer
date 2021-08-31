@@ -32,7 +32,7 @@ const ColumnItem: FC<ColumnItemProps> = ({column, onNext}) => {
   };
 
   const handleDeleteColumn = () => {
-    dispatch(actions.column.deletColumnRequest(column.id));
+    dispatch(actions.column.deleteColumnRequest(column.id));
   };
 
   return (

@@ -75,11 +75,11 @@ const AvatarWrapper = styled.View`
 
 const rowStyle = css`
   padding:17px 0;
-  border-top-color:#E5E5E5;
+  border-top-color:${colors.lightGraySecond};
   border-top-width: 1px;
   border-style: solid;
 `
-const textStyle = css`font-size: 13px; color: ${colors.ligthGray};`
+const textStyle = css`font-size: 13px; color: ${colors.lightGray};`
 const textBold = css`font-weight: bold;`
 
 export default Comment;

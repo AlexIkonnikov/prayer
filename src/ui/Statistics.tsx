@@ -39,7 +39,7 @@ const ContentWrapper = styled.View`
 const Wrapper = styled.View`
   padding-left: 15px;
   height: 108px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid ${colors.lightGraySecond};
   width: 50%;
 `;
 

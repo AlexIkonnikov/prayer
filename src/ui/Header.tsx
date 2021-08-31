@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styled, { css } from 'styled-components/native';
+import { colors } from '../styles/colors';
 import { Container } from './Container';
 import { Row } from './Row'
 
@@ -22,7 +23,7 @@ const HeaderContainer = styled.View<{ $isTab: boolean }>`
     props.$isTab === false &&
     `
         margin-bottom: 15px;
-        border-bottom-color: #E5E5E5;
+        border-bottom-color: ${colors.lightGraySecond};
         border-bottom-width: 1px;
         border-style: solid;
     `}

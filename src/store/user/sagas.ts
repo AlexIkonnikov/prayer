@@ -13,7 +13,7 @@ function* signUpRequestHandler({ payload }: PayloadAction<SignUpPayload>) {
     }
     const { id, email, name, password, token } = data;
     yield put(
-      actions.signUpSuccsecResponse({ id, email, name, password, token }),
+      actions.signUpSuccessResponse({ id, email, name, password, token }),
     );
   } catch (e) {
     console.error(e);
@@ -28,7 +28,7 @@ function* signInRequestHandler({ payload }: PayloadAction<SignInPayload>) {
       return;
     }
     const { id, name, email, token } = data;
-    yield put(actions.signInSuccsecRequest({ id, name, email, token }));
+    yield put(actions.signInSuccessRequest({ id, name, email, token }));
   } catch (e) {
     console.error(e);
   }

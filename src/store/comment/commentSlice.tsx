@@ -18,14 +18,14 @@ const commentSlice = createSlice({
     getAllCommentsRequest(state) {
       state.dataUpdateStatus = 'inProcess';
     },
-    getAllCommentsSuccses(state, {payload}: PayloadAction<Array<IComment>>) {
+    getAllCommentsSuccess(state, {payload}: PayloadAction<Array<IComment>>) {
       state.comments = [...payload];
       state.dataUpdateStatus = 'done';
     },
     addCommentRequest(state, {payload}: PayloadAction<AddCommentPayload>) {
       state.dataUpdateStatus = 'inProcess';
     },
-    addCommentSuccses(state, {payload}: PayloadAction<IComment>) {
+    addCommentSuccess(state, {payload}: PayloadAction<IComment>) {
       state.comments.push(payload);
       state.dataUpdateStatus = 'done';
     },
@@ -35,7 +35,7 @@ const commentSlice = createSlice({
     ) {
       state.dataUpdateStatus = 'inProcess';
     },
-    updateCommentSuccses(state, {payload}: PayloadAction<IComment>) {
+    updateCommentSuccess(state, {payload}: PayloadAction<IComment>) {
       const index = state.comments.findIndex(
         comment => comment.id === payload.id,
       );
@@ -47,7 +47,7 @@ const commentSlice = createSlice({
     deleteCommentRequest(state, {payload}: PayloadAction<number>) {
       state.dataUpdateStatus = 'inProcess';
     },
-    deleteCommentSuccses(state, {payload}: PayloadAction<number>) {
+    deleteCommentSuccess(state, {payload}: PayloadAction<number>) {
       const index = state.comments.findIndex(comment => comment.id === payload);
       if (index !== -1) {
         state.comments.splice(index, 1);

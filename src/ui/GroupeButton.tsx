@@ -18,7 +18,7 @@ export const GroupeButton: FC<GroupeButtonProps> = ({
   return (
     <Row containerStyled={rowStyle}>
       <Button title="save" color={colors.blue} onPress={onSave} />
-      <Button title="cancel" color={colors.ligthGray} onPress={onCancel} />
+      <Button title="cancel" color={colors.lightGray} onPress={onCancel} />
       <Button title="delete" color={colors.red} onPress={onDeleted} />
     </Row>
   );

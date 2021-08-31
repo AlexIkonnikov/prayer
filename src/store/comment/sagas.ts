@@ -7,7 +7,7 @@ import { IComment, UpdateCommentPayload, AddCommentPayload } from './types';
 function* getAllCommentsRequestHandler() {
   try {
     const { data } = yield call(getAllComments);
-    yield put(actions.getAllCommentsSuccses(data));
+    yield put(actions.getAllCommentsSuccess(data));
   } catch (e) {
     console.error(e);
   }
@@ -19,7 +19,7 @@ function* addCommentRequestHandler({
   try {
     const { data } = yield call(addComment, payload);
     const { id, body, created, userId, prayerId } = data;
-    yield put(actions.addCommentSuccses({ id, body, created, userId, prayerId }));
+    yield put(actions.addCommentSuccess({ id, body, created, userId, prayerId }));
   } catch (e) {
     console.error(e);
   }
@@ -30,7 +30,7 @@ function* updateCommentRequestHandler({
 }: PayloadAction<UpdateCommentPayload>) {
   try {
     const { data } = yield call(updateComment, payload);
-    yield put(actions.updateCommentSuccses(data));
+    yield put(actions.updateCommentSuccess(data));
   } catch (e) {
     console.error(e);
   }
@@ -39,7 +39,7 @@ function* updateCommentRequestHandler({
 function* deleteCommentRequestHandler({ payload }: PayloadAction<number>) {
   try {
     yield call(deleteComment, payload);
-    yield put(actions.deleteCommentSuccses(payload));
+    yield put(actions.deleteCommentSuccess(payload));
   } catch (e) {
     console.error(e);
   }

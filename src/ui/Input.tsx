@@ -17,6 +17,6 @@ const StyledInput = styled.TextInput<{$CSS: CSSProp}>`
   padding-left: 15px;
   padding-right: 25px;
   font-size: 17px;
-  color: ${colors.ligthBlack};
+  color: ${colors.lightBlack};
   ${({$CSS}) => $CSS}
 `;

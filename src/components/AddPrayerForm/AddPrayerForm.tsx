@@ -66,7 +66,7 @@ const FormWrapper = styled.View`
   align-items: center;
   padding-left: 14px;
   height: 50px;
-  border-color: #E5E5E5;
+  border-color: ${colors.lightGraySecond};
   width: 100%;
 
   border-width: 1px;

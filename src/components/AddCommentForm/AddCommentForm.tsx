@@ -8,6 +8,7 @@ import { MessageIcon } from '../../ui/icons/MessageIcon';
 import { Loader } from '../../ui/Loader';
 import { IconButton } from '../../ui/IconButton';
 import styled from 'styled-components/native';
+import { colors } from '../../styles/colors';
 
 interface AddCommentPayloadProps {
   prayerId: number;
@@ -56,7 +57,7 @@ const FormWrapper = styled.View`
   flex-direction: row;
   align-items: center;
   height: 50px;
-  border-color: #E5E5E5;
+  border-color: ${colors.lightGraySecond};
   width: 100%;
   padding-left: 14px;
   border-top-width: 1px;

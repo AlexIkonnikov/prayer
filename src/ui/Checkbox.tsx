@@ -20,7 +20,7 @@ export const CheckBox: FC<CheckBoxProps> = ({checked, onChange}) => {
 const TouchableBox = styled.TouchableOpacity`
   width: 22px;
   height: 22px;
-  border-color: ${colors.ligthBlack};
+  border-color: ${colors.lightBlack};
   border-width: 1px;
   border-radius: 4px;
   align-items: center;

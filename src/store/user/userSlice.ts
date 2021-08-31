@@ -20,14 +20,14 @@ const userSlice = createSlice({
     signUpRequest(state, {payload}: PayloadAction<SignUpPayload>) {
       state.fetchingStatus = 'start';
     },
-    signUpSuccsecResponse(state, {payload}: PayloadAction<IUser>) {
+    signUpSuccessResponse(state, {payload}: PayloadAction<IUser>) {
       state.user = {...payload};
       state.fetchingStatus = 'stop';
     },
     signInRequest(state, {payload}: PayloadAction<SignInPayload>) {
       state.fetchingStatus = 'start';
     },
-    signInSuccsecRequest(state, {payload}: PayloadAction<IUser>) {
+    signInSuccessRequest(state, {payload}: PayloadAction<IUser>) {
       state.user = {...payload};
       state.fetchingStatus = 'stop';
     },
