@@ -9,7 +9,7 @@
  */
 
 import React from 'react';
-import { Navigation } from './src/routes/Navigation';
+import {Navigation} from './src/routes/Navigation';
 
 const App = () => {
   return <Navigation />;

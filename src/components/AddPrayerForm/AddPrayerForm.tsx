@@ -5,13 +5,13 @@ import styled from 'styled-components/native';
 import {actions, selectors} from '../../store/ducks';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {colors} from '../../styles/colors';
-import { IconButton } from '../../ui/IconButton';
+import {IconButton} from '../../ui/IconButton';
 import {PlusIcon} from '../../ui/icons/PlusIcon';
 import {Input} from '../../ui/Input';
 import {Loader} from '../../ui/Loader';
 
 interface AddPrayerFormProps {
-  columnId: number
+  columnId: number;
 }
 
 const AddPrayerForm: FC<AddPrayerFormProps> = ({columnId}) => {
@@ -33,13 +33,17 @@ const AddPrayerForm: FC<AddPrayerFormProps> = ({columnId}) => {
     <Form
       onSubmit={handleCreatePrayer}
       initialValues={{title: ''}}
-      render={({handleSubmit}) => {
+      render={({handleSubmit, pristine}) => {
         return (
           <FormWrapper>
             {status === 'inProcess' ? (
               <Loader size="small" />
             ) : (
-              <IconButton onPress={handleSubmit} render={() => <PlusIcon width={22} color={colors.blue} />} />
+              <IconButton
+                onPress={handleSubmit}
+                disabled={pristine}
+                render={() => <PlusIcon width={22} color={colors.blue} />}
+              />
             )}
             <Field
               name="title"
@@ -73,6 +77,6 @@ const FormWrapper = styled.View`
   border-radius: 10px;
   margin-top: 15px;
   margin-bottom: 34px;
-`
+`;
 
 export default AddPrayerForm;

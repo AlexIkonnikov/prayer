@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import Svg, {Color, Path} from 'react-native-svg';
-import styled, { css } from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 import {colors} from '../../styles/colors';
 import {Row} from '../Row';
 
@@ -9,7 +9,10 @@ interface HandsIconProps {
   color?: Color;
 }
 
-export const HandsIcon: FC<HandsIconProps> = ({prayerCount = 0, color = colors.blue}) => {
+export const HandsIcon: FC<HandsIconProps> = ({
+  prayerCount = 0,
+  color = colors.blue,
+}) => {
   return (
     <Row containerStyled={rowStyle}>
       <Svg width="29" height="23" viewBox="0 0 29 23" fill="white">
@@ -31,4 +34,6 @@ const Number = styled.Text`
   padding-left: 5px;
 `;
 
-const rowStyle = css`justify-content: flex-start;`
+const rowStyle = css`
+  justify-content: flex-start;
+`;

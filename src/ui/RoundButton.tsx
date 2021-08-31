@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import styled from 'styled-components/native';
 import {colors} from '../styles/colors';
-import { IconButton } from './IconButton';
+import {IconButton} from './IconButton';
 import {PlusIcon} from './icons/PlusIcon';
 
 export const RoundButton: FC = () => {
@@ -19,4 +19,4 @@ const RoundWrapper = styled.View`
   border-radius: 16px;
   align-items: center;
   justify-content: center;
-`
+`;

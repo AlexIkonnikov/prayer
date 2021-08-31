@@ -1,11 +1,14 @@
 import React, {FC} from 'react';
-import {createStackNavigator, StackNavigationProp} from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  StackNavigationProp,
+} from '@react-navigation/stack';
 import {NavigationContainer, RouteProp} from '@react-navigation/native';
 import {ColumnList} from '../screens/ColumnList.screen';
 import {Detail} from '../screens/Detail.screen';
 import {Column} from '../screens/Column.screen';
 import {navigationTheme} from '../styles/theme';
-import { IPrayer } from '../store/prayer';
+import {IPrayer} from '../store/prayer';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -30,15 +33,15 @@ type RootStackParamList = {
 };
 
 export interface ColumnListScreenProps {
-  navigation: StackNavigationProp<RootStackParamList, 'ColumnList'>
+  navigation: StackNavigationProp<RootStackParamList, 'ColumnList'>;
 }
 
 export interface ColumnScreenProps {
-  navigation: StackNavigationProp<RootStackParamList, 'Column'>
-  route: RouteProp<RootStackParamList, 'Column'>
+  navigation: StackNavigationProp<RootStackParamList, 'Column'>;
+  route: RouteProp<RootStackParamList, 'Column'>;
 }
 
 export interface DetailScreenProps {
-  navigation: StackNavigationProp<RootStackParamList, 'Detail'>
-  route: RouteProp<RootStackParamList, 'Detail'>
+  navigation: StackNavigationProp<RootStackParamList, 'Detail'>;
+  route: RouteProp<RootStackParamList, 'Detail'>;
 }

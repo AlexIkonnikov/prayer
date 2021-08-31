@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {
   IPrayer,
   UpdatePrayerPayload,
@@ -6,7 +6,7 @@ import {
   AddPrayerPayload,
 } from './types';
 
-const initialState: IPrayerSlice = { prayers: [], dataUpdateStatus: 'done' };
+const initialState: IPrayerSlice = {prayers: [], dataUpdateStatus: 'done'};
 
 const prayerSlice = createSlice({
   name: 'prayer',
@@ -17,15 +17,15 @@ const prayerSlice = createSlice({
     },
     getAllPrayersSuccessResponse(
       state,
-      { payload }: PayloadAction<Array<IPrayer>>,
+      {payload}: PayloadAction<Array<IPrayer>>,
     ) {
       state.prayers = [...payload];
       state.dataUpdateStatus = 'done';
     },
-    updatePrayerRequest(state, { payload }: PayloadAction<UpdatePrayerPayload>) {
+    updatePrayerRequest(state, {payload}: PayloadAction<UpdatePrayerPayload>) {
       state.dataUpdateStatus = 'inProcess';
     },
-    updatePrayerSuccessResponse(state, { payload }: PayloadAction<IPrayer>) {
+    updatePrayerSuccessResponse(state, {payload}: PayloadAction<IPrayer>) {
       const index = state.prayers.findIndex(it => it.id === payload.id);
       if (index !== -1) {
         state.prayers.splice(index, 1, payload);
@@ -34,18 +34,18 @@ const prayerSlice = createSlice({
     },
     addPrayerToColumnRequest(
       state,
-      { payload }: PayloadAction<AddPrayerPayload>,
+      {payload}: PayloadAction<AddPrayerPayload>,
     ) {
       state.dataUpdateStatus = 'inProcess';
     },
-    addPrayerToColumnSuccess(state, { payload }: PayloadAction<IPrayer>) {
+    addPrayerToColumnSuccess(state, {payload}: PayloadAction<IPrayer>) {
       state.dataUpdateStatus = 'done';
       state.prayers.push(payload);
     },
-    deletePrayerRequest(state, { payload }: PayloadAction<number>) {
+    deletePrayerRequest(state, {payload}: PayloadAction<number>) {
       state.dataUpdateStatus = 'inProcess';
     },
-    deletePrayerSuccess(state, { payload }: PayloadAction<number>) {
+    deletePrayerSuccess(state, {payload}: PayloadAction<number>) {
       state.dataUpdateStatus = 'done';
       const index = state.prayers.findIndex(pray => pray.id === payload);
       if (index !== -1) {

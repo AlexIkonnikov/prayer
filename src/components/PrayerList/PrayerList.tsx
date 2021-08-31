@@ -1,17 +1,17 @@
-import React, { FC } from 'react';
-import { useState } from 'react';
-import { selectors } from '../../store/ducks';
-import { IPrayer } from '../../store/prayer';
-import { useAppSelector } from '../../store/hooks';
-import { Button } from '../../ui/Button';
-import { PrayerItem } from '../PrayerItem';
-import { ColumnScreenProps } from '../../routes/MainRoute';
+import React, {FC} from 'react';
+import {useState} from 'react';
+import {selectors} from '../../store/ducks';
+import {IPrayer} from '../../store/prayer';
+import {useAppSelector} from '../../store/hooks';
+import {Button} from '../../ui/Button';
+import {PrayerItem} from '../PrayerItem';
+import {ColumnScreenProps} from '../../routes/MainRoute';
 
-const PrayerList: FC<ColumnScreenProps> = ({ navigation, route }) => {
+const PrayerList: FC<ColumnScreenProps> = ({navigation, route}) => {
   const [visibleAnsweredPrayers, setVisibleAnsweredPrayers] = useState(false);
 
   const handlePrayerItemPress = (item: IPrayer) => {
-    navigation.navigate('Detail', { prayer: item })
+    navigation.navigate('Detail', {prayer: item});
   };
 
   const handleChangeState = () => {

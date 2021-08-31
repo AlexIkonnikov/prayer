@@ -1,15 +1,13 @@
-import React, { FC } from 'react';
-import { ButtonProps } from 'react-native';
-import styled, { css } from 'styled-components/native';
-import { colors } from '../styles/colors';
-import { AppText } from './AppText';
+import React, {FC} from 'react';
+import {ButtonProps} from 'react-native';
+import styled, {css} from 'styled-components/native';
+import {colors} from '../styles/colors';
+import {AppText} from './AppText';
 
-export const Button: FC<ButtonProps> = ({ title, ...outerProps }) => {
+export const Button: FC<ButtonProps> = ({title, ...outerProps}) => {
   return (
     <StyledButton {...outerProps}>
-      <AppText containerStyled={buttonTextStyle}>
-        {title}
-      </AppText>
+      <AppText containerStyled={buttonTextStyle}>{title}</AppText>
     </StyledButton>
   );
 };
@@ -32,4 +30,4 @@ const buttonTextStyle = css`
   color: ${colors.white};
   text-transform: uppercase;
   font-weight: bold;
-`
+`;

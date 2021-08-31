@@ -1,20 +1,20 @@
-import React, { FC, useState } from 'react';
-import { TouchableOpacity, Animated } from 'react-native';
+import React, {FC, useState} from 'react';
+import {TouchableOpacity, Animated} from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
-import { actions, selectors } from '../../store/ducks';
-import { IPrayer } from '../../store/prayer';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { AppText } from '../../ui/AppText';
-import { CheckBox } from '../../ui/Checkbox';
-import { HandsIcon } from '../../ui/icons/HandsIcon';
-import { UserIcon } from '../../ui/icons/UserIcon';
-import { Line } from '../../ui/Line';
-import { Row } from '../../ui/Row';
-import { DeleteButton } from '../../ui/DeleteButton';
-import { cropText } from '../../utils/utils';
-import { css } from 'styled-components';
-import { StrikethroughText } from '../../ui/StrikethroughText';
-import { colors } from '../../styles/colors';
+import {actions, selectors} from '../../store/ducks';
+import {IPrayer} from '../../store/prayer';
+import {useAppDispatch, useAppSelector} from '../../store/hooks';
+import {AppText} from '../../ui/AppText';
+import {CheckBox} from '../../ui/Checkbox';
+import {HandsIcon} from '../../ui/icons/HandsIcon';
+import {UserIcon} from '../../ui/icons/UserIcon';
+import {Line} from '../../ui/Line';
+import {Row} from '../../ui/Row';
+import {DeleteButton} from '../../ui/DeleteButton';
+import {cropText} from '../../utils/utils';
+import {css} from 'styled-components';
+import {StrikethroughText} from '../../ui/StrikethroughText';
+import {colors} from '../../styles/colors';
 
 interface PrayerItemProps extends IPrayer {
   onPress: () => void;
@@ -64,7 +64,7 @@ const PrayerItem: FC<PrayerItemProps> = ({
       outputRange: [-30, 50, 100, 130],
     });
     return (
-      <Animated.View style={{ transform: [{ translateX: trans }] }}>
+      <Animated.View style={{transform: [{translateX: trans}]}}>
         <DeleteButton title="Delete" onPress={deletePrayer} />
       </Animated.View>
     );
@@ -96,10 +96,10 @@ const PrayerItem: FC<PrayerItemProps> = ({
 const rowStyle = css`
   justify-content: space-between;
   padding: 18px 0;
-  border-bottom-color:${colors.lightGraySecond};
+  border-bottom-color: ${colors.lightGraySecond};
   border-bottom-width: 1px;
   border-style: solid;
   margin: 0 15px;
-`
+`;
 
 export default PrayerItem;

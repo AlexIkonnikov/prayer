@@ -8,7 +8,10 @@ interface InputProps extends TextInputProps {
   containerStyled?: CSSProp;
 }
 
-export const Input: FC<InputProps> = ({containerStyled = {}, ...outerProps}) => {
+export const Input: FC<InputProps> = ({
+  containerStyled = {},
+  ...outerProps
+}) => {
   return <StyledInput $CSS={containerStyled} {...outerProps} />;
 };
 

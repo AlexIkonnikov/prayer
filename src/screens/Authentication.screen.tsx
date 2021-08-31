@@ -1,16 +1,16 @@
-import React, { FC } from 'react';
-import { Field, Form, FormProps } from 'react-final-form';
-import { actions, selectors } from '../store/ducks';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { Button } from '../ui/Button';
-import { Loader } from '../ui/Loader';
-import { View } from 'react-native';
-import { InputField } from '../ui/InputField';
-import { AppText } from '../ui/AppText';
-import { colors } from '../styles/colors';
-import { css } from 'styled-components/native';
+import React, {FC} from 'react';
+import {Field, Form, FormProps} from 'react-final-form';
+import {actions, selectors} from '../store/ducks';
+import {useAppDispatch, useAppSelector} from '../store/hooks';
+import {Button} from '../ui/Button';
+import {Loader} from '../ui/Loader';
+import {View} from 'react-native';
+import {InputField} from '../ui/InputField';
+import {AppText} from '../ui/AppText';
+import {colors} from '../styles/colors';
+import {css} from 'styled-components/native';
 import {mailValidator, composeValidators, require} from '../utils/validators';
-import { AppModal } from '../ui/AppModal';
+import {AppModal} from '../ui/AppModal';
 
 export const Authentication: FC = () => {
   const dispatch = useAppDispatch();
@@ -33,7 +33,7 @@ export const Authentication: FC = () => {
   return (
     <Form
       onSubmit={handleSubmitForm}
-      render={({ handleSubmit, invalid }) => {
+      render={({handleSubmit, invalid}) => {
         return (
           <View>
             <Field
@@ -75,4 +75,6 @@ export const Authentication: FC = () => {
   );
 };
 
-const appTextStyle = css`color: ${colors.red};`
+const appTextStyle = css`
+  color: ${colors.red};
+`;

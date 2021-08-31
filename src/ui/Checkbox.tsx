@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
-import styled, { css } from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 import {CheckMarkIcon} from './icons/CheckMarkIcon';
 import {Row} from './Row';
-import {colors} from './../styles/colors'
+import {colors} from './../styles/colors';
 
 interface CheckBoxProps {
   checked: boolean;
@@ -12,7 +12,9 @@ interface CheckBoxProps {
 export const CheckBox: FC<CheckBoxProps> = ({checked, onChange}) => {
   return (
     <Row containerStyled={rowStyle}>
-      <TouchableBox onPress={onChange}>{checked && <CheckMarkIcon />}</TouchableBox>
+      <TouchableBox onPress={onChange}>
+        {checked && <CheckMarkIcon />}
+      </TouchableBox>
     </Row>
   );
 };
@@ -27,4 +29,6 @@ const TouchableBox = styled.TouchableOpacity`
   justify-content: center;
 `;
 
-const rowStyle = css`padding-right: 15px;`
+const rowStyle = css`
+  padding-right: 15px;
+`;

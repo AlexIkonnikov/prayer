@@ -15,5 +15,4 @@ const StyledText = styled.Text<{$CSS?: CSSProp}>`
   font-size: 17px;
   color: ${colors.lightBlack};
   ${({$CSS}) => $CSS};
-`
-
+`;

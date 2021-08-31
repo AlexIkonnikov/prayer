@@ -1,18 +1,18 @@
-import React, { FC } from 'react';
-import { TabRoute } from '../routes/TabRoute';
-import { Header } from '../ui/Header';
-import { AppText } from '../ui/AppText';
-import { SettingIcon } from '../ui/icons/SettingIcon';
-import { AppModal } from '../ui/AppModal';
-import { useState } from 'react';
-import { Button } from '../ui/Button';
-import { useAppDispatch } from '../store/hooks';
-import { actions } from '../store/ducks';
-import { ColumnScreenProps } from '../routes/MainRoute';
-import { IconButton } from '../ui/IconButton';
-import styled, { css } from 'styled-components/native';
+import React, {FC} from 'react';
+import {TabRoute} from '../routes/TabRoute';
+import {Header} from '../ui/Header';
+import {AppText} from '../ui/AppText';
+import {SettingIcon} from '../ui/icons/SettingIcon';
+import {AppModal} from '../ui/AppModal';
+import {useState} from 'react';
+import {Button} from '../ui/Button';
+import {useAppDispatch} from '../store/hooks';
+import {actions} from '../store/ducks';
+import {ColumnScreenProps} from '../routes/MainRoute';
+import {IconButton} from '../ui/IconButton';
+import styled, {css} from 'styled-components/native';
 
-export const Column: FC<ColumnScreenProps> = ({ route }) => {
+export const Column: FC<ColumnScreenProps> = ({route}) => {
   const dispatch = useAppDispatch();
   const [stateModal, setStateModal] = useState(false);
 
@@ -45,9 +45,11 @@ export const Column: FC<ColumnScreenProps> = ({ route }) => {
   );
 };
 
-const boldText = css`font-weight: bold;`
+const boldText = css`
+  font-weight: bold;
+`;
 
 const TextWrapper = styled.View`
   flex-grow: 1;
   align-items: center;
-`
+`;

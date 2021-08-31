@@ -1,7 +1,7 @@
 import React from 'react';
 import {PrayerList} from '../components/PrayerList';
-import { FC } from 'react';
-import { ColumnScreenProps } from '../routes/MainRoute';
+import {FC} from 'react';
+import {ColumnScreenProps} from '../routes/MainRoute';
 import styled from 'styled-components/native';
 
 export const Subscribed: FC<ColumnScreenProps> = ({navigation, route}) => {
@@ -14,4 +14,4 @@ export const Subscribed: FC<ColumnScreenProps> = ({navigation, route}) => {
 
 const Wrapper = styled.View`
   margin-top: 15px;
-`
+`;

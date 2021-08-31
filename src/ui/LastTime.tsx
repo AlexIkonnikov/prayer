@@ -3,7 +3,7 @@ import {Line} from './Line';
 import {Container} from './Container';
 import {Row} from './Row';
 import {AppText} from './AppText';
-import { css } from 'styled-components';
+import {css} from 'styled-components';
 
 interface LastTimeProps {
   timeInMin: number;
@@ -20,4 +20,6 @@ export const LastTime: FC<LastTimeProps> = ({timeInMin}) => {
   );
 };
 
-const rowStyle = css`padding: 15px 0;`
+const rowStyle = css`
+  padding: 15px 0;
+`;

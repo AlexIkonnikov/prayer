@@ -1,22 +1,21 @@
 import React, {FC} from 'react';
-import { FormProps } from 'react-final-form';
+import {FormProps} from 'react-final-form';
 import {ScrollView} from 'react-native';
 import {AddCommentForm} from '../components/AddCommentForm';
 import {CommentList} from '../components/CommentList';
 import {MemberList} from '../components/MemberList';
-import { DetailScreenProps } from '../routes/MainRoute';
+import {DetailScreenProps} from '../routes/MainRoute';
 import {actions, selectors} from '../store/ducks';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {colors} from '../styles/colors';
 import {DetailHeader} from '../ui/DetailHeader';
-import { IconButton } from '../ui/IconButton';
+import {IconButton} from '../ui/IconButton';
 import {BackArrowIcon} from '../ui/icons/BackArrowIcon';
 import {HandsIcon} from '../ui/icons/HandsIcon';
 import {LastTime} from '../ui/LastTime';
 import {Statistics} from '../ui/Statistics';
 
 export const Detail: FC<DetailScreenProps> = ({navigation, route}) => {
-
   const prayer = route.params.prayer;
   const dispatch = useAppDispatch();
   const comments = useAppSelector(
@@ -41,7 +40,7 @@ export const Detail: FC<DetailScreenProps> = ({navigation, route}) => {
   return (
     <React.Fragment>
       <DetailHeader title={prayer.title} onSubmitForm={handleUpdatePrayer}>
-        <IconButton onPress={handleGoBack} render={() => <BackArrowIcon/>}/>
+        <IconButton onPress={handleGoBack} render={() => <BackArrowIcon />} />
         <HandsIcon color={colors.white} />
       </DetailHeader>
       <ScrollView>

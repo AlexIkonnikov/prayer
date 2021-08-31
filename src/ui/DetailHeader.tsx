@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
-import { Field, Form, FormProps } from 'react-final-form';
-import { colors } from '../styles/colors';
-import { Row } from './Row';
-import { Input } from './Input';
-import { css } from 'styled-components';
+import React, {FC} from 'react';
+import {Field, Form, FormProps} from 'react-final-form';
+import {colors} from '../styles/colors';
+import {Row} from './Row';
+import {Input} from './Input';
+import {css} from 'styled-components';
 import styled from 'styled-components/native';
 
 interface DetailHeaderProps {
@@ -18,17 +18,15 @@ export const DetailHeader: FC<DetailHeaderProps> = ({
 }) => {
   return (
     <HeaderWrapper>
-      <Row containerStyled={rowStyle}>
-        {children}
-      </Row>
+      <Row containerStyled={rowStyle}>{children}</Row>
       <Form
         onSubmit={onSubmitForm}
-        initialValues={{ title: title }}
-        render={({ handleSubmit }) => {
+        initialValues={{title: title}}
+        render={({handleSubmit}) => {
           return (
             <Field
               name="title"
-              render={({ input }) => {
+              render={({input}) => {
                 return (
                   <Input
                     multiline={true}
@@ -55,6 +53,8 @@ const HeaderWrapper = styled.View`
 const rowStyle = css`
   justify-content: space-between;
   margin-bottom: 15px;
-`
+`;
 
-const inputStyle = css`color: ${colors.white};`
+const inputStyle = css`
+  color: ${colors.white};
+`;

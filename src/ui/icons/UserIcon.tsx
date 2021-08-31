@@ -1,14 +1,17 @@
-import React, { FC } from 'react';
-import Svg, { Mask, G, Path, Rect } from 'react-native-svg';
+import React, {FC} from 'react';
+import Svg, {Mask, G, Path, Rect} from 'react-native-svg';
 import styled from 'styled-components/native';
-import { colors } from '../../styles/colors';
+import {colors} from '../../styles/colors';
 
 interface UserIconProps {
   userCount?: number;
   color?: string;
 }
 
-export const UserIcon: FC<UserIconProps> = ({ userCount = 0, color = colors.blue }) => {
+export const UserIcon: FC<UserIconProps> = ({
+  userCount = 0,
+  color = colors.blue,
+}) => {
   return (
     <IconWrapper $isPadding={userCount > 0}>
       <Svg width="17" height="20" viewBox="0 0 17 20" fill="none">
@@ -21,13 +24,7 @@ export const UserIcon: FC<UserIconProps> = ({ userCount = 0, color = colors.blue
           />
         </Mask>
         <G mask="url(#mask0)">
-          <Rect
-            x="-4"
-            y="-2"
-            width="24"
-            height="24"
-            fill={color}
-          />
+          <Rect x="-4" y="-2" width="24" height="24" fill={color} />
         </G>
       </Svg>
       {userCount > 0 ? <Number>{userCount}</Number> : null}
@@ -41,10 +38,10 @@ const Number = styled.Text`
   padding-left: 5px;
 `;
 
-const IconWrapper = styled.View<{ $isPadding: boolean }>`
+const IconWrapper = styled.View<{$isPadding: boolean}>`
   justify-content: flex-start;
   display: flex;
   flex-direction: row;
   align-items: center;
-  ${({ $isPadding }) => $isPadding && `padding-right: 18px;`}
-`
+  ${({$isPadding}) => $isPadding && 'padding-right: 18px;'}
+`;

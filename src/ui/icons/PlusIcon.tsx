@@ -1,20 +1,19 @@
-import React, { FC } from 'react';
-import Svg, { Path, Color } from 'react-native-svg';
+import React, {FC} from 'react';
+import Svg, {Path, Color} from 'react-native-svg';
 
-import { colors } from '../../styles/colors';
+import {colors} from '../../styles/colors';
 
 interface PlusIconProps {
   width?: number;
   color?: Color;
 }
 
-export const PlusIcon: FC<PlusIconProps> = ({ width = 16, color = colors.white }) => {
+export const PlusIcon: FC<PlusIconProps> = ({
+  width = 16,
+  color = colors.white,
+}) => {
   return (
-    <Svg
-      width={width}
-      height={width}
-      viewBox="0 0 16 16"
-      fill="none">
+    <Svg width={width} height={width} viewBox="0 0 16 16" fill="none">
       <Path
         fill-rule="evenodd"
         clip-rule="evenodd"

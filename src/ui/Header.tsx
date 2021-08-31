@@ -1,14 +1,14 @@
-import React, { FC } from 'react';
-import styled, { css } from 'styled-components/native';
-import { colors } from '../styles/colors';
-import { Container } from './Container';
-import { Row } from './Row'
+import React, {FC} from 'react';
+import styled, {css} from 'styled-components/native';
+import {colors} from '../styles/colors';
+import {Container} from './Container';
+import {Row} from './Row';
 
 interface HeaderProps {
   withTab?: boolean;
 }
 
-export const Header: FC<HeaderProps> = ({ children, withTab = false }) => {
+export const Header: FC<HeaderProps> = ({children, withTab = false}) => {
   return (
     <HeaderContainer $isTab={withTab}>
       <Container>
@@ -18,7 +18,7 @@ export const Header: FC<HeaderProps> = ({ children, withTab = false }) => {
   );
 };
 
-const HeaderContainer = styled.View<{ $isTab: boolean }>`
+const HeaderContainer = styled.View<{$isTab: boolean}>`
   ${props =>
     props.$isTab === false &&
     `

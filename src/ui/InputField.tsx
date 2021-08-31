@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
-import { FieldRenderProps } from 'react-final-form';
-import { NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
-import { colors } from '../styles/colors';
-import { Input } from './Input';
-import styled, { css } from 'styled-components/native';
-import { AppText } from './AppText';
+import React, {FC} from 'react';
+import {FieldRenderProps} from 'react-final-form';
+import {NativeSyntheticEvent, TextInputFocusEventData} from 'react-native';
+import {colors} from '../styles/colors';
+import {Input} from './Input';
+import styled, {css} from 'styled-components/native';
+import {AppText} from './AppText';
 
 interface InputFieldProps extends FieldRenderProps<string> {
   onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
@@ -21,14 +21,16 @@ export const InputField: FC<InputFieldProps> = ({
       <BorderWrapper>
         <Input {...input} {...outerProps} />
       </BorderWrapper>
-      {meta.error && meta.touched && <AppText containerStyled={errorStyleText}>{meta.error}</AppText>}
+      {meta.error && meta.touched && (
+        <AppText containerStyled={errorStyleText}>{meta.error}</AppText>
+      )}
     </InputWrapper>
   );
 };
 
 const errorStyleText = css`
   color: ${colors.red};
-`
+`;
 
 const InputWrapper = styled.View`
   margin: 0 auto;

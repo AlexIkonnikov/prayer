@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import { CSSProp } from 'styled-components';
-import styled, { css } from 'styled-components/native';
+import {CSSProp} from 'styled-components';
+import styled, {css} from 'styled-components/native';
 import {colors} from '../styles/colors';
 import {AppText} from './AppText';
 import {Row} from './Row';
@@ -10,7 +10,9 @@ export const Statistics: FC = () => {
     <ContentWrapper>
       <Row>
         <Wrapper>
-          <AppText containerStyled={[bigStyleText, middleStyleText]}>July 25 2017</AppText>
+          <AppText containerStyled={[bigStyleText, middleStyleText]}>
+            July 25 2017
+          </AppText>
           <StyledText>Date Added</StyledText>
           <StyledText $CSS={textStyle}>Opened for 4 days</StyledText>
         </Wrapper>
@@ -51,12 +53,14 @@ const bigStyleText = css`
 
 const middleStyleText = css`
   font-size: 22px;
-`
+`;
 
 const StyledText = styled.Text<{$CSS?: CSSProp}>`
   font-size: 13px;
   line-height: 15px;
   ${({$CSS}) => $CSS};
-`
+`;
 
-const textStyle = css`color: ${colors.blue};`
+const textStyle = css`
+  color: ${colors.blue};
+`;

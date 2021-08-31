@@ -5,11 +5,11 @@ import styled from 'styled-components/native';
 export const AppModal: FC<ModalProps> = ({children, ...outerProps}) => {
   return (
     <Modal animationType="slide" {...outerProps}>
-      <ModalBody>
-          {children}
-      </ModalBody>
+      <ModalBody>{children}</ModalBody>
     </Modal>
   );
 };
 
-const ModalBody = styled.View`padding: 25px;`
+const ModalBody = styled.View`
+  padding: 25px;
+`;

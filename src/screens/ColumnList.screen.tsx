@@ -1,15 +1,15 @@
-import React, { FC, useEffect } from 'react';
-import { View } from 'react-native';
-import { Container } from '../ui/Container';
-import { Header } from '../ui/Header';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { actions, selectors } from '../store/ducks';
-import { AddColumnForm } from '../components/AddColumnForm';
-import { ColumnItem } from '../components/ColumnItem';
-import { ScrollView } from 'react-native-gesture-handler';
-import { ColumnListScreenProps } from '../routes/MainRoute';
+import React, {FC, useEffect} from 'react';
+import {View} from 'react-native';
+import {Container} from '../ui/Container';
+import {Header} from '../ui/Header';
+import {useAppDispatch, useAppSelector} from '../store/hooks';
+import {actions, selectors} from '../store/ducks';
+import {AddColumnForm} from '../components/AddColumnForm';
+import {ColumnItem} from '../components/ColumnItem';
+import {ScrollView} from 'react-native-gesture-handler';
+import {ColumnListScreenProps} from '../routes/MainRoute';
 
-export const ColumnList: FC<ColumnListScreenProps> = ({ navigation }) => {
+export const ColumnList: FC<ColumnListScreenProps> = ({navigation}) => {
   const dispatch = useAppDispatch();
   const columns = useAppSelector(selectors.column.selectColumn);
 
@@ -26,11 +26,11 @@ export const ColumnList: FC<ColumnListScreenProps> = ({ navigation }) => {
   }, [dispatch]);
 
   const handleNextPage = (name: string, id: number) => {
-    navigation.navigate('Column', { name, id });
+    navigation.navigate('Column', {name, id});
   };
 
   const handleAddColumn = (title: string) => {
-    dispatch(actions.column.addColumnRequest({ title, description: null }));
+    dispatch(actions.column.addColumnRequest({title, description: null}));
   };
 
   return (
