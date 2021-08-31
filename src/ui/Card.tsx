@@ -1,17 +1,17 @@
-import React, {FC} from 'react';
-import {TouchableOpacity, TouchableOpacityProps} from 'react-native';
-import styled from 'styled-components/native';
-import {AppText} from './AppText';
+import React, { FC } from 'react';
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import styled, { css } from 'styled-components/native';
+import { AppText } from './AppText';
 
 interface CardProps extends TouchableOpacityProps {
   name: string;
 }
 
-export const Card: FC<CardProps> = ({name, ...outerProps}) => {
+export const Card: FC<CardProps> = ({ name, ...outerProps }) => {
   return (
     <TouchableOpacity {...outerProps}>
       <CardContainer>
-        <AppText bold>{name}</AppText>
+        <AppText containerStyled={cardTextStyle}>{name}</AppText>
       </CardContainer>
     </TouchableOpacity>
   );
@@ -22,4 +22,6 @@ const CardContainer = styled.View`
   border: 1px solid #E5E5E5;
   border-radius: 4px;
   margin-bottom: 10px;
-`
+`;
+
+const cardTextStyle = css`font-weight: bold;`

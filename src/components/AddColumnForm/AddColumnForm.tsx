@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Field, Form, FormProps } from 'react-final-form';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { selectors } from '../../store/ducks';
 import { useAppSelector } from '../../store/hooks';
 import { colors } from '../../styles/colors';
@@ -36,7 +36,7 @@ const AddColumnForm: FC<AddColumnFormProps> = ({ inputText, onSubmit }) => {
                 render={({ input }) => {
                   return (
                     <Input
-                      bold
+                      containerStyled={inputStyle}
                       value={input.value}
                       onChangeText={input.onChange}
                     />
@@ -55,6 +55,8 @@ const AddColumnForm: FC<AddColumnFormProps> = ({ inputText, onSubmit }) => {
     />
   );
 };
+
+const inputStyle = css`font-weight: bold;`
 
 const FieldContainer = styled.View`
   flex-grow: 1; 

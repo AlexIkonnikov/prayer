@@ -4,23 +4,16 @@ import styled from 'styled-components/native';
 import {colors} from '../styles/colors';
 
 interface AppTextProps {
-  fs?: number;
-  color?: string;
-  bold?: boolean;
-  upp?: boolean;
-  lineThrough?: boolean;
-  css?: CSSProp;
+  containerStyled?: CSSProp;
 }
 
-export const AppText: FC<AppTextProps> = ({children, ...outerProps}) => {
-  return <StyledText {...outerProps}>{children}</StyledText>;
+export const AppText: FC<AppTextProps> = ({children, containerStyled = {}}) => {
+  return <StyledText $CSS={containerStyled}>{children}</StyledText>;
 };
 
-const StyledText = styled.Text<AppTextProps>`
-  font-size: ${props => (props.fs ? props.fs + 'px' : '17px')};
-  text-transform: ${props => (props.upp ? 'uppercase' : 'none')};
-  color: ${props => props.color ?? colors.ligthBlack};
-  font-weight: ${props => (props.bold ? 'bold' : 'normal')};
-  text-decoration: ${props => (props.lineThrough ? 'line-through' : 'none')};
-  ${({css}) => css && `${css}`}
-`;
+const StyledText = styled.Text<{$CSS?: CSSProp}>`
+  font-size: 17px;
+  color: ${colors.ligthBlack};
+  ${({$CSS}) => $CSS};
+`
+

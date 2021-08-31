@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {Field, Form, FormProps} from 'react-final-form';
 import {View} from 'react-native';
+import { css } from 'styled-components/native';
 import {actions, selectors} from '../store/ducks';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {colors} from '../styles/colors';
@@ -56,7 +57,7 @@ export const Registration: FC = () => {
             )}
             <AppModal visible={errors.length > 0}>
               {errors.map((err, index) => (
-                <AppText color={colors.red} key={err + index}>
+                <AppText containerStyled={errorTextStyle} key={err + index}>
                   {err}
                 </AppText>
               ))}
@@ -68,3 +69,5 @@ export const Registration: FC = () => {
     />
   );
 };
+
+const errorTextStyle = css`color: ${colors.red};`

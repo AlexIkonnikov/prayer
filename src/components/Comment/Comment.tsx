@@ -44,9 +44,9 @@ const Comment: FC<IComment> = ({ body, created, id }) => {
           <View>
             <Row>
               <TextWrapper>
-                <AppText bold>{name}</AppText>
+                <AppText containerStyled={textBold}>{name}</AppText>
               </TextWrapper>
-              <AppText fs={13} color={colors.ligthGray}>
+              <AppText containerStyled={textStyle}>
                 {timeFromNow(created)}
               </AppText>
             </Row>
@@ -79,5 +79,7 @@ const rowStyle = css`
   border-top-width: 1px;
   border-style: solid;
 `
+const textStyle = css`font-size: 13px; color: ${colors.ligthGray};`
+const textBold = css`font-weight: bold;`
 
 export default Comment;

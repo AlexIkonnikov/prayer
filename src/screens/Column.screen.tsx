@@ -10,7 +10,7 @@ import { useAppDispatch } from '../store/hooks';
 import { actions } from '../store/ducks';
 import { ColumnScreenProps } from '../routes/MainRoute';
 import { IconButton } from '../ui/IconButton';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 export const Column: FC<ColumnScreenProps> = ({ route }) => {
   const dispatch = useAppDispatch();
@@ -31,7 +31,7 @@ export const Column: FC<ColumnScreenProps> = ({ route }) => {
     <React.Fragment>
       <Header withTab>
         <TextWrapper>
-          <AppText bold>{route.params.name}</AppText>
+          <AppText containerStyled={boldText}>{route.params.name}</AppText>
         </TextWrapper>
         <IconButton onPress={handleOpenModal} render={() => <SettingIcon />} />
       </Header>
@@ -44,6 +44,8 @@ export const Column: FC<ColumnScreenProps> = ({ route }) => {
     </React.Fragment>
   );
 };
+
+const boldText = css`font-weight: bold;`
 
 const TextWrapper = styled.View`
   flex-grow: 1;

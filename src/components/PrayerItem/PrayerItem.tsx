@@ -13,6 +13,7 @@ import { Row } from '../../ui/Row';
 import { DeleteButton } from '../../ui/DeleteButton';
 import { cropText } from '../../utils/utils';
 import { css } from 'styled-components';
+import { StrikethroughText } from '../../ui/StrikethroughText';
 
 interface PrayerItemProps extends IPrayer {
   onPress: () => void;
@@ -76,7 +77,7 @@ const PrayerItem: FC<PrayerItemProps> = ({
             <Line />
             <CheckBox checked={itemCheckedState} onChange={onChangeState} />
             {itemCheckedState === true ? (
-              <AppText lineThrough>{prayerTitle}</AppText>
+              <StrikethroughText>{prayerTitle}</StrikethroughText>
             ) : (
               <AppText>{prayerTitle}</AppText>
             )}

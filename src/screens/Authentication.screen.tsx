@@ -9,6 +9,7 @@ import {InputField} from '../ui/InputField';
 import {AppModal} from '../ui/AppModal';
 import {AppText} from '../ui/AppText';
 import {colors} from '../styles/colors';
+import { css } from 'styled-components/native';
 
 export const Authentication: FC = () => {
   const dispatch = useAppDispatch();
@@ -56,7 +57,7 @@ export const Authentication: FC = () => {
             )}
             <AppModal visible={errors.length > 0}>
               {errors.map((err, index) => (
-                <AppText color={colors.red} key={err + index}>
+                <AppText containerStyled={appTextStyle} key={err + index}>
                   {err}
                 </AppText>
               ))}
@@ -68,3 +69,5 @@ export const Authentication: FC = () => {
     />
   );
 };
+
+const appTextStyle = css`color: ${colors.red};`

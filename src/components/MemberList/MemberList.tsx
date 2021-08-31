@@ -10,7 +10,7 @@ import { Row } from '../../ui/Row';
 const MemberList: FC = () => {
   return (
     <ListWrapper>
-      <AppText fs={13} color={colors.blue} upp bold>
+      <AppText containerStyled={appTextStyle}>
         Members
       </AppText>
       <Row containerStyled={rowStyle}>
@@ -35,5 +35,11 @@ const AvatarWrapper = styled.View`
 `
 
 const rowStyle = css`margin-top: 15px;`
+const appTextStyle = css`
+  font-size: 13px;
+  color: ${colors.blue};
+  font-weight: bold;
+  text-transform: uppercase;
+`
 
 export default MemberList;

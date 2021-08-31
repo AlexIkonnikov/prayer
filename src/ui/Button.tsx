@@ -1,15 +1,15 @@
-import React, {FC} from 'react';
-import {ButtonProps} from 'react-native';
-import styled from 'styled-components/native';
-import {colors} from '../styles/colors';
-import {AppText} from './AppText';
+import React, { FC } from 'react';
+import { ButtonProps } from 'react-native';
+import styled, { css } from 'styled-components/native';
+import { colors } from '../styles/colors';
+import { AppText } from './AppText';
 
-export const Button: FC<ButtonProps> = ({title, ...outerProps}) => {
+export const Button: FC<ButtonProps> = ({ title, ...outerProps }) => {
   return (
     <StyledButton {...outerProps}>
-        <AppText fs={12} color={colors.white} upp bold>
-          {title}
-        </AppText>
+      <AppText containerStyled={buttonTextStyle}>
+        {title}
+      </AppText>
     </StyledButton>
   );
 };
@@ -26,3 +26,10 @@ const StyledButton = styled.TouchableOpacity`
   align-items: center;
   opacity: ${props => (props.disabled ? '0.6' : '1')};
 `;
+
+const buttonTextStyle = css`
+  font-size: 12px;
+  color: ${colors.white};
+  text-transform: uppercase;
+  font-weight: bold;
+`

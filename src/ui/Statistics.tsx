@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
-import styled from 'styled-components/native';
+import { CSSProp } from 'styled-components';
+import styled, { css } from 'styled-components/native';
 import {colors} from '../styles/colors';
 import {AppText} from './AppText';
 import {Row} from './Row';
@@ -9,22 +10,22 @@ export const Statistics: FC = () => {
     <ContentWrapper>
       <Row>
         <Wrapper>
-          <BigStyledText fs={22}>July 25 2017</BigStyledText>
+          <AppText containerStyled={bigStyleText}>July 25 2017</AppText>
           <StyledText>Date Added</StyledText>
-          <StyledText color={colors.blue}>Opened for 4 days</StyledText>
+          <StyledText $CSS={textStyle}>Opened for 4 days</StyledText>
         </Wrapper>
         <Wrapper>
-          <BigStyledText fs={32}>123</BigStyledText>
+          <AppText containerStyled={bigStyleText}>123</AppText>
           <StyledText>Times Prayed Total</StyledText>
         </Wrapper>
       </Row>
       <Row>
         <Wrapper>
-          <BigStyledText fs={32}>63</BigStyledText>
+          <AppText containerStyled={bigStyleText}>63</AppText>
           <StyledText>Times Prayed by Me</StyledText>
         </Wrapper>
         <Wrapper>
-          <BigStyledText fs={32}>60</BigStyledText>
+          <AppText containerStyled={bigStyleText}>60</AppText>
           <StyledText>Times Prayed by Others</StyledText>
         </Wrapper>
       </Row>
@@ -42,15 +43,16 @@ const Wrapper = styled.View`
   width: 50%;
 `;
 
-const BigStyledText = styled(AppText)`
+const bigStyleText = css`
   color: #bfb393;
   margin-top: 26px;
+  font-size: 32px;
 `;
 
-const StyledText = styled.Text<{color?: string}>`
+const StyledText = styled.Text<{$CSS?: CSSProp}>`
   font-size: 13px;
   line-height: 15px;
-  ${({color}) => {
-    return `color: ${color ?? colors.ligthBlack}`;
-  }}
-`;
+  ${({$CSS}) => $CSS};
+`
+
+const textStyle = css`color: ${colors.blue};`

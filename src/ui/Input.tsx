@@ -5,25 +5,18 @@ import styled from 'styled-components/native';
 import {colors} from '../styles/colors';
 
 interface InputProps extends TextInputProps {
-  bold?: boolean;
-  color?: string;
   containerStyled?: CSSProp;
 }
 
-export const Input: FC<InputProps> = ({...outerProps}) => {
-  return <StyledInput {...outerProps} />;
+export const Input: FC<InputProps> = ({containerStyled = {}, ...outerProps}) => {
+  return <StyledInput $CSS={containerStyled} {...outerProps} />;
 };
 
-const StyledInput = styled.TextInput<InputProps>`
+const StyledInput = styled.TextInput<{$CSS: CSSProp}>`
   padding: 0;
   padding-left: 15px;
   padding-right: 25px;
   font-size: 17px;
-  ${({color}) => {
-    if (color !== '') {
-      return `color: ${color};`;
-    }
-    return `color: ${colors.ligthBlack};`;
-  }}
-  ${({bold}) => bold && 'font-weight: bold;'}
+  color: ${colors.ligthBlack};
+  ${({$CSS}) => $CSS}
 `;
