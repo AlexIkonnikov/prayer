@@ -10,7 +10,7 @@ export const Statistics: FC = () => {
     <ContentWrapper>
       <Row>
         <Wrapper>
-          <AppText containerStyled={bigStyleText}>July 25 2017</AppText>
+          <AppText containerStyled={[bigStyleText, middleStyleText]}>July 25 2017</AppText>
           <StyledText>Date Added</StyledText>
           <StyledText $CSS={textStyle}>Opened for 4 days</StyledText>
         </Wrapper>
@@ -44,10 +44,14 @@ const Wrapper = styled.View`
 `;
 
 const bigStyleText = css`
-  color: #bfb393;
+  color: ${colors.gray};
   margin-top: 26px;
   font-size: 32px;
 `;
+
+const middleStyleText = css`
+  font-size: 22px;
+`
 
 const StyledText = styled.Text<{$CSS?: CSSProp}>`
   font-size: 13px;

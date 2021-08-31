@@ -1,50 +1,61 @@
-import React, {FC} from 'react';
-import {Field, Form, FormProps} from 'react-final-form';
-import {View} from 'react-native';
+import React, { FC } from 'react';
+import { Field, Form, FormProps } from 'react-final-form';
+import { View } from 'react-native';
 import { css } from 'styled-components/native';
-import {actions, selectors} from '../store/ducks';
-import {useAppDispatch, useAppSelector} from '../store/hooks';
-import {colors} from '../styles/colors';
-import {AppModal} from '../ui/AppModal';
-import {AppText} from '../ui/AppText';
-import {Button} from '../ui/Button';
-import {InputField} from '../ui/InputField';
-import {Loader} from '../ui/Loader';
+import { actions, selectors } from '../store/ducks';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { colors } from '../styles/colors';
+import { AppModal } from '../ui/AppModal';
+import { AppText } from '../ui/AppText';
+import { Button } from '../ui/Button';
+import { InputField } from '../ui/InputField';
+import { Loader } from '../ui/Loader';
+import { composeValidators, mailValidator, require, confirm } from '../utils/validators';
 
 export const Registration: FC = () => {
   const dispatch = useAppDispatch();
   const fetchingStatus = useAppSelector(selectors.user.selectFetchingStatus);
   const errors = useAppSelector(selectors.user.selectErrors);
 
-  const handleCloseModal = () => {
-    dispatch(actions.user.cleanErrors());
+  const handleSubmitForm = ({ name, email, password }: FormProps) => {
+    dispatch(actions.user.signUpRequest({ email, name, password }));
   };
 
-  const handleSubmitForm = ({name, email, password}: FormProps) => {
-    dispatch(actions.user.signUpRequest({email, name, password}));
+  const handleCloseModal = () => {
+    dispatch(actions.user.cleanErrors());
   };
 
   return (
     <Form
       onSubmit={handleSubmitForm}
-      render={({handleSubmit, values}) => {
+      render={({ handleSubmit, values }) => {
         return (
           <View>
             <Field
               name="name"
               placeholder="Write your name"
               render={InputField}
+              validate={require}
             />
             <Field
               name="email"
               placeholder="Write your email"
               render={InputField}
+              validate={composeValidators(require, mailValidator)}
             />
             <Field
               name="password"
               placeholder="Write your password"
               secureTextEntry
               render={InputField}
+              validate={require}
+            />
+            <Field
+              name="confirmPassword"
+              placeholder="Confirm your password"
+              secureTextEntry
+              render={InputField}
+              validate={confirm}
             />
             {fetchingStatus === 'start' ? (
               <Loader />

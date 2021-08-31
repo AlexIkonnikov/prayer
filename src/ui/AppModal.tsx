@@ -1,15 +1,15 @@
 import React, {FC} from 'react';
-import {ModalProps} from 'react-native';
+import {ModalProps, Modal} from 'react-native';
 import styled from 'styled-components/native';
 
 export const AppModal: FC<ModalProps> = ({children, ...outerProps}) => {
   return (
-    <MyModal animationType="slide" {...outerProps}>
-      {children}
-    </MyModal>
+    <Modal animationType="slide" {...outerProps}>
+      <ModalBody>
+          {children}
+      </ModalBody>
+    </Modal>
   );
 };
 
-const MyModal = styled.Modal`
-  padding: 25px;
-`;
+const ModalBody = styled.View`padding: 25px;`

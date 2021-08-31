@@ -59,9 +59,7 @@ const FormWrapper = styled.View`
   border-color: #E5E5E5;
   width: 100%;
   padding-left: 14px;
-  
   border-top-width: 1px;
-  
 `
 
 export default AddCommentForm;
