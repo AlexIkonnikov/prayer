@@ -5,15 +5,15 @@ import {Row} from './Row';
 import {colors} from './../styles/colors';
 
 interface CheckBoxProps {
-  checked: boolean;
+  isChecked: boolean;
   onChange: () => void;
 }
 
-export const CheckBox: FC<CheckBoxProps> = ({checked, onChange}) => {
+export const CheckBox: FC<CheckBoxProps> = ({isChecked, onChange}) => {
   return (
     <Row containerStyled={rowStyle}>
       <TouchableBox onPress={onChange}>
-        {checked && <CheckMarkIcon />}
+        {isChecked && <CheckMarkIcon />}
       </TouchableBox>
     </Row>
   );

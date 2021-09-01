@@ -9,6 +9,14 @@ import {ColumnScreenProps} from '../../routes/MainRoute';
 
 const PrayerList: FC<ColumnScreenProps> = ({navigation, route}) => {
   const [visibleAnsweredPrayers, setVisibleAnsweredPrayers] = useState(false);
+  
+  const checkedItem = useAppSelector(
+    selectors.prayer.selectCheckedPrayersByColumnId(route.params.id),
+  );
+
+  const unCheckedItem = useAppSelector(
+    selectors.prayer.selectUncheckedPrayersByColumnId(route.params.id),
+  );
 
   const handlePrayerItemPress = (item: IPrayer) => {
     navigation.navigate('Detail', {prayer: item});
@@ -17,14 +25,6 @@ const PrayerList: FC<ColumnScreenProps> = ({navigation, route}) => {
   const handleChangeState = () => {
     setVisibleAnsweredPrayers(!visibleAnsweredPrayers);
   };
-
-  const checkedItem = useAppSelector(
-    selectors.prayer.selectCheckedPrayersByColumnId(route.params.id),
-  );
-
-  const unCheckedItem = useAppSelector(
-    selectors.prayer.selectUncheckedPrayersByColumnId(route.params.id),
-  );
 
   return (
     <>

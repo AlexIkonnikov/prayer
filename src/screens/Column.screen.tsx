@@ -29,7 +29,7 @@ export const Column: FC<ColumnScreenProps> = ({route}) => {
   };
   return (
     <React.Fragment>
-      <Header withTab>
+      <Header isWithTab={true}>
         <TextWrapper>
           <AppText containerStyled={boldText}>{route.params.name}</AppText>
         </TextWrapper>

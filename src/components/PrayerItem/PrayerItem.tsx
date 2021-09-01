@@ -76,7 +76,7 @@ const PrayerItem: FC<PrayerItemProps> = ({
         <Row containerStyled={rowStyle}>
           <Row>
             <Line />
-            <CheckBox checked={itemCheckedState} onChange={onChangeState} />
+            <CheckBox isChecked={itemCheckedState} onChange={onChangeState} />
             {itemCheckedState === true ? (
               <StrikethroughText>{prayerTitle}</StrikethroughText>
             ) : (

@@ -23,7 +23,7 @@ const prayerSlice = createSlice({
       state.dataUpdateStatus = 'done';
     },
     updatePrayerRequest(state, {payload}: PayloadAction<UpdatePrayerPayload>) {
-      state.dataUpdateStatus = 'inProcess';
+      state.dataUpdateStatus = 'Updated';
     },
     updatePrayerSuccessResponse(state, {payload}: PayloadAction<IPrayer>) {
       const index = state.prayers.findIndex(it => it.id === payload.id);
@@ -36,14 +36,14 @@ const prayerSlice = createSlice({
       state,
       {payload}: PayloadAction<AddPrayerPayload>,
     ) {
-      state.dataUpdateStatus = 'inProcess';
+      state.dataUpdateStatus = 'Created';
     },
     addPrayerToColumnSuccess(state, {payload}: PayloadAction<IPrayer>) {
       state.dataUpdateStatus = 'done';
       state.prayers.push(payload);
     },
     deletePrayerRequest(state, {payload}: PayloadAction<number>) {
-      state.dataUpdateStatus = 'inProcess';
+      state.dataUpdateStatus = 'Deleted';
     },
     deletePrayerSuccess(state, {payload}: PayloadAction<number>) {
       state.dataUpdateStatus = 'done';

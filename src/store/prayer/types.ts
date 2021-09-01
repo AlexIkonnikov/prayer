@@ -16,7 +16,7 @@ export interface UpdatePrayerPayload {
 
 export interface IPrayerSlice {
   prayers: Array<IPrayer>;
-  dataUpdateStatus: 'done' | 'inProcess';
+  dataUpdateStatus: 'done' | 'inProcess' | 'Created' | 'Updated' | 'Deleted';
 }
 
 export interface AddPrayerPayload {

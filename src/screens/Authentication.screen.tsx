@@ -1,16 +1,15 @@
-import React, {FC} from 'react';
-import {Field, Form, FormProps} from 'react-final-form';
-import {actions, selectors} from '../store/ducks';
-import {useAppDispatch, useAppSelector} from '../store/hooks';
-import {Button} from '../ui/Button';
-import {Loader} from '../ui/Loader';
-import {View} from 'react-native';
-import {InputField} from '../ui/InputField';
-import {AppText} from '../ui/AppText';
-import {colors} from '../styles/colors';
-import {css} from 'styled-components/native';
-import {mailValidator, composeValidators, require} from '../utils/validators';
-import {AppModal} from '../ui/AppModal';
+import React, { FC } from 'react';
+import { Field, Form, FormProps } from 'react-final-form';
+import { actions, selectors } from '../store/ducks';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { Button } from '../ui/Button';
+import { View } from 'react-native';
+import { InputField } from '../ui/InputField';
+import { AppText } from '../ui/AppText';
+import { colors } from '../styles/colors';
+import { css } from 'styled-components/native';
+import { mailValidator, composeValidators, require } from '../utils/validators';
+import { AppModal } from '../ui/AppModal';
 
 export const Authentication: FC = () => {
   const dispatch = useAppDispatch();
@@ -33,7 +32,7 @@ export const Authentication: FC = () => {
   return (
     <Form
       onSubmit={handleSubmitForm}
-      render={({handleSubmit, invalid}) => {
+      render={({ handleSubmit, invalid }) => {
         return (
           <View>
             <Field
@@ -51,15 +50,12 @@ export const Authentication: FC = () => {
               editable={fetchingStatus === 'stop'}
               render={InputField}
             />
-            {fetchingStatus === 'start' ? (
-              <Loader />
-            ) : (
-              <Button
-                title="sign in"
-                onPress={handleSubmit}
-                disabled={invalid}
-              />
-            )}
+            <Button
+              title="sign in"
+              onPress={handleSubmit}
+              disabled={invalid}
+              isLoading={fetchingStatus === 'start'}
+            />
             <AppModal visible={errors.length > 0}>
               {errors.map((err, index) => (
                 <AppText containerStyled={appTextStyle} key={err + index}>

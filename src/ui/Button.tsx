@@ -3,11 +3,16 @@ import {ButtonProps} from 'react-native';
 import styled, {css} from 'styled-components/native';
 import {colors} from '../styles/colors';
 import {AppText} from './AppText';
+import { Loader } from './Loader';
 
-export const Button: FC<ButtonProps> = ({title, ...outerProps}) => {
+interface CustomButtonProps extends ButtonProps {
+  isLoading?: boolean
+}
+
+export const Button: FC<CustomButtonProps> = ({title, isLoading = false, ...outerProps}) => {
   return (
-    <StyledButton {...outerProps}>
-      <AppText containerStyled={buttonTextStyle}>{title}</AppText>
+    <StyledButton disabled={isLoading} {...outerProps}>
+      {isLoading ? <Loader size="small"/> : <AppText containerStyled={buttonTextStyle}>{title}</AppText>}
     </StyledButton>
   );
 };

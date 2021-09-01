@@ -4,23 +4,23 @@ import {colors} from '../styles/colors';
 import {UserIcon} from './icons/UserIcon';
 
 interface AvatarProps {
-  big?: boolean;
+  isBig?: boolean;
 }
 
-export const Avatar: FC<AvatarProps> = ({big = false}) => {
+export const Avatar: FC<AvatarProps> = ({isBig = false}) => {
   return (
-    <AvatarContainer $big={big}>
+    <AvatarContainer $isBig={isBig}>
       <UserIcon color={colors.white} />
     </AvatarContainer>
   );
 };
 
-const AvatarContainer = styled.View<{$big: boolean}>`
-  ${({$big}) => {
+const AvatarContainer = styled.View<{$isBig: boolean}>`
+  ${({$isBig}) => {
     return `
-          width: ${$big ? '40px' : '32px'};
-          height: ${$big ? '40px' : '32px'};
-          border-radius: ${$big ? '20px;' : '16px;'};
+          width: ${$isBig ? '40px' : '32px'};
+          height: ${$isBig ? '40px' : '32px'};
+          border-radius: ${$isBig ? '20px;' : '16px;'};
         `;
   }}
   display: flex;

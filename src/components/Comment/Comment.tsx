@@ -14,6 +14,7 @@ import styled from 'styled-components/native';
 
 const Comment: FC<IComment> = ({body, created, id}) => {
   const dispatch = useAppDispatch();
+  const {name} = useAppSelector(selectors.user.selectUser);
 
   const [isEditedMode, setEditMode] = useState(false);
 
@@ -32,14 +33,12 @@ const Comment: FC<IComment> = ({body, created, id}) => {
   const handleDeleteComment = () => {
     dispatch(actions.comment.deleteCommentRequest(id));
   };
-
-  const {name} = useAppSelector(selectors.user.selectUser);
   return (
     <>
       <TouchableOpacity onLongPress={handleActiveEditMode}>
         <Row containerStyled={rowStyle}>
           <AvatarWrapper>
-            <Avatar big />
+            <Avatar isBig={true} />
           </AvatarWrapper>
           <View>
             <Row>

@@ -28,7 +28,7 @@ const AddPrayerForm: FC<AddPrayerFormProps> = ({columnId}) => {
     );
     form.reset();
   };
-
+  const isLoaderShow = status === 'Deleted' || status === 'Created';
   return (
     <Form
       onSubmit={handleCreatePrayer}
@@ -36,7 +36,7 @@ const AddPrayerForm: FC<AddPrayerFormProps> = ({columnId}) => {
       render={({handleSubmit, pristine}) => {
         return (
           <FormWrapper>
-            {status === 'inProcess' ? (
+            {isLoaderShow ? (
               <Loader size="small" />
             ) : (
               <IconButton

@@ -5,12 +5,12 @@ import {Container} from './Container';
 import {Row} from './Row';
 
 interface HeaderProps {
-  withTab?: boolean;
+  isWithTab?: boolean;
 }
 
-export const Header: FC<HeaderProps> = ({children, withTab = false}) => {
+export const Header: FC<HeaderProps> = ({children, isWithTab = false}) => {
   return (
-    <HeaderContainer $isTab={withTab}>
+    <HeaderContainer $isWithTab={isWithTab}>
       <Container>
         <Row containerStyled={rowStyle}>{children}</Row>
       </Container>
@@ -18,9 +18,9 @@ export const Header: FC<HeaderProps> = ({children, withTab = false}) => {
   );
 };
 
-const HeaderContainer = styled.View<{$isTab: boolean}>`
+const HeaderContainer = styled.View<{$isWithTab: boolean}>`
   ${props =>
-    props.$isTab === false &&
+    props.$isWithTab === false &&
     `
         margin-bottom: 15px;
         border-bottom-color: ${colors.lightGraySecond};
