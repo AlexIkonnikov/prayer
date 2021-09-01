@@ -28,6 +28,7 @@ const PrayerItem: FC<PrayerItemProps> = ({
   description,
 }) => {
   const [itemCheckedState, setItemState] = useState(checked);
+  const status = useAppSelector(selectors.prayer.selectDataUpdateStatus);
   const onChangeState = () => {
     dispatch(
       actions.prayer.updatePrayerRequest({
@@ -65,7 +66,11 @@ const PrayerItem: FC<PrayerItemProps> = ({
     });
     return (
       <Animated.View style={{transform: [{translateX: trans}]}}>
-        <DeleteButton title="Delete" onPress={deletePrayer} />
+        <DeleteButton
+          title="Delete"
+          onPress={deletePrayer}
+          isLoading={status === 'Deleted'}
+        />
       </Animated.View>
     );
   };

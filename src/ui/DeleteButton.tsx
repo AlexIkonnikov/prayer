@@ -3,11 +3,24 @@ import {ButtonProps} from 'react-native';
 import styled, {css} from 'styled-components/native';
 import {colors} from '../styles/colors';
 import {AppText} from './AppText';
+import {Loader} from './Loader';
 
-export const DeleteButton: FC<ButtonProps> = ({onPress, title}) => {
+interface DeleteButtonProps extends ButtonProps {
+  isLoading?: boolean;
+}
+
+export const DeleteButton: FC<DeleteButtonProps> = ({
+  onPress,
+  title,
+  isLoading = false,
+}) => {
   return (
     <CustomButton onPress={onPress}>
-      <AppText containerStyled={appTextStyle}>{title}</AppText>
+      {isLoading ? (
+        <Loader size="small" />
+      ) : (
+        <AppText containerStyled={appTextStyle}>{title}</AppText>
+      )}
     </CustomButton>
   );
 };
@@ -15,6 +28,7 @@ export const DeleteButton: FC<ButtonProps> = ({onPress, title}) => {
 const CustomButton = styled.TouchableOpacity`
   height: 68px;
   width: 80px;
+  display: flex;
   justify-content: center;
   align-items: center;
   background-color: ${colors.red};
@@ -23,4 +37,5 @@ const CustomButton = styled.TouchableOpacity`
 const appTextStyle = css`
   font-size: 13px;
   color: ${colors.white};
+  line-height: 13px;
 `;
