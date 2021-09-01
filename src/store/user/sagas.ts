@@ -9,7 +9,7 @@ function* signUpRequestHandler({payload}: PayloadAction<SignUpPayload>) {
   try {
     const {data, ...responseInfo} = yield call(signUp, {...payload});
     if (responseInfo.status !== 200 && data.message) {
-      yield put(actions.requestFailed('Пользователь уже существует'));
+      yield put(actions.signUpRequestFailed('Пользователь уже существует'));
       return;
     }
     const {id, email, name, password, token} = data;
@@ -26,7 +26,7 @@ function* signInRequestHandler({payload}: PayloadAction<SignInPayload>) {
   try {
     const {data, ...responseInfo} = yield call(signIn, {...payload});
     if (responseInfo.status !== 200 && data.message) {
-      yield put(actions.requestFailed('Неверный логин или пароль'));
+      yield put(actions.signInRequestFailed('Неверный логин или пароль'));
       return;
     }
     const {id, name, email, token} = data;

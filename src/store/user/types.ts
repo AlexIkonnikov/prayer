@@ -15,5 +15,10 @@ export interface SignInPayload {
 export interface IUserSlice {
   user: IUser;
   fetchingStatus: 'start' | 'stop';
-  errorMessage: string;
+  errorMessage: ErrorsObject;
+}
+
+export interface ErrorsObject {
+  signInError: string;
+  signUpError: string;
 }

@@ -11,6 +11,7 @@ import {ErrorText} from '../components/ErrorText';
 export const Authentication: FC = () => {
   const dispatch = useAppDispatch();
   const fetchingStatus = useAppSelector(selectors.user.selectFetchingStatus);
+  const error = useAppSelector(selectors.user.selectSignInError);
 
   const handleSubmitForm = (values: FormProps) => {
     dispatch(
@@ -42,7 +43,7 @@ export const Authentication: FC = () => {
               editable={fetchingStatus === 'stop'}
               render={InputField}
             />
-            <ErrorText />
+            <ErrorText error={error} />
             <Button
               title="sign in"
               onPress={handleSubmit}

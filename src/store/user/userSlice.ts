@@ -10,7 +10,7 @@ const initialState: IUserSlice = {
     token: '',
   },
   fetchingStatus: 'stop',
-  errorMessage: '',
+  errorMessage: {signInError: '', signUpError: ''},
 };
 
 const userSlice = createSlice({
@@ -31,12 +31,16 @@ const userSlice = createSlice({
       state.user = {...payload};
       state.fetchingStatus = 'stop';
     },
-    requestFailed(state, {payload}: PayloadAction<string>) {
+    signInRequestFailed(state, {payload}: PayloadAction<string>) {
       state.fetchingStatus = 'stop';
-      state.errorMessage = payload;
+      state.errorMessage.signInError = payload;
+    },
+    signUpRequestFailed(state, {payload}: PayloadAction<string>) {
+      state.fetchingStatus = 'stop';
+      state.errorMessage.signUpError = payload;
     },
     cleanErrors(state) {
-      state.errorMessage = '';
+      state.errorMessage = {signInError: '', signUpError: ''};
     },
     logOut() {
       return initialState;

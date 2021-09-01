@@ -1,6 +1,6 @@
 import {createSelector} from '@reduxjs/toolkit';
 import {RootState} from '../store';
-import {IUser, IUserSlice} from './types';
+import {IUser, IUserSlice, ErrorsObject} from './types';
 
 const selectUserSlice = (state: RootState): IUserSlice => {
   return state.user;
@@ -23,9 +23,21 @@ const selectError = createSelector(
   (user: IUserSlice) => user.errorMessage,
 );
 
+const selectSignInError = createSelector(
+  selectError,
+  (error: ErrorsObject) => error.signInError,
+);
+
+const selectSignUpError = createSelector(
+  selectError,
+  (error: ErrorsObject) => error.signUpError,
+);
+
 export const selectors = {
   selectUser,
   selectUserToken,
   selectFetchingStatus,
   selectError,
+  selectSignInError,
+  selectSignUpError,
 };

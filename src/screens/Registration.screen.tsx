@@ -16,6 +16,7 @@ import {
 export const Registration: FC = () => {
   const dispatch = useAppDispatch();
   const fetchingStatus = useAppSelector(selectors.user.selectFetchingStatus);
+  const error = useAppSelector(selectors.user.selectSignUpError);
 
   const handleSubmitForm = ({name, email, password}: FormProps) => {
     dispatch(actions.user.signUpRequest({email, name, password}));
@@ -53,7 +54,7 @@ export const Registration: FC = () => {
               render={InputField}
               validate={confirm}
             />
-            <ErrorText />
+            <ErrorText error={error} />
             <Button
               title="sign up"
               onPress={handleSubmit}
