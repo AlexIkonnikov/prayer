@@ -9,7 +9,7 @@ import {ColumnScreenProps} from '../../routes/MainRoute';
 
 const PrayerList: FC<ColumnScreenProps> = ({navigation, route}) => {
   const [visibleAnsweredPrayers, setVisibleAnsweredPrayers] = useState(false);
-  
+
   const checkedItem = useAppSelector(
     selectors.prayer.selectCheckedPrayersByColumnId(route.params.id),
   );

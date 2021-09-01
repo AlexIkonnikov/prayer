@@ -1,14 +1,11 @@
-import React, { FC } from 'react';
-import { Field, Form, FormProps } from 'react-final-form';
-import { View } from 'react-native';
-import { css } from 'styled-components/native';
-import { actions, selectors } from '../store/ducks';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { colors } from '../styles/colors';
-import { AppModal } from '../ui/AppModal';
-import { AppText } from '../ui/AppText';
-import { Button } from '../ui/Button';
-import { InputField } from '../ui/InputField';
+import React, {FC} from 'react';
+import {Field, Form, FormProps} from 'react-final-form';
+import {View} from 'react-native';
+import {ErrorText} from '../components/ErrorText';
+import {actions, selectors} from '../store/ducks';
+import {useAppDispatch, useAppSelector} from '../store/hooks';
+import {Button} from '../ui/Button';
+import {InputField} from '../ui/InputField';
 import {
   composeValidators,
   mailValidator,
@@ -19,20 +16,15 @@ import {
 export const Registration: FC = () => {
   const dispatch = useAppDispatch();
   const fetchingStatus = useAppSelector(selectors.user.selectFetchingStatus);
-  const errors = useAppSelector(selectors.user.selectErrors);
 
-  const handleSubmitForm = ({ name, email, password }: FormProps) => {
-    dispatch(actions.user.signUpRequest({ email, name, password }));
-  };
-
-  const handleCloseModal = () => {
-    dispatch(actions.user.cleanErrors());
+  const handleSubmitForm = ({name, email, password}: FormProps) => {
+    dispatch(actions.user.signUpRequest({email, name, password}));
   };
 
   return (
     <Form
       onSubmit={handleSubmitForm}
-      render={({ handleSubmit, values }) => {
+      render={({handleSubmit, values}) => {
         return (
           <View>
             <Field
@@ -61,27 +53,16 @@ export const Registration: FC = () => {
               render={InputField}
               validate={confirm}
             />
+            <ErrorText />
             <Button
               title="sign up"
               onPress={handleSubmit}
               disabled={!values.name || !values.email || !values.password}
               isLoading={fetchingStatus === 'start'}
             />
-            <AppModal visible={errors.length > 0}>
-              {errors.map((err, index) => (
-                <AppText containerStyled={errorTextStyle} key={err + index}>
-                  {err}
-                </AppText>
-              ))}
-              <Button title="Ok" onPress={handleCloseModal} />
-            </AppModal>
           </View>
         );
       }}
     />
   );
 };
-
-const errorTextStyle = css`
-  color: ${colors.red};
-`;

@@ -18,14 +18,14 @@ const selectFetchingStatus = createSelector(
   (user: IUserSlice) => user.fetchingStatus,
 );
 
-const selectErrors = createSelector(
+const selectError = createSelector(
   selectUserSlice,
-  (user: IUserSlice) => user.errors,
+  (user: IUserSlice) => user.errorMessage,
 );
 
 export const selectors = {
   selectUser,
   selectUserToken,
   selectFetchingStatus,
-  selectErrors,
+  selectError,
 };

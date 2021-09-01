@@ -10,7 +10,7 @@ const initialState: IUserSlice = {
     token: '',
   },
   fetchingStatus: 'stop',
-  errors: [],
+  errorMessage: '',
 };
 
 const userSlice = createSlice({
@@ -33,10 +33,10 @@ const userSlice = createSlice({
     },
     requestFailed(state, {payload}: PayloadAction<string>) {
       state.fetchingStatus = 'stop';
-      state.errors.push(payload);
+      state.errorMessage = payload;
     },
     cleanErrors(state) {
-      state.errors = [];
+      state.errorMessage = '';
     },
     logOut() {
       return initialState;

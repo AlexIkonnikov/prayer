@@ -5,10 +5,11 @@ import {SignInPayload, SignUpPayload} from './types';
 import {actions} from './userSlice';
 
 function* signUpRequestHandler({payload}: PayloadAction<SignUpPayload>) {
+  yield put(actions.cleanErrors());
   try {
     const {data, ...responseInfo} = yield call(signUp, {...payload});
     if (responseInfo.status !== 200 && data.message) {
-      yield put(actions.requestFailed(data.message));
+      yield put(actions.requestFailed('Пользователь уже существует'));
       return;
     }
     const {id, email, name, password, token} = data;
@@ -21,10 +22,11 @@ function* signUpRequestHandler({payload}: PayloadAction<SignUpPayload>) {
 }
 
 function* signInRequestHandler({payload}: PayloadAction<SignInPayload>) {
+  yield put(actions.cleanErrors());
   try {
     const {data, ...responseInfo} = yield call(signIn, {...payload});
     if (responseInfo.status !== 200 && data.message) {
-      yield put(actions.requestFailed(data.message));
+      yield put(actions.requestFailed('Неверный логин или пароль'));
       return;
     }
     const {id, name, email, token} = data;
